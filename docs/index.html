@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Towards General Computer Control: A Multimodal Agent For Red Dead Redemption II As A Case Study">
+  <meta name="keywords" content="Agent, VLM, GCC, Cradle, Agent Framework, GPT-4V">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Towards General Computer Control: A Multimodal Agent For Red Dead Redemption II As A Case Study</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=??"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', '???');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./css/bulma.min.css">
+  <link rel="stylesheet" href="./css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./css/index.css">
+  <link rel="icon" href="./images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./js/fontawesome.all.min.js"></script>
+  <script src="./js/bulma-carousel.min.js"></script>
+  <script src="./js/bulma-slider.min.js"></script>
+  <script src="./js/index.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+        
+          <h1 class="title is-1 publication-title">Towards General Computer Control:</br>A Multimodal Agent for</br>Red Dead Redemption II as a Case Study</h1>
+          
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="">Weihao Tan</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Ziluo Ding</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Wentao Zhang</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Boyu Li</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Bohan Zhou</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Junpeng Yue</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Haochong Xia</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Jiechuan Jiang</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Longtao Zheng</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Xinrun Xu</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Yifei Bi</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Pengjie Gu</a><sup>2</sup>,
+            </span>
+            </br>
+            <span class="author-block">
+              <a href="">Xinrun Wang</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://tellarin.com/borje/">Börje F. Karlsson</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Bo An</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Zongqing Lu</a><sup>1,3</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup> Beijing Academy of Artificial Intelligence (BAAI), China; </span>
+            <span class="author-block"><sup>2</sup> Nanyang Technological University, Singapore; </span>
+            <span class="author-block"><sup>3</sup> School of Computer Science, Peking University, China</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2403.03186.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2403.03186"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Links -->
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=Cx-D708BedY"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video 1</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=Oa4Ese8mMD0"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video 2</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/BAAI-Agents/Cradle"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="./images/cradle-intro-web.png" height="100%">
+      <h2 class="subtitle has-text-centered">
+        The <span class="dnerf">Cradle</span> framework empowers nascent foundation models to perform complex computer tasks via the same general interface humans use: screen as input and keyboard & mouse operations as output.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel"> 
+        <div class="item item-a">
+          <img id="a" src="./images/rd2_task_grid_01.gif" height="100%">
+        </div>
+        <div class="item item-b">
+          <img id="b" src="./images/rd2_task_grid_02.gif" height="100%">
+        </div>
+        <div class="item item-c">
+          <img id="c" src="./images/rd2_task_grid_03.gif" height="100%">
+        </div>
+        <div class="item item-d">
+          <img id="d" src="./images/rd2_task_grid_04.gif" height="100%">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Recent studies have demonstrated the success of foundation agent in specific
+tasks or scenarios. However, existing agents cannot generalize across different
+scenarios, mainly due to their diverse observation and action spaces and semantic
+gaps, or reliance on task-specific resources. 
+          </p>
+          <p>
+            In this work, we propose the <span class="dnerf">General Computer Control (GCC)</span> setting: 
+building foundation agents that can master any computer task by taking only screen
+images (and possibly audio) of the computer as input, and producing keyboard and mouse operations as output, similar to human-
+computer interaction. 
+          </p>
+          <p>
+            To target GCC, we propose <span class="dnerf">Cradle</span>, an agent framework with strong reasoning abilities, including self-reflection, task inference, 
+and skill curation, to ensure generalizability and self-improvement across various tasks.
+To demonstrate the capabilities of Cradle, we deploy it in the complex AAA
+game Red Dead Redemption II, serving as a preliminary attempt towards GCC
+with a challenging target. Our agent can follow the main storyline and finish real
+missions in this complex AAA game, with minimal reliance on prior knowledge
+and application-specific resources.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Videos</h2>
+        <div class="column">
+          <div class="content">
+            <div class="publication-video">
+              <iframe src="https://www.youtube.com/embed/Cx-D708BedY?rel=0&amp;showinfo=0"
+                      frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="content">
+            <div class="publication-video">
+              <iframe src="https://www.youtube.com/embed/Oa4Ese8mMD0?rel=0&amp;showinfo=0"
+                      frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>        
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+
+      <!-- GCC. -->
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">GCC</h2>
+          <p>
+            Computers are the most important and universal interface in an increasingly digital world. Computer
+tasks cover a wide variety of scenarios, including complex software to create digital artifacts, everyday productivity software, apps, websites, video games. By providing standardized universal observation (i.e., screen and audio) and abstract
+actions (i.e., keyboard and mouse operations), computers are an ideal testbed to develop foundation
+agents. Therefore, we propose the <b>General Computer Control (GCC)</b> setting:
+          </p>
+          <blockquote>
+          Building foundation agents that can master ANY computer task, e.g., software, games, etc.,
+through only standard observation (i.e., screen and audio) and input device operations (i.e.,
+keyboard and mouse).
+          </blockquote>
+        </div>
+      </div>
+      <!--/ GCC. -->
+
+      <!-- Game. -->
+      <div class="column">
+        <h2 class="title is-3">RDR2</h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <p>
+              <b>Red Dead Redemption II (RDR2)</b> is an epic AAA Western-themed action-adventure game by Rockstar
+Games. As one of the most famous and highest-selling games in the world, it is widely acknowledged
+for its movie-like realistic scenes, rich storylines, and immersive open-ended world.
+            </p>
+            <p>
+As the main storyline progresses, different skills are gradually unlocked. As a close-source commercial game, no
+APIs are available for obtaining additional game-internal information nor pre-defined automation
+actions. We select RDR2 for our case study due to its complex blackbox control
+system, which epitomizes the most demanding computer tasks.
+            </p>
+            <p>
+ This enables us to evaluate the
+performance boundaries of our framework in such virtual environments. RDR2 requires both the capture and interpretation of various information types, and a broader range of keyboard and mouse interactions than typical
+software (such as using the mouse for navigation and using mouse buttons and keyboard keys together
+to realize actions in the game world).            
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!--/ Game. -->
+
+    <!-- Cradle Framework. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">The Cradle Framework</h2>
+
+        <!-- Description. -->
+        <h3 class="title is-4"> </h3>
+        <div class="content has-text-justified">
+          <p>
+            To pursue GCC, we propose a novel framework which can properly handle the
+challenges GCC presents, i.e., observing and interacting with any environment and dealing with any
+information and semantic gaps, without relying on any special API that is not available to a typical
+computer user. The framework for GCC should have the ability to understand and interpret computer
+screen and dynamic changes between consecutive frames (and possibly audio) from arbitrary software
+and be able to generate reasonable computer control actions to be executed reliably. This suggests a
+multimodal model with powerful vision and reasoning capabilities, in addition to rich knowledge of
+computer UI and control, is a requirement. In this work, we leverage GPT-4V as the framework's
+backbone model, which is currently one of the most capable LMM models avaialble.
+          </p>
+          <img src="./images/cradle-framework.png" />
+        </div>
+        <br/>
+        <!--/ Description. -->
+
+        <!-- Details and Future. -->
+        <!-- <h3 class="title is-4">Case Studies and Future Work</h3>
+        <div class="content has-text-justified">
+          <p>
+            For case studies, implementation details, and future promising work, please check out our paper.
+          </p>
+        </div> -->
+        <!--/ Details and Future. -->
+
+      </div>
+    </div>
+    <!--/ The Cradle Framework. -->
+
+    <!-- Concurrent Work. -->
+<!--
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Related Links</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            There's a lot of excellent work that was introduced around the same time as ours.
+          </p>
+          <p>
+            ...
+          </p>
+        </div>
+      </div>
+    </div>
+-->
+    <!--/ Concurrent Work. -->
+
+
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre style="white-space: pre-wrap"><code>@article{weihao2024cradle,
+  author    = {Weihao Tan and Ziluo Ding and Wentao Zhang and Boyu Li and Bohan Zhou and Junpeng Yue and Haochong Xia and Jiechuan Jiang and Longtao Zheng and Xinrun Xu and Yifei Bi and Pengjie Gu and Xinrun Wang and Börje F. Karlsson and Bo An and Zongqing Lu},
+  title     = {{Towards General Computer Control: A Multimodal Agent For Red Dead Redemption II As A Case Study}},
+  journal   = {arXiv},
+  year      = {2024},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website template is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a> and adapted from source at <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
