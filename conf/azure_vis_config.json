@@ -1,0 +1,12 @@
+{
+	"key_var" : "AZ_VIS_OPENAI_KEY",
+	"base_var": "AZ_VIS_BASE_URL",
+	"models": {
+		"gpt-4v": "gpt-4v",
+		"text-embedding-ada-002": "text-embedding-ada-002"
+	},
+	"emb_model": "text-embedding-ada-002",
+	"comp_model": "gpt-4v",
+	"is_azure": true,
+	"api_version": "2024-02-15-preview"
+}

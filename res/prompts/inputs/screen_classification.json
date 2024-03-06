@@ -1,0 +1,8 @@
+{
+    "type": "screen_classification",
+    "classes": [
+        "inventory",
+        "map",
+        "general_user_interface"
+    ]
+}
