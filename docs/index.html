@@ -136,7 +136,7 @@
                   <span class="icon">
                       <i class="fab fa-youtube"></i>
                   </span>
-                  <span>Video for Main Storyline</span>
+                  <span>Video - Main Storyline</span>
                 </a>
               </span>
               <span class="link-block">
@@ -145,7 +145,7 @@
                   <span class="icon">
                       <i class="fab fa-youtube"></i>
                   </span>
-                  <span>Video for Open-ended World</span>
+                  <span>Video - Open-ended World</span>
                 </a>
               </span>
               <!-- Code Link. -->
@@ -170,7 +170,10 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <img src="./images/cradle-intro.png" height="100%">
+      <img src="./images/cradle-intro-web.png" height="100%">
+      <h2 class="subtitle has-text-centered">
+        The <span class="dnerf">Cradle</span> framework empowers nascent foundation models to perform complex computer tasks via the same general interface humans use: screen as input and keyboard & mouse operations as output.
+      </h2>
     </div>
   </div>
 </section>
@@ -200,6 +203,37 @@
 
 <section class="section">
   <div class="container is-max-desktop">
+  
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Recent studies have demonstrated the success of foundation agent in specific
+tasks or scenarios. However, existing agents cannot generalize across different
+scenarios, mainly due to their diverse observation and action spaces and semantic
+gaps, or reliance on task-specific resources. 
+          </p>
+          <p>
+            In this work, we propose the <span style="font-weight: bold">General Computer Control (GCC)</span> setting: 
+building foundation agents that can master any computer task by taking only screen
+images (and possibly audio) of the computer as input, and producing keyboard and mouse operations as output, similar to human-
+computer interaction. 
+          </p>
+          <p>
+            To target GCC, we propose <span style="font-weight: bold">Cradle</span>, an agent framework with strong reasoning abilities, including self-reflection, task inference, 
+and skill curation, to ensure generalizability and self-improvement across various tasks.
+To demonstrate the capabilities of Cradle, we deploy it in the complex AAA
+game Red Dead Redemption II, serving as a preliminary attempt towards GCC
+with a challenging target. To our best knowledge, our work is the first to enable LMM-based agents to follow the 
+main storyline and finish real missions in complex AAA games, with minimal reliance on prior knowledge and application-specific resources.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+    
     <!-- Paper video. -->
     <div class="columns is-centered has-text-centered">
       <div class="column"> 
@@ -227,36 +261,7 @@
       </div>
     </div>
     <!--/ Paper video. -->
-  
-    <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            Recent studies have demonstrated the success of foundation agent in specific
-tasks or scenarios. However, existing agents cannot generalize across different
-scenarios, mainly due to their diverse observation and action spaces and semantic
-gaps, or reliance on task-specific resources. 
-          </p>
-          <p>
-            In this work, we propose the <b>General Computer Control (GCC)</b> setting: 
-building foundation agents that can master any computer task by taking only screen
-images (and possibly audio) of the computer as input, and producing keyboard and mouse operations as output, similar to human-
-computer interaction. 
-          </p>
-          <p>
-            To target GCC, we propose <b>Cradle</b>, an agent framework with strong reasoning abilities, including self-reflection, task inference, 
-and skill curation, to ensure generalizability and self-improvement across various tasks.
-To demonstrate the capabilities of Cradle, we deploy it in the complex AAA
-game Red Dead Redemption II, serving as a preliminary attempt towards GCC
-with a challenging target. To our best knowledge, our work is the first to enable LMM-based agents to follow the 
-main storyline and finish real missions in complex AAA games, with minimal reliance on prior knowledge.
-          </p>
-        </div>
-      </div>
-    </div>
-    <!--/ Abstract. -->
+    
   </div>
 </section>
 
@@ -265,23 +270,33 @@ main storyline and finish real missions in complex AAA games, with minimal relia
   <div class="container is-max-desktop">
 
     <div class="columns is-centered">
+    
       <!-- GCC. -->
       <div class="column">
-        <div class="content">
+        <div class="content" style="text-align: justify;">
           <h2 class="title is-3" style="text-align: center;">General Computer Control</h2>
-          <!-- <h2 class="title is-3">GCC</h2> -->
-          <img src="./images/Towards_GCC.png" alt="General Computer Control (GCC)" style="width:85%; margin: auto; display: block;">
           <p>
             Computers are the most important and universal interface in an increasingly digital world. Computer
 tasks cover a wide variety of scenarios, including complex software to create digital artifacts, everyday productivity software, apps, websites, video games. By providing standardized universal observation (i.e., screen and audio) and abstract
 actions (i.e., keyboard and mouse operations), computers are an ideal testbed to develop foundation
-agents. Therefore, we propose the <b>General Computer Control (GCC)</b> setting:
+agents. Therefore, we propose the <span style="font-weight: bold">General Computer Control (GCC)</span> setting:
           </p>
           <blockquote>
           Building foundation agents that can master ANY computer task, e.g., software, games, etc.,
 through only standard observation (i.e., screen and audio) and input device operations (i.e.,
 keyboard and mouse).
           </blockquote>
+          <p>
+          This is a non-trivial setting, which presents significant challenges, including:
+i) observations being multimodal, which requires
+the alignment of the data in different modalities for better understanding and decision-making; 
+ii) the necessity of accurate control of device operations (e.g., keyboard and mouse) to interact with the
+different target software affordances; iii) partial observability leads to the need for long-term memory to store 
+past knowledge and be able to process and reuse it to solve novel tasks; and iv) efficient exploration of the environments in 
+a structured manner to discover better strategies and solutions autonomously, i.e., self-improving, so 
+the agent is able to generalize across the myriad tasks in the digital world.           
+          </p>
+
         </div>
       </div>
       <!--/ GCC. -->
@@ -289,12 +304,11 @@ keyboard and mouse).
       <!-- Game. -->
       <div class="column">
         <h2 class="title is-3" style="text-align: center;">Red Dead Redemption II</h2>
-        <!-- <h2 class="title is-3">RDR2</h2> -->
-        <img src="./images/RDR2.jpg" alt="RDR2" style="width:100%;">
         <div class="columns is-centered">
-          <div class="column content">
+          <div class="column content" style="text-align: justify;">
+            <img src="./images/RDR2.jpg" alt="RDR2" style="width:100%;"></br>
             <p>
-              <b>Red Dead Redemption II (RDR2)</b> is an epic AAA Western-themed action-adventure game by Rockstar
+              <span style="font-weight: bold">Red Dead Redemption II (RDR2)</span> is an epic AAA Western-themed action-adventure game by Rockstar
 Games. As one of the most famous and highest-selling games in the world, it is widely acknowledged
 for its movie-like realistic scenes, rich storylines, and immersive open-ended world.
             </p>
@@ -326,17 +340,17 @@ to realize actions in the game world).
         <h3 class="title is-4"> </h3>
         <div class="content has-text-justified">
           <p>
-            To pursue GCC, we propose <b>Cradle</b>, a novel framework which can properly handle the
+            To pursue GCC, we propose <span style="font-weight: bold">Cradle</span>, a novel framework which can properly handle the
 challenges GCC presents, i.e., observing and interacting with any environment and dealing with any
 information and semantic gaps, without relying on any special API that is not available to a typical
 computer user. 
           </p>
           <p>
-            <b>Cradle</b> include six main modules: 
+            <b>Cradle</b> is composed of six main modules: 
             1) <b>information gathering</b> to process multimodal input, 2) <b>self-reflection</b> to rethink past experiences, 
             3) <b>task inference</b> for choosing the best next task, 4) <b>skill curation</b> for generating and updating relevant skills for 
-            the task, 5) <b>action planning</b> for generating specific actions for keyboard and mouse control, and 6) 
-            <b>memory</b> for storage and retrieval of the past experiences and skills.
+            a given task, 5) <b>action planning</b> for deciding on specific actions for keyboard and mouse control, and 6) 
+            <b>memory</b> for storage and retrieval of past experiences and known skills.
           </p>
           <img src="./images/cradle-framework.png" />
         </div>
@@ -347,37 +361,41 @@ computer user.
         <h3 class="title is-4"> </h3>
         <div class="content has-text-justified">
           <p>
-            To demonstrate the capabilities of generalization and self-improvement of <b>Cradle</b>, we deploy it in the complex AAA game Red Dead Redemption II, serving as a preliminary attempt towards GCC with a challenging target. 
+            To demonstrate the capabilities of generalization and adaptaion of <span style="font-weight: bold">Cradle</span>, we deploy it in the complex AAA game Red Dead Redemption II, serving as a preliminary attempt towards GCC with a challenging target. 
           </p>
           <img src="./images/dataflow.png" />
         </div>
         <br/>
         <!--/ Description. -->
 
-        <!-- Conclusions. -->
-        <h3 class="title is-4">Conclusions</h3>
+        <!-- Conclusion. -->
+        <h3 class="title is-4">Conclusion</h3>
         <div class="content has-text-justified">
           <p>
-            In this work, we introduce GCC, a general and challenging setting with a unified and standard interface for control of diverse software (via screenshots, and keyboard and mouse operations), paving the way towards general foundation agents across all digital world tasks. 
+            In this work, we introduce GCC, a general and challenging setting with a unified and standard interface for control of diverse software (e.g., via screenshots, and keyboard and mouse operations), paving the way towards general foundation agents across all digital world tasks. 
           </p>
           <p>
-            To properly address the challenges GCC presents, we propose a novel framework, <b>Cradle</b> that enables LMM-based agents to succeed in such an impactful setting. We further showcase its effectiveness in a complex AAA digital game, Red Dead Redemption II. <b>Cradle</b> exhibits strong performance in learning new skills, following the game storyline, and accomplishing real missions in the game. To the best of our knowledge, this is the first LMM-based agent that has managed to complete concrete missions from scratch in AAA games. 
+            To properly address the challenges this setting presents, we propose a novel framework, <span style="font-weight: bold">Cradle</span>. We further showcase its effectiveness in a complex AAA digital game, Red Dead Redemption II, where it demonstrates to have strong 
+performance in learning new skills, following the game storyline, and accomplishing real missions in the game. To the best of our knowledge, this is the first LMM-based agent that has managed to complete concrete missions from scratch in AAA games. 
           </p>
           <p>
-            Although our agent can still face difficulties in some tasks, <b>Cradle</b> serves as a pioneering work to develop more powerful LMM-based general agents across computer control tasks, combining both further framework enhancements and new advances in LMMs.
+            Although our agent can still face difficulties in specific tasks, <span style="font-weight: bold">Cradle</span> serves as a pioneering work to develop more powerful LMM-based general agents across computer control tasks, combining both further framework enhancements and new advances in LMMs.
           </p>
         </div>
-        <!--/ Conclusions. -->
+        <!--/ Conclusion. -->
 
         <!-- Future. -->
-        <h3 class="title is-4">Future Works</h3>
+        <h3 class="title is-4">Future Work</h3>
         <div class="content has-text-justified">
           <p>
-            Future work in <b>Cradle</b> aims to extend it to support a broader spectrum of games, such as simulation and strategy games, as well as various software applications, to demonstrate its exceptional adaptability across diverse environments. This endeavor aims to substantiate the hypothesis that Although our agent can still face difficulties in some tasks, <b>Cradle</b> serves as a pioneering work to develop more powerful LMM-based general agents across computer control tasks, combining both further framework enhancements and new advances in LMMs. can seamlessly interact with any software, transforming it into an interactive benchmark to evaluate the multifaceted capabilities of foundation agents. Incorporating audio as input is also key in important tasks and is necessary to meet the GCC setting, which introduces the additional challenge of dealing with the simultaneity of multiple modalities. Furthermore, the interactive data collected through framework development and execution will be instrumental in future efforts, from training better models to enhancing world modeling, thereby enhancing agent capabilities and usefulness for a wide range of users.             
+            Future work in <span style="font-weight: bold">Cradle</span> aims to extend it to support a broader spectrum of games, such as simulation and strategy games, as well as various software applications, to demonstrate its flexibility and adaptability across diverse environments. Moreover,
+incorporating audio as input is also key in important scenarios, which will introduce the additional challenge of dealing with simultaneous multiple modalities.            
+          </p>
+          <p> Once seamlessly interacting with any software, it enables an interactive benchmark to evaluate the multifaceted capabilities of foundation agents. Furthermore, the interactive data collected through framework development and execution will be instrumental in future efforts, from training 
+better models to enhancing world modeling, thereby enhancing agent capabilities and usefulness for a wide range of users.             
           </p>
         </div>
         <!--/ Future. -->
-
 
       </div>
     </div>
