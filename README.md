@@ -34,8 +34,8 @@ We are still working on further cleaning up the code and constantly updating it.
 
 Please setup your environment as:
 ```bash
-conda create --name uac-dev python=3.10
-conda activate uac-dev
+conda create --name cradle-dev python=3.10
+conda activate cradle-dev
 pip3 install -r requirements.txt
 ```
 
@@ -94,7 +94,7 @@ cd ..
 Once it is installed, we need to pre-download some required model files and set some environment variables.
 
 ```bash
-# Define the necessary environment variables, this can be done in the .env file in the uac directory
+# Define the necessary environment variables, this can be done in the .env file in the /cradle directory
 HUGGINGFACE_HUB_CACHE = "./cache/hf" # This can be the full path too, if the relative one doesn't work
 
 # Pre-download huggingface files needed by GroundingDino
@@ -103,7 +103,7 @@ HUGGINGFACE_HUB_CACHE = "./cache/hf" # This can be the full path too, if the rel
 mkdir $HUGGINGFACE_HUB_CACHE
 huggingface-cli download bert-base-uncased config.json tokenizer.json vocab.txt tokenizer_config.json model.safetensors --cache-dir $HUGGINGFACE_HUB_CACHE
 
-# Define the last necessary environment variable, this can be done in the .env file in the uac directory
+# Define the last necessary environment variable, this can be done in the .env file in the /cradle directory
 # This step will avoid needing a VPN to run
 TRANSFORMERS_OFFLINE = "TRUE"
 ```
@@ -121,10 +121,10 @@ cd GroundingDINO
 # Build and install it
 pip3 install -r requirements.txt
 pip3 install .
-cd ../UAC
+cd ../Cradle
 ```
 
-It should install without errors and now it will be available for any project using the same conda environment (uac-dev).
+It should install without errors and now it will be available for any project using the same conda environment (cradle-dev).
 
 To build the C++ code on Windows, you may need to install build tools.
 
@@ -156,7 +156,7 @@ Only modify it if absolutely necessary. Values have already been tuned to game s
 
 Always, **always**, **ALLWAYS** get the latest /main branch.
 
-Any file with text content in the project in the resources directory (./res) should be in UTF-8 encoding. Use the uac.utils to open/save files.
+Any file with text content in the project in the resources directory (./res) should be in UTF-8 encoding. Use the cradle.utils to open/save files.
 
 
 ## Infra code
@@ -241,7 +241,7 @@ To run the agent, follow these steps:
 4- Launch the framework agent with the command:
 
 ```
-python proto_runner.py 
+python prototype_runner.py 
 ```
 
 
@@ -249,8 +249,8 @@ python proto_runner.py
 If you find our work useful, please consider citing us!
 ```
 @article{weihao2024cradle,
-  author    = {Weihao Tan and Ziluo Ding and Wentao Zhang and Boyu Li and Bohan Zhou and Junpeng Yue and Haochong Xia and Jiechuan Jiang and Longtao Zheng and Xinrun Xu and Yifei Bi and Pengjie Gu and Xinrun Wang and Börje F. Karlsson and Bo An and Zongqing Lu},
   title     = {{Towards General Computer Control: A Multimodal Agent For Red Dead Redemption II As A Case Study}},
+  author    = {Weihao Tan and Ziluo Ding and Wentao Zhang and Boyu Li and Bohan Zhou and Junpeng Yue and Haochong Xia and Jiechuan Jiang and Longtao Zheng and Xinrun Xu and Yifei Bi and Pengjie Gu and Xinrun Wang and Börje F. Karlsson and Bo An and Zongqing Lu},
   journal   = {arXiv:2403.03186},
   month     = {March},
   year      = {2024},
