@@ -189,7 +189,7 @@ Sample config for an OpenAI provider:
 ```
 
 ## RDR2 Install
-Cradle currenttly focuses on [RDR2 game](https://www.rockstargames.com/reddeadredemption2). You can get it from any PC platform you prefer. However, the current codebase has been tested on MS Windows.
+Cradle currently focuses on [RDR2 game](https://www.rockstargames.com/reddeadredemption2). You can get it from any PC platform you prefer. However, the current codebase has been tested on MS Windows.
 
 ## Game Settings
 
