@@ -151,6 +151,23 @@ Use res/tool/general.clg to overwrite res/tool/subfinder/settings/general.cfg fi
 To get the best extraction results, you can tune the subfinder by changing the parameters in the settings/general.cfg file. You may follow the readme me in Docs folder to get more information about the parameters.
 Only modify it if absolutely necessary. Values have already been tuned to game scenario and environment setup.
 
+### To install the OCR tools
+```
+1. Option 1
+# Download best-matching version of specific model for your spaCy installation
+python -m spacy download en_core_web_lg
+
+or
+
+# pip install .tar.gz archive or .whl from path or URL
+pip install https://github.com/explosion/spacy-models/releases/download/en_core_web_lg-3.7.1/en_core_web_lg-3.7.1.tar.gz
+
+2. Option 2
+# Copy this url https://github.com/explosion/spacy-models/releases/download/en_core_web_lg-3.7.1/en_core_web_lg-3.7.1.tar.gz
+# Paste it in the browser and download the file to res/spacy/data
+cd res/spacy/data
+pip install en_core_web_lg-3.7.1.tar.gz
+```
 
 ## General guidelines
 
