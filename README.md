@@ -134,9 +134,9 @@ Make sure to select "Desktop Environment with C++" and include the 1st 3 optiona
 - Windows SDK for your OS version
 - CMake tools
 
-### To install the videosubfinder for gather information module
+### To install the videosubfinder for the gather information module
 
-Download the videosubfinder from https://sourceforge.net/projects/videosubfinder/ and extract the files into the res/tool/subfinder folder. We have already created the folder for you and included a test.srt which is a required dummy file that will not be affecting the result.
+Download the videosubfinder from https://sourceforge.net/projects/videosubfinder/ and extract the files into the res/tool/subfinder folder. We have already created the folder for you and included a test.srt, which is a required dummy file that will not affect results.
 
 The file structure should be like this:
 - res
