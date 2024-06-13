@@ -35,12 +35,13 @@ Please clone this repository and use the code in the branches below. You need **
 
 Code:
 - Games: https://github.com/BAAI-Agents/Cradle/blob/dev-games/
-- Software: https://github.com/BAAI-Agents/Cradle/blob/dev-software/
+- Software: https://github.com/BAAI-Agents/UAC/blob/dev-software/
 
+Each branch README contains instructions on setting up and running games and software, respectively. Instructions will be unified soon.
 
 </div>
 
-<img src="docs/images/games_wheel.png" height="450" /> <img src="docs/images/applications_wheel.png" height="450" />
+<img src="docs/images/games_wheel.png" height="365" /> <img src="docs/images/applications_wheel.png" height="365" />
 
 
 <!-- <img src="docs/images/.gif" width="320" height="180"/> <img src="docs/images/.gif" width="320" height="180"/> </br>
@@ -70,7 +71,7 @@ Click on either of the video thumbnails above to watch them on YouTube.
 
 ## Preliminary release
 
-The preliminary version of the framework targetting RDR2 initially is being superseeded by the general code mentioned above. If you want to use the preliminary version, use the release tag to get the correct code and follow the original instructions in its own [README](docs/envs/gcc/README).
+The preliminary version of the framework targetting RDR2 initially is being superseeded by the general code mentioned above. If you want to use the preliminary version, use the release tag to get the correct code and follow the original instructions in its own [README](docs/envs/gcc/README.md).
 
 </div>
 
