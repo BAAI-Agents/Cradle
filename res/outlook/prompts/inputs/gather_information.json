@@ -1,0 +1,10 @@
+{
+    "task_description": "",
+    "image_introduction": [
+        {
+            "introduction": "This is a screenshot of the current step in the application",
+            "path": "./res/rdr2/samples/game_screenshot.png",
+            "assistant": ""
+        }
+    ]
+}

@@ -1,0 +1,123 @@
+Assume you are a helpful AI assistant integrated with 'Red Dead Redemption 2' on the PC, equipped to handle a wide range of tasks in the game. Your advanced capabilities enable you to process and interpret gameplay screenshots and other relevant information.
+
+<$image_introduction$>
+
+Information: List all text prompts on the screenshot from the top to the bottom, even the text prompt is one word.
+
+All information should be categorized into one or more kinds of <$information_type$>. If you think a piece of information is both "A" and "B" categories, you should write information in both "A" and "B" categories. For example, "use E to drink water" could both be "Action Guidance" and "Task Guidance" categories.
+
+Item_status: The helpful information to the current context in the game, such as the cash, amount of ammo, current using item, if the player is wanted, etc. This content should be pairs of status names and their values. For example, "cash: 100$". If there is no on-screen text and no item status, only output "null".
+
+Environment_information: The information about the location, time, weather, etc. This content should be pairs of status names and their values. For example, "location: VALENTINE". If there is no on-screen text and environment information, only output "null".
+
+Notification: The game will give notifications showing the events in the world, such as obtaining items or rewards, completing objectives, and becoming wanted. Besides, it also contains valuable notifications of the game's mechanisms, such as "Health is displayed in the lower left corner". The content must be the on-screen text. If there is no on-screen text or notification, only output "null".
+
+Task_guidance: The content should obey the following rules:
+1. The content of task guidance must be an on-screen text prompt, including the menu and the general game interface.
+2. The game will give guidance on what should be done to proceed with the game, for example, "follow Tom". This is task guidance.
+3. The game will give guidance on how to perform a task using keyboard keys or mouse buttons, for example, "use E to drink water". This is task guidance.
+4. If no on-screen text prompt or task guidance exists, only output "null". Never derive the task guidance from the dialogue or notifications.
+
+Action_guidance: The game will give guidance on how to perform a task using keyboard keys or mouse buttons; you must generate the code based on the on-screen text. The content of the code should obey the following code rules:
+1. You should first identify the exact keyboard or mouse key represented by the icon on the screenshot. 'Ent' refers to 'enter'. 'RM' refers to 'right mouse button'. 'LM' refers to 'left mouse button'. You should output the full name of the key in the code.
+2. You should refer to different examples strictly based on the word used to control the key, such as 'use', 'hold', 'release', 'press', and 'click'.
+3. If 'use' or 'press' is in the prompt to control the keyboard key or mouse button, io_env.key_press('key', 2) or io_env.mouse_click('button', 2) must be used to act on it. Refer to Examples 1, 2, and 3.
+4. If there are multiple keys, io_env.key_press('key1,key2', 2) must be used to act on it. Refer to Example 4.
+5. If 'hold' is in the prompt to control the keyboard key or mouse button, it means keeping the key held with io_env.key_hold or the button held with io_env.mouse_hold (usually indefinitely, with no duration). If you need to hold it briefly, specify a duration argument. Refer to Examples 5 and 6.
+6. All durations are set to a minimum of 2 seconds by default. You can choose a longer or shorter duration. If it should be indefinite, do not specify a duration argument.
+7. The name of the created function should only use phrasal verbs, verbs, nouns, or adverbs shown in the prompt and should be in the verb+noun or verb+adverb format, such as drink_water, slow_down_car, and ride_faster. Note that words that do not show in the prompt are prohibited.
+
+This is Example 1. If "press" is in the prompt and the text prompt on the screenshot is "press X to play the card", your output should be:
+```python
+def play_card():
+    """
+    press "x" to play the card
+    """
+    io_env.key_press('x', 2)
+```
+This is Example 2. If the instructions involve the mouse and the text prompt on the screenshot is "use the left mouse button to confirm", your output should be:
+```python
+def confirm():
+    """
+    use "left mouse button" to confirm
+    """
+    io_env.mouse_click("left mouse button")
+```
+This is Example 3. If "use" is in the prompt and the text prompt on the screenshot is "use ENTER to drink water", your output should be:
+```python
+def drink_water():
+    """
+    use "enter" to drink water
+    """
+    io_env.key_press('enter', 2)
+```
+This is Example 4. If "use" is in the prompt and the text prompt on the screenshot is "use W and J to jump the barrier", your output should be:
+```python
+def jump_barrier():
+    """
+    use "w" and "j" to jump the barrier
+    """
+    io_env.key_press('w,j', 3)
+```
+This is Example 5. If "hold" is in the prompt and the text prompt on the screenshot is "hold H to run", your output should be:
+```python
+def run():
+    """
+    hold "h" to run
+    """
+    io_env.key_hold('h')
+```
+This is Example 6. If the instructions involve the mouse and the text prompt on the screenshot is "hold the right mouse button to focus on the target", your output should be:
+```python
+def focus_on_target():
+    """
+    hold "right mouse button" to focus
+    """
+    io_env.mouse_hold("right mouse button")
+```
+This is Example 7. If "release" is in the prompt and the text prompt on the screenshot is "release Q to drop the items", your output should be:
+```python
+def drop_items():
+    """
+    release "q" to drop the items
+    """
+    io_env.key_release('q')
+```
+
+Dialogue: Conversations between characters in the game. This content should be in the format of "character name: dialogue". For example, "Arthur: I'm fine". If there is no on-screen text or dialogue, only output "null".
+
+Other: Other information that does not belong to the above categories. If there is no on-screen text, only output "null".
+
+Reasoning: The reasons for classification for each piece of information.
+If the on-screen text prompt is an instruction on how to perform a task using keyboard keys or mouse buttons, it should also classified as action guidance and task guidance.
+For action guidance, which code rules should you follow based on the word used to control the key or button, such as press, hold, release, and click?
+
+The information should be in the following categories, and you should output the following content without adding any other explanation:
+Information:
+1. ...
+2. ...
+...
+Reasoning:
+1. ...
+2. ...
+...
+Item_status:
+Item_status is ...
+Environment_information:
+Environment information is ...
+Notification:
+Notification is ...
+Task_guidance:
+Task is ...
+Action_guidance:
+```python
+Python code to execute
+```
+```python
+Python code to execute
+```
+...
+Dialogue:
+Dialogue is ...
+Other:
+Other information is ...

@@ -555,16 +555,22 @@ class OpenAIProvider(LLMProvider, EmbeddingProvider):
                     else:
                         raise ValueError(f"Unexpected input type: {type(paragraph_input)}")
 
-        user_messages_part1_content = "\n\n".join(user_messages_part1_contents)
-        user_messages_part1 = {
-            "role": "user",
-            "content": [
-                {
-                    "type": "text",
-                    "text": f"{user_messages_part1_content}"
-                }
-            ]
-        }
+        if len(user_messages_part1_contents) > 0:
+
+            user_messages_part1_content = "\n\n".join(user_messages_part1_contents)
+
+            user_messages_part1 = {
+                "role": "user",
+                "content": [
+                    {
+                        "type": "text",
+                        "text": f"{user_messages_part1_content}"
+                    }
+                ]
+            }
+
+        else:
+            user_messages_part1 = None
 
         # assemble image introduction messages
         image_introduction_messages = []
@@ -591,35 +597,41 @@ class OpenAIProvider(LLMProvider, EmbeddingProvider):
                 path = item.get(constants.IMAGE_PATH_TAG_NAME, None)
                 assistant = item.get(constants.IMAGE_ASSISTANT_TAG_NAME, None)
                 resolution = item.get(constants.IMAGE_RESOLUTION_TAG_NAME, None)
+                resize = item.get(constants.IMAGE_RESIZE_TAG_NAME, None)
+
+                message = {
+                    "role": "user",
+                    "content": [],
+                }
 
                 if introduction is not None and introduction != "":
-                    message = {
-                        "role": "user",
-                        "content": [
-                            {
-                                "type": "text",
-                                "text": f"{introduction}"
+                    message["content"].append(
+                        {
+                            "type": "text",
+                            "text": f"{introduction}"
+                        })
+
+                if path is not None and path != "":
+                    encoded_images = encode_data_to_base64_path(path)
+
+                    for encoded_image in encoded_images:
+                        msg_content = {
+                                "type": "image_url",
+                                "image_url":
+                                    {
+                                        "url": f"{encoded_image}"
+                                    }
                             }
-                        ]
-                    }
 
-                    if path is not None and path != "":
-                        encoded_images = encode_data_to_base64_path(path)
+                        if resolution is not None and resolution != "":
+                            msg_content["image_url"]["detail"] = resolution
 
-                        for encoded_image in encoded_images:
-                            msg_content = {
-                                    "type": "image_url",
-                                    "image_url":
-                                        {
-                                            "url": f"{encoded_image}"
-                                        }
-                                }
+                        if resize is not None and resize != "":
+                            msg_content["image_url"]["resize"] = resize
 
-                            if resolution is not None and resolution != "":
-                                msg_content["image_url"]["detail"] = resolution
+                        message["content"].append(msg_content)
 
-                            message["content"].append(msg_content)
-
+                if len(message["content"]) > 0:
                     image_introduction_messages.append(message)
 
                 if assistant is not None and assistant != "":
@@ -670,7 +682,10 @@ class OpenAIProvider(LLMProvider, EmbeddingProvider):
             ]
         }
 
-        return [system_message] + [user_messages_part1] + image_introduction_messages + [user_messages_part2]
+        if user_messages_part1 is None:
+            return [system_message] + image_introduction_messages + [user_messages_part2]
+        else:
+            return [system_message] + [user_messages_part1] + image_introduction_messages + [user_messages_part2]
 
 
     def assemble_prompt_paragraph(self, template_str: str = None, params: Dict[str, Any] = None) -> List[Dict[str, Any]]:
@@ -734,6 +749,9 @@ def encode_data_to_base64_path(data: Any) -> List[str]:
             image = Image.fromarray(item)
             buffered = io.BytesIO()
             image.save(buffered, format="JPEG")
+        elif item is None:
+            logger.error("Tring to encode None image! Skipping it.")
+            continue
 
         encoded_image = encode_image_binary(buffered.getvalue())
         encoded_image = f"data:image/jpeg;base64,{encoded_image}"

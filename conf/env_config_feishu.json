@@ -1,0 +1,34 @@
+{
+    "env_name": "Feishu",
+    "sub_path": "feishu",
+    "env_short_name": "feishu",
+    "sam2som_config": {
+        "disable_close_app_icon": true
+    },
+    "task_description_list": [
+        {   "id": 1,
+            "task_description": "Create a new appointment in my calendar anytime later today with title \"Focus time\".",
+            "sub_task_description_list": []
+        },
+        {
+            "id": 2,
+            "task_description": "Please send a \"Hi\" chat message to Cradle.",
+            "sub_task_description_list": []
+        },
+        {
+            "id": 3,
+            "task_description": "Send the AWS bill file from Desktop/aws-bill.pdf in a chat with \"Börje\".",
+            "sub_task_description_list": []
+        },
+        {
+            "id": 4,
+            "task_description": "Set my chat status to \"In meeting\".",
+            "sub_task_description_list": []
+        },
+        {
+            "id": 5,
+            "task_description": "Create a new meeting and share the meeting info.",
+            "sub_task_description_list": []
+        }
+    ]
+}

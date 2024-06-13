@@ -1,0 +1,12 @@
+{
+    "type": "gather_information",
+    "image_introduction": [
+        {
+            "introduction": "This is a screenshot of the current moment in the game",
+            "path": "./res/rdr2/samples/game_screenshot.png",
+            "assistant": ""
+        }
+    ],
+    "few_shots": [],
+    "information_type": ["Item_status", "Notification", "Environment_information", "Action_guidance", "Task_guidance", "Dialogue", "Others"]
+}

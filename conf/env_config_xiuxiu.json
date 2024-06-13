@@ -1,0 +1,38 @@
+{
+    "env_name": "XiuXiu",
+    "sub_path": "xiuxiu",
+    "env_short_name": "xiuxiu",
+    "sam2som_config": {
+        "sam_pred_iou_thresh": 0.4,
+        "sam_resize_ratio": 0.4,
+        "sam_contrast_level": 3.0,
+        "sam_max_area": 0.15
+    },
+    "task_description_list": [
+        {   "id": 1,
+            "task_description": "Apply a filter from Meitu to a picture and save the picture.",
+            "sub_task_description_list": []
+        },
+        {
+            "id": 2,
+            "task_description": "Cutout a person from A_picture.jpg and save the picture.",
+            "sub_task_description_list": []
+        },
+        {
+            "id": 3,
+            "task_description": "Add a flower sticker to your photo and save the picture.",
+            "sub_task_description_list": []
+        },
+        {
+            "id": 4,
+            "task_description": "Make a collage using 3 pictures and save the project.",
+            "sub_task_description_list": []
+        },
+        {
+            "id": 5,
+            "task_description": "Add a circle-shaped frame to A_picture.jpg, and save the picture.",
+            "sub_task_description_list": []
+        }
+    ]
+}
+

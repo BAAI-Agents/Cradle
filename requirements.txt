@@ -4,13 +4,11 @@ python-dotenv==1.0.0
 numpy==1.24.3
 tiktoken==0.5.1
 colorama
-pydirectinput==1.0.4
 pyautogui==0.9.54
-ahk==1.3.0
-ahk[binary]
+pydirectinput==1.0.4; sys_platform == "win32"
 opencv-python==4.8.1.78
 opencv-contrib-python==4.8.1.78
-pillow==10.3.0
+pillow>=10.3.0
 Multi-Template-Matching==1.6.6
 imageio[ffmpeg]
 mss==9.0.1
@@ -18,3 +16,7 @@ aiohttp
 easyocr==1.7.1
 spacy==3.7.2
 chardet==5.2.0
+pyobjc-framework-Quartz==10.0; sys_platform == "darwin"
+pyobjc-framework-Cocoa==10.0; sys_platform == "darwin"
+segment_anything
+win32process; sys_platform == "win32"

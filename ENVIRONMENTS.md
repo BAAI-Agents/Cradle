@@ -1,0 +1,41 @@
+## General Setup
+
+Please setup your environment as:
+
+```bash
+conda create --name uac-dev python=3.10
+conda activate uac-dev
+pip3 install -r requirements.txt
+```
+
+### To Install the OCR Tools
+```
+1. Option 1
+# Download best-matching version of specific model for your spaCy installation
+python -m spacy download en_core_web_lg
+
+or
+
+# pip install .tar.gz archive or .whl from path or URL
+pip install https://github.com/explosion/spacy-models/releases/download/en_core_web_lg-3.7.1/en_core_web_lg-3.7.1.tar.gz
+
+2. Option 2
+# Copy this url https://github.com/explosion/spacy-models/releases/download/en_core_web_lg-3.7.1/en_core_web_lg-3.7.1.tar.gz
+# Paste it in the browser and download the file to res/spacy/data
+cd res/spacy/data
+pip install en_core_web_lg-3.7.1.tar.gz
+```
+
+### Other Dependencies
+
+Keep the UAC requirements.txt file updated in your branch, but only add dependencies that are really required by the system.
+
+runner.py is the entry point to run an agent. Currently not working code, just an introductory sample.
+
+## Environment-specific Setup Instructions
+
+To setup the settings for each game or software. Please check out these pages for details.
+
+1. [Red Dead Redemption 2](docs/envs/rdr2.md)
+2. [Stardew Valley](docs/envs/stardew.md)
+3. [Software](docs/envs/software.md)

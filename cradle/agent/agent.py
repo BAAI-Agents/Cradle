@@ -3,19 +3,18 @@ from cradle.log import Logger
 from cradle.gameio import GameManager
 from cradle.planner.planner import Planner
 from cradle.memory import BaseMemory
-from cradle.gameio.atomic_skills.map import __all__ as map_skills
-from cradle.gameio.atomic_skills.buy import __all__ as buy_skills
-from cradle.gameio.atomic_skills.trade_utils import __all__ as trade_skills
-from cradle.gameio.atomic_skills.move import __all__ as move_skills
-from cradle.gameio.composite_skills.navigation import __all__ as nav_skills
-from cradle.gameio.composite_skills.go_to_icon import __all__ as go_skills
+from cradle.environment.rdr2.atomic_skills.map import __all__ as map_skills
+from cradle.environment.rdr2.atomic_skills.buy import __all__ as buy_skills
+from cradle.environment.rdr2.atomic_skills.trade_utils import __all__ as trade_skills
+from cradle.environment.rdr2.atomic_skills.move import __all__ as move_skills
+from cradle.environment.rdr2.composite_skills.navigation import __all__ as nav_skills
+from cradle.environment.rdr2.composite_skills.go_to_icon import __all__ as go_skills
 
 
 config = Config()
 logger = Logger()
 
 # This is an incomplete example with not complete quality code, just to bootstrap the repo.
-# For now, use the prototype_runner.py to run the agent loop.
 
 def decision_making_args(planner, memory):
 

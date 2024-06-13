@@ -1,0 +1,32 @@
+{
+    "env_name": "Feishu",
+    "sub_path": "feishu",
+    "env_short_name": "feishu",
+    "task_description_list": [
+        {   "id": 1,
+            "task_description": "Wait until you receive a document in Feishu, then open it, and print it.",
+            "sub_task_description_list": []
+        },
+        {
+            "id": 2,
+            "task_description": "Open the last received file in the current chat and print it.",
+            "sub_task_description_list": []
+        },
+        {
+            "id": 3,
+            "task_description": "Create a new meeting in my calendar at 2pm tomorrow.",
+            "sub_task_description_list": []
+        },
+        {
+            "id": 4,
+            "task_description": "",
+            "sub_task_description_list": []
+        },
+        {
+            "id": 5,
+            "task_description": "",
+            "sub_task_description_list": []
+        }
+    ],
+    "processes": ["feishu.exe, explorer.exe, chrome.exe"]
+}

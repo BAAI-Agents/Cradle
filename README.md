@@ -1,88 +1,77 @@
-# Cradle: Empowering Foundation Agents Towards General Computer Control
-<div align="center">
+# UAC
+Repository for the Universal Agent Control project.
 
-[[Website]](https://baai-agents.github.io/Cradle/)
-[[Arxiv]]()
-[[PDF]]()
+Please setup your environment following [this page](./ENVIRONMENTS.md).
 
-[![Python Version](https://img.shields.io/badge/Python-3.10-blue.svg)]()
-[![GitHub license](https://img.shields.io/badge/MIT-blue)]()
+## Infra code
 
-![](docs/images/cradle-intro-cr.png)
+### OpenAI Provider
 
-The Cradle project is a first attempt at General Computer Control (GCC). Cradle supports agents to ace any computer task by enabling strong reasoning abilities, self-improvment, and skill curation, in a standardized general environment with minimal requirements.
+OpenAI provider now can expose embeddings and LLM from OpenAI and Azure together. Users only need to create one instance of each and pass the appropriate configuration.
 
-The framework and all materials are in constant evolution and this repository will include all released versions, along with publications and any other relevant assets.
+Example configurations are in /conf. To avoid exposing sensitive details, keys and other private info should be defined in environmental variables.
 
+The suggested way to do it is to create a .env file in the root of the repository (never push this file to GitHub) where variables can be defined, and then mention the variable names in the configs.
 
-# Releases and Updates
+Please check the examples below.
 
-<div align="left">
+Sample .env file containing private info that should never be on git/GitHub:
+```
+OA_OPENAI_KEY = "abc123abc123abc123abc123abc123ab"
+AZ_OPENAI_KEY = "123abc123abc123abc123abc123abc12"
+AZ_BASE_URL = "https://abc123.openai.azure.com/"
+```
 
-## Notice
+Sample config for an OpenAI provider:
+```
+{
+	"key_var" : "OA_OPENAI_KEY",
+	"emb_model": "text-embedding-ada-002",
+	"comp_model": "gpt-4-vision-preview",
+	"is_azure": false
+}
+```
 
-We are still working on further cleaning up the code and constantly updating it. We are also extending Cradle to more games and software. Feel free to reach out!
+## General Guidelines
 
-![](docs/images/gcc.jpg)
+**>>> Allways check the /main branch for the latest examples!!!**
 
-## Upcoming release (in development and under review)
-
-The updated released version of the framework is coming. The latest codebase is currently available on its own branches for now and will be merged to /main soon.
-
-If you're interested in the project, this is the version you should look into.
-
-Please clone this repository and use the code in the branches below. You need **both** currently for the latest results!
-
-Code:
-- Games: https://github.com/BAAI-Agents/Cradle/blob/dev-games/
-- Software: https://github.com/BAAI-Agents/Cradle/blob/dev-software/
-
-
-</div>
-
-<img src="docs/images/games_wheel.png" height="450" /> <img src="docs/images/applications_wheel.png" height="450" />
+Any file with text content in the project in the resources directory (./res) should be in UTF-8 encoding. Use the uac.utils to open/save files.
 
 
-<!-- <img src="docs/images/.gif" width="320" height="180"/> <img src="docs/images/.gif" width="320" height="180"/> </br>
-<img src="docs/images/.gif" width="320" height="180"/> <img src="docs/images/.gif" width="320" height="180"/> </br>
-<img src="docs/images/.gif" width="320" height="180"/> -->
+### File Structure
 
-## Latest Videos
+#### 1. Prompt Definition Files
 
-<a alt="Watch the video" href="https://www.youtube.com/watch?v=fkkSJw1iJJ8"><img src="docs/images/RDR2_story_cover.jpg" width="33%" /></a>
-&nbsp;&nbsp;
-<a alt="Watch the video" href="https://www.youtube.com/watch?v=Oa4Ese8mMD0"><img src="docs/images/RDR2_openended_cover.jpg" width="33%" /></a>
-&nbsp;&nbsp;
-<a alt="Watch the video" href="https://www.youtube.com/watch?v=regULK_60_8"><img src="docs/images/cityskyline_video_cover.png" width="33%" /></a>
-&nbsp;&nbsp;
-<a alt="Watch the video" href="https://www.youtube.com/watch?v=Kaiz4yJieUk"><img src="docs/images/stardew_video_cover.png" width="33%" /></a>
-&nbsp;&nbsp;
-<a alt="Watch the video" href="https://www.youtube.com/watch?v=WZiL_0V880M"><img src="docs/images/dealer_video_cover.png" width="33%" /></a>
-&nbsp;&nbsp;
-<a alt="Watch the video" href="https://www.youtube.com/watch?v=YfS9blWGhW4"><img src="docs/images/Software_cover.png" width="33%" /></a>
+Prompt files are located in the repo at ./res/&lt;emviornment_name&gt;/prompts. Out of the code tree.
 
-Click on either of the video thumbnails above to watch them on YouTube.
+There two types of prompt-related files: input_example, and templates. Examples are json files. Templates are text files with special markers inside. See details below.
 
+Inside each of these directories, most files will fit into five categories: decision_making, gather_information, information_summary, self_reflection and success_detection
 
+Files are named according to the format: ./res/&lt;emviornment_name&gt;/prompts/&lt;type&gt;/&lt;category&gt;_&lt;sub_task&gt;.&lt;ext&gt;
 
+As shown below, such "input_example" files illustrate the **parameters** needed to fill a prompt "template".
+Not all input examples need the same parameters. Only the parameters required the corresponding specific template (".prompt" file).
 
-<div align="left">
+#### 2. Skills Definition Files
 
-## Preliminary release
+Most of our code are in the cradle/environment/.
 
-The preliminary version of the framework targetting RDR2 initially is being superseeded by the general code mentioned above. If you want to use the preliminary version, use the release tag to get the correct code and follow the original instructions in its own [README](docs/envs/gcc/README).
+#### cradle/environment/&lt;emviornment_name&gt;/atomic_skills:
 
-</div>
+Atomic Skills refers to basic skills or minimal skill units that form the basis of more complex skills. Such as turn() and move_forward().
 
-<img src="docs/images/rd2_task_grid_03.gif" width="320" height="180"/> <img src="docs/images/rd2_task_grid_02.gif" width="320" height="180"/> </br>
-<img src="docs/images/rd2_task_grid_01.gif" width="320" height="180"/> <img src="docs/images/rd2_task_grid_04.gif" width="320" height="180"/>
+#### cradle/environment/&lt;emviornment_name&gt;/composite_skills:
 
-## Old Videos
+Composite skills refer to more complex skills that are composed of multiple atomic skills. For example, follow() is a combination of turn() and moveforward().
 
-<a alt="Watch the video" href="https://www.youtube.com/watch?v=Cx-D708BedY"><img src="docs/images/video1.jpg" width="33%" /></a>
-&nbsp;&nbsp;
-<a alt="Watch the video" href="https://www.youtube.com/watch?v=Oa4Ese8mMD0"><img src="docs/images/video2.jpg" width="33%" /></a>
+#### cradle/environment/&lt;emviornment_name&gt;/lifecycle/ui_control.py
 
-Click on either of the video thumbnails above to watch them on YouTube.
+Contains code for switch game and code between two desktops and take_screenshot of the game.
 
-</div>
+## Running Examples
+
+1. Set up the environment in .vscode/launch.json. Change the "--providerConfig" and "--envConfig" to the environment you want to run.
+2. Run the runner.py to see whether the environment is set up correctly.
+3. Run the prototype_runner.py to run the whole pipline. Or run the skill_example.py to run one skill part.
