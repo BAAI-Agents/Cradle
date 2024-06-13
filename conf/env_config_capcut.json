@@ -1,0 +1,61 @@
+{
+    "env_name": "CapCut",
+    "sub_path": "capcut",
+    "env_short_name": "CapCut",
+    "sam2som_config": {
+        "sam_pred_iou_thresh": 0.4,
+        "sam_resize_ratio": 0.4,
+        "sam_contrast_level": 3.0,
+        "sam_max_area": 0.15,
+        "plot_bbox_multi_color": false
+    },
+    "task_description_list": [
+        {   "id": 1,
+            "task_description": "Create a new project, then import A_cradle.mp4 to the media, drag the video to the timeline, click the \"Audio\" button to add music to the timeline, and finally export the video.",
+            "sub_task_description_list": [
+                "Click New Project button",
+                "Click Import button and add A_cradle.mp4 to the media",
+                "Drag the video in the media to the timeline",
+                "Click Audio button and add a music to the timeline",
+                "Click Export button using label ID"
+            ]
+        },
+        {
+            "id": 2,
+            "task_description": "Open the first existing project. Switch to Transitions panel. Drag a transition effect between the two videos, and then export the video.",
+            "sub_task_description_list": [
+                "Click the  first existing project.",
+                "Switch to Transition Panel.",
+                "Drag a transition effect between the two videos.",
+                "Export the video"
+            ]
+        },
+        {
+            "id": 3,
+            "task_description": "Delete the video frames after five seconds and then before one second in this video, and then export the video.",
+            "sub_task_description_list": [
+                "Click the  first existing project.",
+                "Switch to Text Panel.",
+                "Add a text to the video.",
+                "Export the video"
+            ]
+        },
+        {
+            "id": 4,
+            "task_description": "Open the first existing project. Switch to Stickers panel. Drag a sticker of a person's face to the video, and then export the video.",
+            "sub_task_description_list": [
+                "Click the  first existing project.",
+                "Switch to Text Panel.",
+                "Drag a sticker fo a person's face to the video",
+                "Export the video"
+            ]
+        },
+        {
+            "id": 5,
+            "task_description": "Crop the video when the ball enters the goal, and then export the video.",
+            "sub_task_description_list": [],
+            "video_path": "res/capcut/videos/soccer.mp4"
+        }
+    ]
+}
+

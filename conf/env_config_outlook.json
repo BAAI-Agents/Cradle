@@ -1,0 +1,41 @@
+{
+    "env_name": "Microsoft Outlook",
+    "win_name_pattern": "Outlook$",
+    "sub_path": "outlook",
+    "env_short_name": "outlook",
+    "sam2som_config": {
+        "plot_bbox_multi_color": true,
+        "disable_close_app_icon": true
+    },
+    "task_description_list": [
+        {   "id": 1,
+            "task_description": "Create a new e-mail to borje@baai.ac.cn with subject \"Hello friend\" and send it.",
+            "sub_task_description_list": []
+        },
+        {
+            "id": 2,
+            "task_description": "Open the junk folder and delete all messages in it, if any.",
+            "sub_task_description_list": []
+        },
+        {
+            "id": 3,
+            "task_description": "Open an e-mail from Börje in the inbox, reply to it with text \"Got it. Thanks.\", and click send.",
+            "sub_task_description_list": []
+        },
+        {
+            "id": 4,
+            "task_description": "Find the e-mail whose subject is “Urgent meeting” and open it.",
+            "sub_task_description_list": []
+        },
+        {
+            "id": 5,
+            "task_description": "Set up email forwarding for every email received to go to borje@baai.ac.cn.",
+            "sub_task_description_list": []
+        },
+        {
+            "id": 6,
+            "task_description": "Attach my AWS bill to an email. The bill is stored at Desktop/aws-bill.pdf. Don't send the e-mail.",
+            "sub_task_description_list": []
+        }
+    ]
+}

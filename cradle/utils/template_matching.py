@@ -1,3 +1,4 @@
+import math
 import os
 import time
 from typing import List, Union
@@ -7,6 +8,7 @@ from MTM import matchTemplates, drawBoxesOnRGB
 import numpy as np
 
 from cradle.config import Config
+from cradle.gameio.lifecycle.ui_control import take_screenshot
 from cradle.log import Logger
 from cradle.utils.file_utils import assemble_project_path
 from cradle.utils.json_utils import save_json
@@ -88,7 +90,6 @@ def match_template_image(src_file: str, template_file: str, debug = False, outpu
     # Resize template according to resolution ratio
     template = cv2.resize(template, (0, 0), fx=config.resolution_ratio, fy=config.resolution_ratio)
 
-
     if rotate_angle != 0:
         h, w, c = image.shape
         M = cv2.getRotationMatrix2D((w // 2, h // 2), rotate_angle, 1)
@@ -135,3 +136,39 @@ def match_template_image(src_file: str, template_file: str, debug = False, outpu
         save_json(bb_output_file, objects_list, 4)
 
     return objects_list
+
+
+def icons_match(icon_list: List[str], image_path = None) -> bool:
+
+    confidence_threshold = 0.90
+
+    matches = []
+
+    if image_path is None:
+        screenshot = take_screenshot(time.time(), include_minimap=False)[0]
+    else:
+        screenshot = image_path
+
+    for icon in icon_list:
+
+        # Multiple-scale-template-matching icon
+        icon_template_file = f'./res/{config.env_sub_path}/icons/{icon}.png'
+
+        match_info = match_template_image(screenshot, icon_template_file, save_matches=False, scale='full')
+        match_info.sort(key=lambda bb: (bb['confidence']))
+
+        if match_info[0]['confidence'] >= confidence_threshold:
+
+            bb = match_info[0]['bounding_box']
+            bb_dict = {
+                "left": math.ceil(bb[0]),
+                "top": math.ceil(bb[1]),
+                "width": math.ceil(bb[2]),
+                "height": math.ceil(bb[3]),
+            }
+            matches.append(bb_dict)
+
+    if image_path is None:
+        os.remove(screenshot)
+
+    return matches

@@ -1,13 +1,13 @@
 import time
-from typing import Tuple
+from typing import Tuple, Dict, Any
 
-from cradle.config import Config
-from cradle.gameio import IOEnvironment
-from cradle.log import Logger
-from cradle.gameio.lifecycle.ui_control import take_screenshot, segment_minimap, switch_to_game, pause_game, unpause_game, exit_back_to_pause
-from cradle.gameio.composite_skills.navigation import navigate_path
-from cradle.gameio.skill_registry import SkillRegistry
 from cradle import constants
+from cradle.config import Config
+from cradle.log import Logger
+from cradle.gameio import IOEnvironment
+from cradle.gameio.lifecycle.ui_control import check_active_window, take_screenshot, draw_mouse_pointer_file
+from cradle.environment import ENVIORNMENT_REGISTRY
+from cradle.utils.file_utils import assemble_project_path
 
 config = Config()
 logger = Logger()
@@ -22,29 +22,40 @@ class GameManager:
         embedding_provider = None
     ):
         self.env_name = env_name
-        self.skill_registry = SkillRegistry(local_path = config.skill_local_path,
-                                            from_local = config.skill_from_local,
-                                            store_path = config.work_dir,
-                                            skill_scope = config.skill_scope,
-                                            embedding_provider = embedding_provider)
+        self.interface = ENVIORNMENT_REGISTRY[config.env_short_name]()
+        self.skill_registry = self.interface.SkillRegistry(
+            local_path = config.skill_local_path,
+            from_local = config.skill_from_local,
+            store_path = config.work_dir,
+            skill_scope = config.skill_scope,
+            embedding_provider = embedding_provider
+        )
+
+
+    def get_interface(self):
+        return self.interface
 
 
     def pause_game(self, screen_type=constants.GENERAL_GAME_INTERFACE):
 
         if screen_type==constants.GENERAL_GAME_INTERFACE or screen_type==constants.PAUSE_INTERFACE or screen_type==constants.RADIAL_INTERFACE:
-            pause_game()
+            self.interface.pause_game()
 
 
     def unpause_game(self):
-        unpause_game()
+        self.interface.unpause_game()
 
 
     def switch_to_game(self):
-        switch_to_game()
+        self.interface.switch_to_game()
+
+
+    def check_active_window(self):
+        return check_active_window()
 
 
     def exit_back_to_pause(self):
-        exit_back_to_pause()
+        self.interface.exit_back_to_pause()
 
 
     def get_skill_information(self, skill_list):
@@ -82,20 +93,18 @@ class GameManager:
 
         # Execute action
         total_time_step = 500
-
         if action == "navigate_path":
-
             time.sleep(2)
-            navigate_path(total_time_step)
+            self.interface.navigate_path(total_time_step)
 
 
-    def execute_actions(self, actions):
+    def execute_actions(self, actions) -> Dict[str, Any]:
 
         exec_info = {
-            "executed_skills" : [],
-            "last_skill" : '',
-            "errors" : False,
-            "errors_info": ""
+            constants.EXECUTED_SKILLS: [],
+            constants.LAST_SKILL: '',
+            constants.ERRORS : False,
+            constants.ERRORS_INFO: ""
         }
 
         io_env.update_timeouts()
@@ -104,15 +113,21 @@ class GameManager:
             logger.warn(f"No actions to execute! Executing nop.")
             self.skill_registry.execute_nop_skill()
 
-            exec_info["errors"] = True
-            exec_info["errors_info"] = "No actions to execute!"
+            exec_info[constants.ERRORS] = False
             return exec_info
 
         skill_name = '-'
         skill_params = '-'
+        skill_response = None
 
         try:
             for skill in actions:
+
+                if constants.INVALID_BBOX in skill:
+                    exec_info[constants.ERRORS] = True
+                    label_id = skill.split(": ")[1]
+                    exec_info[constants.ERRORS_INFO] = f"Label ID {label_id} not found in SOM map."
+                    return exec_info
 
                 skill_name, skill_params = self.skill_registry.convert_expression_to_skill(skill)
 
@@ -130,10 +145,11 @@ class GameManager:
                 if "navigate" in skill_name:
                     self.execute_navigation(skill_name)
                 else:
-                    self.skill_registry.execute_skill(name=skill_name, params=skill_params)
+                    skill_response = self.skill_registry.execute_skill(name=skill_name, params=skill_params)
 
-                exec_info["executed_skills"].append(skill)
-                exec_info["last_skill"] = skill
+                skill = skill + " # " + f"""{str(skill_response)}""" if skill_response else skill
+                exec_info[constants.EXECUTED_SKILLS].append(skill)
+                exec_info[constants.LAST_SKILL] = skill
 
                 self.post_action_wait()
                 logger.write(f"Finished executing skill: {skill} and wait.")
@@ -141,8 +157,8 @@ class GameManager:
         except Exception as e:
             msg = f'Error executing skill {skill_name} with params {skill_params} (from actions: {actions}):\n{e}'
             logger.error(msg)
-            exec_info["errors"] = True
-            exec_info["errors_info"] = msg
+            exec_info[constants.ERRORS] = True
+            exec_info[constants.ERRORS_INFO] = msg
 
         # @TODO re-add hold timeout check call
 
@@ -155,13 +171,19 @@ class GameManager:
         time.sleep(1)
 
 
-    def capture_screen(self, include_minimap = False):
+    def get_out_screen(self):
+        out_screen_file = "./res/software/samples/out_of_target_screen.jpg"
+        full_path = assemble_project_path(out_screen_file)
+        return full_path
+
+
+    def capture_screen(self, include_minimap: bool = False) -> Tuple[str, str]:
         tid = time.time()
         return take_screenshot(tid, include_minimap=include_minimap)
 
 
     def extract_minimap(self, screenshot_path):
-        return segment_minimap(screenshot_path)
+        return self.interface.segment_minimap(screenshot_path)
 
 
     def list_session_screenshots(self, session_dir: str = config.work_dir):

@@ -1,0 +1,54 @@
+{
+    "env_name": "Google Chrome",
+    "sub_path": "chrome",
+    "env_short_name": "chrome",
+    "sam2som_config": {
+        "sam_pred_iou_thresh": 0.4,
+        "sam_resize_ratio": 0.4,
+        "sam_contrast_level": 1.5,
+        "sam_max_area": 0.15
+    },
+    "task_description_list": [
+        {   "id": 1,
+            "task_description": "Search for an article with title containing \"Towards General Computer Control\" and save its PDF file.",
+            "sub_task_description_list": [
+                "Search for \"Towards General Computer Control\"",
+                "Go to the PDF page of an article starting with \"Towards General Computer Control\"",
+                "Save the PDF file"
+            ]
+        },
+        {
+            "id": 2,
+            "task_description": "Post \"It's a good day.\" on my Twitter.",
+            "sub_task_description_list": [
+                "Go to Twitter page",
+                "Click Post button",
+                "Type \"It's a good day.\" and twitter the post"
+            ]
+        },
+        {
+            "id": 3,
+            "task_description": "Open the last closed page.",
+            "sub_task_description_list": [
+                "Open the first page of recently closed history."
+            ]
+        },
+        {
+            "id": 4,
+            "task_description": "Find and navigate to tellarin's homepage on GitHub.",
+            "sub_task_description_list": [
+                "Search for \"tellarin Github\"",
+                "Go to tellarin's homepage on GitHub."
+            ]
+        },
+        {
+            "id": 5,
+            "task_description": "Customize Chrome to dark mode.",
+            "sub_task_description_list": [
+                "Open settings",
+                "Click on appearance",
+                "Change mode to dark"
+            ]
+        }
+    ]
+}

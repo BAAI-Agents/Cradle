@@ -31,9 +31,12 @@ class LocalMemory(BaseMemory):
         self.memory_path = memory_path
         self.task_duration = 3
 
-        self.recent_history = {"image": [],
+        # @TODO First memory summary should be based on environment spec
+
+        self.recent_history = {constants.IMAGES_MEM_BUCKET: [],
                                constants.AUGMENTED_IMAGES_MEM_BUCKET:[],
                                "action": [],
+                               "action_error": [],
                                "decision_making_reasoning": [],
                                "success_detection_reasoning": [],
                                "self_reflection_reasoning": [],
@@ -42,10 +45,12 @@ class LocalMemory(BaseMemory):
                                "dialogue":[],
                                "task_description":[],
                                "skill_library":[],
-                               "summarization":"The player is playing the game Red Dead Redemption for the PC.",
+                               "summarization":"The user is using the target application on the PC.",
                                "long_horizon_task":"",
-                               "last_task_guidance":"",
-                               "last_task_duration": self.task_duration}
+                               constants.LAST_TASK_GUIDANCE:"",
+                               "last_task_duration": self.task_duration,
+                               constants.KEY_REASON_OF_LAST_ACTION:[],
+                               constants.SUCCESS_DETECTION:[],}
 
 
     def add_recent_history(
@@ -71,6 +76,9 @@ class LocalMemory(BaseMemory):
 
         if len(self.recent_history[key]) == 0:
             return [""]
+
+        if k is None:
+            k = 1
 
         return self.recent_history[key][-k:] if len(self.recent_history[key]) >= k else self.recent_history[key]
 
