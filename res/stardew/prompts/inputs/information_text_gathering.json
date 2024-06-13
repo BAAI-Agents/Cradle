@@ -1,0 +1,12 @@
+{
+    "type": "gather_information",
+    "image_introduction": [
+        {
+            "introduction": "This is a screenshot of the current moment in the game",
+            "path": "./res/samples/stardew valley/game_screenshot.png",
+            "assistant": ""
+        }
+    ],
+    "few_shots": [],
+    "information_type": ["Item_status", "Environment_information", "Dialogue", "Others"]
+}

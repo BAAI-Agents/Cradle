@@ -1,0 +1,127 @@
+{
+    "env_name": "Stardew Valley",
+    "sub_path": "stardew",
+    "env_short_name": "stardew",
+    "task_description": "Cultivate and harvest a parsnip. Use your hoe to till the soil, then use a seed packet on the tilled soil to sow a crop. Water every day until the crop is ready for harvest.",
+    "skill_names_basic": [
+        "do_action",
+        "use_tool",
+        "move_up",
+        "move_down",
+        "move_left",
+        "move_right",
+        "select_tool",
+        "get_out_of_house",
+        "enter_door_and_sleep"
+    ],
+    "skill_names_movement": [],
+    "skill_names_map": [],
+    "skill_names_trade": [],
+    "skill_names_deny": [],
+    "skill_names_allow": [],
+    "planner_params": {
+        "__check_list__": [
+            "action_planning",
+            "information_gathering",
+            "success_detection",
+            "self_reflection",
+            "task_inference",
+            "information_toolbar_gathering"
+        ],
+        "prompt_paths": {
+            "inputs": {
+                "action_planning": "./res/stardew/prompts/inputs/action_planning.json",
+                "information_gathering": "./res/stardew/prompts/inputs/information_gathering.json",
+                "success_detection": "./res/stardew/prompts/inputs/success_detection.json",
+                "self_reflection": "./res/stardew/prompts/inputs/self_reflection.json",
+                "task_inference": "./res/stardew/prompts/inputs/task_inference.json",
+                "information_text_gathering": "./res/stardew/prompts/inputs/information_text_gathering.json",
+                "information_toolbar_gathering": "./res/stardew/prompts/inputs/information_toolbar_gathering.json"
+            },
+            "templates": {
+                "action_planning": "./res/stardew/prompts/templates/action_planning.prompt",
+                "information_gathering": "./res/stardew/prompts/templates/information_gathering.prompt",
+                "success_detection": "./res/stardew/prompts/templates/success_detection.prompt",
+                "self_reflection": "./res/stardew/prompts/templates/self_reflection.prompt",
+                "task_inference": "./res/stardew/prompts/templates/task_inference.prompt",
+                "information_text_gathering": "./res/stardew/prompts/templates/information_text_gathering.prompt",
+                "information_toolbar_gathering": "./res/stardew/prompts/templates/information_toolbar_gathering.prompt"
+            }
+        }
+    },
+    "provider_configs": {
+        "draw_grids_provider": {
+            "crop_region": [0, 0, 1920, 1080],
+            "axis_division": [3, 5],
+            "axis_linewidth": 3,
+            "axis_color": "red",
+            "font_color": "white",
+            "font_size": 50
+        },
+        "draw_color_band_provider": {
+            "left_band_width": 200,
+            "left_band_height": 1080,
+            "left_band_color" : "blue",
+            "right_band_width": 200,
+            "right_band_height": 1080,
+            "right_band_color": "yellow"
+        },
+        "information_gathering": {
+            "base_toolbar_objects": {
+                "axe": {
+                    "name": "Axe",
+                    "type": "Tool",
+                    "description": "Used to chop woods.",
+                },
+                "hoe": {
+                    "name": "Hoe",
+                    "type": "Tool",
+                    "description": "Used to dig and till soil.",
+                },
+                "full_watering_can": {
+                    "name": "Watering Can",
+                    "type": "Tool",
+                    "description": "Used to water crops. It can be refilled at any water source. Now it's full.",
+                },
+                "empty_watering_can": {
+                    "name": "Watering Can",
+                    "type": "Tool",
+                    "description": "Used to water crops. It can be refilled at any water source. Now it's empty.",
+                },
+                "pickaxe": {
+                    "name": "Pickaxe",
+                    "type": "Tool",
+                    "description": "Used to break stones and rocks.",
+                },
+                "scythe": {
+                    "name": "Scythe",
+                    "type": "Tool",
+                    "description": "It can cut grass and weeds into hay, if you've built a silo.",
+                },
+                "parsnip_seeds": {
+                    "name": "Parsnip Seeds",
+                    "type": "Seed",
+                    "description": "Plant these in the spring. Takes 4 days to mature.",
+                },
+                "parsnip": {
+                    "name": "Parsnip",
+                    "type": "Crop",
+                    "description": "Plant of the parsnip seeds. It's mature.",
+                },
+                "blank": {
+                    "name": "Blank",
+                    "type": "Blank",
+                    "description": "Empty slot.",
+                },
+                "unknown": {
+                    "name": "Unknown",
+                    "type": "Unknown",
+                    "description": "It is unknown item in the slot."
+                }
+            }
+        },
+        "self_reflection_provider": {},
+        "task_inference_provider": {},
+        "action_planning_provider": {}
+    }
+}

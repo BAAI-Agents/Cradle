@@ -1,0 +1,18 @@
+{
+    "type": "success_detection",
+    "task_description": "",
+    "previous_action": "",
+    "previous_reasoning": "",
+    "image_introduction":[
+        {
+            "introduction": "This screenshot is the previous step of the game",
+            "path": "./res/prompts/testing/decision_making/stardew valley/buy/10.jpg",
+            "assistant": ""
+        },
+        {
+            "introduction": "This screenshot is the current step of the game",
+            "path": "./res/prompts/testing/decision_making/stardew valley/buy/11.jpg",
+            "assistant": ""
+        }
+    ]
+}

@@ -1,0 +1,60 @@
+{
+    "env_name": "Stardew Valley",
+    "sub_path": "stardew",
+    "env_short_name": "stardew",
+    "task_description": "The task is to stand directly in front of the yellow-haired shopkeeper standing behind a green counter, purchase 10 units of Parsnip Seeds and leave store. The shopkeeper is in left top corner and exit is in left bottom corner. Enter the store, purchase 10 units of Parsnip Seeds and move down to leave store. In the store, the shopkeeper is in left top corner and exit is in left bottom corner. Get out of house, enter the store, purchase 10 units of Parsnip Seeds, move down to leave store, exit town and return home.",
+    "skill_names_basic": [
+        "do_action",
+        "use_tool",
+        "move_up",
+        "move_down",
+        "move_left",
+        "move_right",
+        "select_tool",
+        "use_tool_multiple_times",
+        "do_action_multiple_times",
+        "buy_item",
+        "go_through_door"
+    ],
+    "skill_names_movement": [],
+    "skill_names_map": [],
+    "skill_names_trade": [],
+    "skill_names_deny": [],
+    "skill_names_allow": [],
+    "provider_configs": {
+        "draw_grids_provider": {
+            "crop_region": [0, 0, 1920, 1080],
+            "axis_division": [3, 5],
+            "axis_linewidth": 3,
+            "axis_color": "red",
+            "font_color": "white",
+            "font_size": 50
+        },
+        "draw_color_band_provider": {
+            "left_band_width": 200,
+            "left_band_height": 1080,
+            "left_band_color" : "blue",
+            "right_band_width": 200,
+            "right_band_height": 1080,
+            "right_band_color": "yellow"
+        },
+        "information_toolbar_gathering_provider": {
+            "template_path": "./res/stardew/prompts/templates/information_toolbar_gathering.prompt",
+            "inventory_path": "./res/stardew/icons/inventory"
+        },
+
+        "information_gathering_provider": {
+            "template_path": "./res/stardew/prompts/templates/information_gathering.prompt"
+        },
+        "self_reflection_provider": {
+            "template_path": "./res/stardew/prompts/templates/self_reflection_shopping.prompt"
+        },
+        "task_inference_provider": {
+            "template_path": "./res/stardew/prompts/templates/task_inference_shopping.prompt",
+            "use_subtask": true
+        },
+        "action_planning_provider": {
+            "template_path": "./res/stardew/prompts/templates/action_planning_shopping.prompt"
+        }
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "task_description": "",
+    "image_introduction": [
+        {
+            "introduction": "This is a screenshot of the current moment in the game with multiple augmentation to help you understand it better. The screenshot is organized into a grid layout with 15 segments, arranged in 3 rows and 5 columns. Each segment in the grid is uniquely identified by coordinates, which are displayed at the center of each segment in white text. The layout also features color-coded bands for orientation: a blue band on the left side and a yellow band on the right side of the screenshot.",
+            "path": "./res/stardew/samples/game_screenshot.jpg",
+            "assistant": ""
+        }
+    ]
+    }

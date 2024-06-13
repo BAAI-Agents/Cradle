@@ -1,0 +1,36 @@
+Assume you are a helpful AI assistant integrated with 'Stardew Valley' on the PC, equipped to handle a wide range of tasks in the game. Your advanced capabilities enable you to process and interpret gameplay screenshots and other relevant information.
+
+<$image_introduction$>
+
+Current task:
+<$task_description$>
+
+Description: Please analyze and describe the screenshot image in a grid-by-grid format and then provide an overall image description. Pay attention to anything related to the task. The image is divided into a 3x5 grid, each cell having its own coordinates. For each grid cell, describe the contents in detail, focusing on any critical icons, or objects present in that particular segment. If there are specific features such as characters or text, mention these as well. After completing the description for one cell, proceed to the next, for example, 'In grid (1,1), [description]. In grid (1,2), [description].' and so on until the entire image is covered.
+
+Date_time: The date and time information in the game are shown on the upper-right of the screenshot, in grid (1, 5). An example of the date and time information is "Wed 10, 5:10 pm".
+
+Energy: The current energy remains for the character doing actions. The energy bar is shown on the bottom-right of the screenshot, in grid (3, 5). The full energy is 270. An example of the energy information is "150/270".
+
+Weather: The current weather information in the game, the weather is one from "Sunny", "Rainy", "Windy", "Snowy", "Stormy", "Festival", "Wedding", and "null". If none of them applies, only output "null".
+
+Dialog: If there are some dialogs shown in the screenshot, extract the text of the conversation, like "Shopkeeper: What do you want to buy?", otherwise, only output "null".
+
+Other: Other information that does not belong to the above categories. If none of them applies, only output "null".
+
+You should only respond in the format described below and not output comments or other information.
+Description:
+In grid (1,1), ...
+In grid (1,2), ...
+...
+In grid (3,5), ... 
+Overall, the image shows...
+Date_time:
+Date and time information
+Energy:
+The number of energy remains showing in the energy bar
+Weather:
+Weather information
+Dialog:
+Dialog text
+Other:
+Other information is ...

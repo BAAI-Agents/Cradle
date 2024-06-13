@@ -1,4 +1,4 @@
-from cradle.config.config import Config
+from .config import Config
 
 __all__ = [
     "Config",
