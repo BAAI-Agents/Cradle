@@ -2,63 +2,102 @@ import time
 from typing import Tuple
 
 from cradle.config import Config
-from cradle.gameio import IOEnvironment
+from cradle.gameio.io_env import IOEnvironment
 from cradle.log import Logger
-from cradle.gameio.lifecycle.ui_control import take_screenshot, segment_minimap, switch_to_game, pause_game, unpause_game, exit_back_to_pause
-from cradle.gameio.composite_skills.navigation import navigate_path
-from cradle.gameio.skill_registry import SkillRegistry
 from cradle import constants
 
 config = Config()
 logger = Logger()
 io_env = IOEnvironment()
 
-
-class GameManager:
+class GameManager():
 
     def __init__(
         self,
-        env_name,
-        embedding_provider = None
+        env_name = config.env_name,
+        skill_registry = None,
+        ui_control = None,
     ):
         self.env_name = env_name
-        self.skill_registry = SkillRegistry(local_path = config.skill_local_path,
-                                            from_local = config.skill_from_local,
-                                            store_path = config.work_dir,
-                                            skill_scope = config.skill_scope,
-                                            embedding_provider = embedding_provider)
+        self.env_short_name = config.env_short_name
+        self.skill_registry = skill_registry
+        self.ui_control = ui_control
+
+    def set_manager(self, skill_registry, ui_control):
+        self.skill_registry = skill_registry
+        self.ui_control = ui_control
+
+    def pause_game(self,
+                   *args,
+                   env_name=config.env_name,
+                   ide_name=config.ide_name,
+                   screen_type=constants.GENERAL_GAME_INTERFACE,
+                   **kwargs):
+        if screen_type==constants.PAUSE_INTERFACE:
+            return False
+        else:
+            self.ui_control.pause_game(
+                env_name=env_name,
+                ide_name=ide_name,
+                **kwargs
+            )
+            return True
 
 
-    def pause_game(self, screen_type=constants.GENERAL_GAME_INTERFACE):
+    def unpause_game(self,
+                     *args,
+                     env_name=config.env_name,
+                     ide_name=config.ide_name,
+                     **kwargs):
 
-        if screen_type==constants.GENERAL_GAME_INTERFACE or screen_type==constants.PAUSE_INTERFACE or screen_type==constants.RADIAL_INTERFACE:
-            pause_game()
-
-
-    def unpause_game(self):
-        unpause_game()
-
-
-    def switch_to_game(self):
-        switch_to_game()
-
-
-    def exit_back_to_pause(self):
-        exit_back_to_pause()
+        self.ui_control.unpause_game(
+            env_name=env_name,
+            ide_name=ide_name,
+            **kwargs
+        )
+        return True
 
 
-    def get_skill_information(self, skill_list):
+    def switch_to_game(self,
+                       *args,
+                       env_name=config.env_name,
+                       ide_name=config.ide_name,
+                       **kwargs):
 
+        self.ui_control.switch_to_game(
+            env_name=env_name,
+            ide_name=ide_name,
+            **kwargs
+        )
+
+
+    def exit_back_to_pause(self,
+                           *args,
+                           env_name=config.env_name,
+                           ide_name=config.ide_name,
+                           **kwargs):
+
+        self.ui_control.exit_back_to_pause(
+            env_name=env_name,
+            ide_name=ide_name,
+            **kwargs
+        )
+
+
+    def get_skill_information(self,
+                              skill_list,
+                              skill_library_with_code = False
+                              ):
         filtered_skill_library = []
-
         for skill_name in skill_list:
-            skill_item = self.skill_registry.get_from_skill_library(skill_name)
+            skill_item = self.skill_registry.get_from_skill_library(skill_name, skill_library_with_code = skill_library_with_code)
             filtered_skill_library.append(skill_item)
-
         return filtered_skill_library
 
 
-    def add_new_skill(self, skill_code, overwrite = True):
+    def add_new_skill(self,
+                      skill_code,
+                      overwrite = True):
         return self.skill_registry.register_skill_from_code(skill_code = skill_code, overwrite = overwrite)
 
 
@@ -75,18 +114,10 @@ class GameManager:
 
 
     def get_skill_library_in_code(self, skill) -> Tuple[str, str]:
-        return self.skill_registry.get_skill_library_in_code(skill)
+        return self.skill_registry.get_skill_code(skill)
 
-
-    def execute_navigation(self, action):
-
-        # Execute action
-        total_time_step = 500
-
-        if action == "navigate_path":
-
-            time.sleep(2)
-            navigate_path(total_time_step)
+    def convert_expression_to_skill(self, expression):
+        return self.skill_registry.convert_expression_to_skill(expression)
 
 
     def execute_actions(self, actions):
@@ -127,10 +158,7 @@ class GameManager:
                         config.ocr_different_previous_text = False
                         config.enable_ocr = False
 
-                if "navigate" in skill_name:
-                    self.execute_navigation(skill_name)
-                else:
-                    self.skill_registry.execute_skill(name=skill_name, params=skill_params)
+                self.skill_registry.execute_skill(skill_name=skill_name, skill_params=skill_params)
 
                 exec_info["executed_skills"].append(skill)
                 exec_info["last_skill"] = skill
@@ -155,22 +183,22 @@ class GameManager:
         time.sleep(1)
 
 
-    def capture_screen(self, include_minimap = False):
+    def capture_screen(self):
         tid = time.time()
-        return take_screenshot(tid, include_minimap=include_minimap)
-
-
-    def extract_minimap(self, screenshot_path):
-        return segment_minimap(screenshot_path)
-
+        return self.ui_control.take_screenshot(tid)
 
     def list_session_screenshots(self, session_dir: str = config.work_dir):
         return io_env.list_session_screenshots(session_dir)
 
 
-    def store_skills(self):
-        self.skill_registry.store_skills()
+    def store_skills(self, path = None):
+        self.skill_registry.store_skills(path)
 
+    def load_skills(self, path = None):
+        self.skill_registry.load_skill_library(path)
+
+    def get_all_skills(self):
+        return self.skill_registry.get_all_skills()
 
     def cleanup_io(self):
         io_env.release_held_keys()

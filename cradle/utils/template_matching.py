@@ -5,6 +5,7 @@ from typing import List, Union
 import cv2
 from MTM import matchTemplates, drawBoxesOnRGB
 import numpy as np
+from PIL import Image
 
 from cradle.config import Config
 from cradle.log import Logger
@@ -86,8 +87,14 @@ def match_template_image(src_file: str, template_file: str, debug = False, outpu
     template = cv2.imread(assemble_project_path(template_file))
 
     # Resize template according to resolution ratio
-    template = cv2.resize(template, (0, 0), fx=config.resolution_ratio, fy=config.resolution_ratio)
+    if config.env_name == 'Stardew Valley':
+        fx=1
+        fy=1
+    else:
+        fx=config.resolution_ratio
+        fy=config.resolution_ratio
 
+    template = cv2.resize(template, (0, 0), fx=fx, fy=fy)
 
     if rotate_angle != 0:
         h, w, c = image.shape
@@ -128,10 +135,88 @@ def match_template_image(src_file: str, template_file: str, debug = False, outpu
         objects_list.append(object_dict)
 
         if debug:
-           logger.debug(f'{src_file}\t{template_file}\t{bounding_box}\t{confidence}\t{end_detect_time - begin_detect_time}',)
+            logger.debug(f'{src_file}\t{template_file}\t{bounding_box}\t{confidence}\t{end_detect_time - begin_detect_time}',)
 
     if output_bb:
         bb_output_file = os.path.join(output_dir, f'{output_prefix}_bb.json')
         save_json(bb_output_file, objects_list, 4)
 
     return objects_list
+
+
+def match_templates_images(
+    src_file_list: List[str],
+    base_template_file_list: List[str],
+    work_template_file_list: List[str],
+    debug=False,
+    output_bb=False,
+    save_matches=False,
+    scale="normal",
+    rotate_angle: float = 0,
+) -> List[dict]:
+    """
+    Multi-scale template matching
+    :param src_file_list: source image files
+    :param base_template_file_list: template image files
+    :param debug: output debug log messages
+    :param output_bb: output bounding boxes in json
+    :param save_matches: save the matched image
+    :param scale: scale for template, default is 'normal', chosen from 'small', 'mid', 'normal', 'full', or you can also specify a list of float numbers
+    :param rotate_angle: angle for source image rotation, at the center of image, clockwise
+
+    :return:
+    corresponding template object for each source image
+    """
+    coresponding_dict = {}
+
+    all_templates =[template for template in base_template_file_list]+[template for template in work_template_file_list]
+
+    for original_file in src_file_list:
+        original_score = []
+        for template in all_templates:
+            original_score.append(
+                match_template_image(
+                    src_file=original_file,
+                    template_file=template,
+                    debug=debug,
+                    output_bb=output_bb,
+                    save_matches=save_matches,
+                    scale=scale,
+                    rotate_angle=rotate_angle,
+                )[0]["confidence"]
+            )
+
+        best_index = original_score.index(max(original_score))
+        coresponding_dict[original_file] = base_template_file_list[best_index]
+    return coresponding_dict
+
+
+def selection_box_identifier(image_path, red_box_region):
+    image = Image.open(image_path)
+
+    red_min = 100
+    green_max = 50
+    blue_max = 50
+
+    cropped_image = image.crop(red_box_region)
+
+    rgb_image = cropped_image.convert('RGB')
+
+    red_pixels = 0
+    total_edge_pixels = 0
+
+    def is_edge(x, y, width, height, range=5):
+        return abs(x) < range or abs(x - width - 1) < range or abs(y) < range or abs(y - height - 1) < range
+
+    for x in range(rgb_image.width):
+        for y in range(rgb_image.height):
+            if is_edge(x, y, rgb_image.width, rgb_image.height):
+                total_edge_pixels += 1
+                r, g, b = rgb_image.getpixel((x, y))
+                # Check if the pixel is red
+                if r > red_min and g < green_max and b < blue_max:
+                    red_pixels += 1
+
+    red_pixels_threshold = total_edge_pixels * 0.2
+
+    return red_pixels >= red_pixels_threshold

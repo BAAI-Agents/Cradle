@@ -1,4 +1,4 @@
-from typing import Dict
+from typing import Dict, Any
 
 from cradle.config import Config
 from cradle.log import Logger
@@ -7,6 +7,16 @@ from cradle.utils.file_utils import assemble_project_path, exists_in_project_pat
 config = Config()
 logger = Logger()
 
+def is_valid_value(value: Any) -> bool:
+    if value is None:
+        return False
+    elif isinstance(value, str) and value.strip() == "":
+        return False
+    elif isinstance(value, list) and len(value) == 0:
+        return False
+    elif isinstance(value, dict) and len(value) == 0:
+        return False
+    return True
 
 def check_planner_params(planner: Dict = None):
 

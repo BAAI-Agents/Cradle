@@ -4,6 +4,7 @@ import os
 import re
 import sys
 import ast
+import psutil
 from pathlib import PureWindowsPath
 
 from colorama import Fore, Back, Style, init as colours_on
@@ -18,7 +19,18 @@ config = Config()
 colours_on(autoreset=True)
 
 
-class ColorFormatter(logging.Formatter):
+class CPUMemFormatter(logging.Formatter):
+    def format(self, record):
+        cpu_usage = psutil.cpu_percent(interval=None)
+        memory = psutil.virtual_memory()
+        memory_usage = memory.percent
+
+        record.cpu_usage = cpu_usage
+        record.memory_usage = memory_usage
+
+        return super().format(record)
+
+class CPUMemColorFormatter(logging.Formatter):
 
     # Change your colours here. Should use extra from log calls.
     COLORS = {
@@ -34,7 +46,18 @@ class ColorFormatter(logging.Formatter):
         if color:
             record.name = color + record.name
             record.msg = record.msg + Style.RESET_ALL
-        return logging.Formatter.format(self, record)
+
+        record.cpu_usage = psutil.cpu_percent(interval=None)
+        record.memory_usage = psutil.virtual_memory().percent
+
+        cpu_usage = psutil.cpu_percent(interval=None)
+        memory = psutil.virtual_memory()
+        memory_usage = memory.percent
+
+        record.cpu_usage = cpu_usage
+        record.memory_usage = memory_usage
+
+        return super().format(record)
 
 
 class Logger(metaclass=Singleton):
@@ -51,10 +74,10 @@ class Logger(metaclass=Singleton):
 
     def _configure_root_logger(self):
 
-        format = f'%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+        format = '%(asctime)s - %(name)s - CPU: %(cpu_usage)s%%, Memory: %(memory_usage)s%% - %(levelname)s - %(message)s'
 
-        formatter = logging.Formatter(format)
-        c_formatter = ColorFormatter(format)
+        formatter = CPUMemFormatter(format)
+        c_formatter = CPUMemColorFormatter(format)
 
         stdout_handler = logging.StreamHandler(sys.stdout)
         stdout_handler.setLevel(logging.INFO)
@@ -155,6 +178,35 @@ def _extract_text_between_tokens(text, start_token="(?<=;base64,)", end_token="(
 
     return extracted_texts
 
+def _extract_image_between_tokens(text, start_token=";base64,", end_tokens=["\"", "'"], escape=False):
+    """
+    Extracts text between the specified start and end tokens.
+
+    Args:
+        text (str): The input text from which to extract the text.
+        start_token (str): The token indicating the start of the text to extract.
+        end_tokens (list): A list of tokens indicating the end of the text to extract.
+        escape (bool): Whether to escape the tokens if they contain special regex characters.
+
+    Returns:
+        list: A list of extracted text segments.
+    """
+    # Escape the tokens if they contain special regex characters
+    if escape:
+        start_token = re.escape(start_token)
+        end_tokens = [re.escape(token) for token in end_tokens]
+
+    # Combine end tokens into a single pattern for non-greedy matching
+    end_token_pattern = '|'.join(end_tokens)
+
+    # Regex pattern to capture text between start_token and any of the end tokens
+    pattern = rf'{start_token}(.*?)(?={end_token_pattern})'
+
+    # Extracting all occurrences
+    extracted_texts = re.findall(pattern, text)
+
+    return extracted_texts
+
 
 def _replacer(text, encoded_images, image_paths, work_dir):
 
@@ -181,7 +233,6 @@ def _replacer(text, encoded_images, image_paths, work_dir):
                 image_paths[key] = path
             else:
                 path = image_paths[key]
-
                 if not os.path.exists(path):
                     with open(path, "wb") as f:
                         f.write(decode_base64(encoded_image))
@@ -249,7 +300,7 @@ def process_log_messages(work_dir):
     log = '\n'.join(log_lines)
 
     hash_file_maps, log = _extract_image_hashes(log)
-    encoded_images = _extract_text_between_tokens(log)
+    encoded_images = _extract_image_between_tokens(log)
     log = _replacer(log, encoded_images, hash_file_maps, work_dir)
 
     md_log = []
