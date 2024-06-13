@@ -2,7 +2,6 @@ body {
   font-family: 'Noto Sans', sans-serif;
 }
 
-
 .footer .icon-link {
     font-size: 25px;
     color: #000;
@@ -17,7 +16,6 @@ body {
   font-variant: small-caps;
 }
 
-
 .teaser .hero-body {
   padding-top: 0;
   padding-bottom: 3rem;
@@ -27,13 +25,11 @@ body {
   font-family: 'Google Sans', sans-serif;
 }
 
-
 .publication-title {
 }
 
 .publication-banner {
   max-height: parent;
-
 }
 
 .publication-banner video {
@@ -127,7 +123,6 @@ body {
   margin: 0;
 }
 
-
 .interpolation-panel {
   background: #f5f5f5;
   border-radius: 10px;
@@ -145,13 +140,63 @@ body {
   margin: 0 !important;
 }
 
-.interpolation-panel .slider {
-  margin: 0 !important;
-}
-
 #interpolation-image-wrapper {
   width: 100%;
 }
+
 #interpolation-image-wrapper img {
   border-radius: 5px;
 }
+
+.image-row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.caption-row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.image-container, .caption-container {
+    width: 32%;
+    box-sizing: border-box;
+    margin: 0 10px;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+}
+
+/* Custom styles in index.css */
+.content {
+    margin: 0 auto;
+    padding: 0 10px; /* Reduce side padding */
+    max-width: 1000px; /* Increase max-width to use more horizontal space */
+}
+
+/* Adjustments to container and column widths */
+.container.is-max-desktop {
+    max-width: 1200px; /* Increase max-width */
+}
+
+.column.is-four-fifths {
+    flex: 0 0 90%; /* Ensure column takes up more horizontal space */
+    max-width: 90%; /* Ensure column does not exceed this width */
+}
+
+/* Optional: You can remove or adjust this if not needed */
+.has-text-justified {
+    text-align: justify;
+}
+
+
