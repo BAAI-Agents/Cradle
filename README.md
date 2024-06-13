@@ -8,7 +8,7 @@
 [![Python Version](https://img.shields.io/badge/Python-3.10-blue.svg)]()
 [![GitHub license](https://img.shields.io/badge/MIT-blue)]()
 
-![](docs/images/cradle-intro.png)
+![](docs/images/cradle-intro-cr.png)
 
 The Cradle project is a first attempt at General Computer Control (GCC). Cradle supports agents to ace any computer task by enabling strong reasoning abilities, self-improvment, and skill curation, in a standardized general environment with minimal requirements.
 
@@ -31,15 +31,11 @@ The updated released version of the framework is coming. The latest codebase is 
 
 If you're interested in the project, this is the version you should look into.
 
-Please clone this repository and use the code in the branches below
+Please clone this repository and use the code in the branches below. You need **both** currently for the latest results!
 
 Code:
-- Games: https://github.com/BAAI-Agents/UAC/blob/dev-game/README.md
-- Software: https://github.com/BAAI-Agents/UAC/blob/dev-software/README.md
-<!--
-- Games: https://github.com/BAAI-Agents/Cradle/blob/dev-game/README.md
-- Software: https://github.com/BAAI-Agents/Cradle/blob/dev-software/README.md
--->
+- Games: https://github.com/BAAI-Agents/Cradle/blob/dev-games/
+- Software: https://github.com/BAAI-Agents/Cradle/blob/dev-software/
 
 
 </div>
@@ -63,7 +59,7 @@ Code:
 &nbsp;&nbsp;
 <a alt="Watch the video" href="https://www.youtube.com/watch?v=WZiL_0V880M"><img src="docs/images/dealer_video_cover.png" width="33%" /></a>
 &nbsp;&nbsp;
-<a alt="Watch the video" href="https://www.youtube.com/watch?v="><img src="docs/images/Software_cover.png" width="33%" /></a>
+<a alt="Watch the video" href="https://www.youtube.com/watch?v=YfS9blWGhW4"><img src="docs/images/Software_cover.png" width="33%" /></a>
 
 Click on either of the video thumbnails above to watch them on YouTube.
 
