@@ -19,7 +19,7 @@ The framework and all materials are in constant evolution and this repository wi
 
 <div align="left">
 
-### Notice
+## Notice
 
 We are still working on further cleaning up the code and constantly updating it. We are also extending Cradle to more games and software. Feel free to reach out!
 
@@ -31,24 +31,39 @@ The updated released version of the framework is coming. The latest codebase is 
 
 If you're interested in the project, this is the version you should look into.
 
+Please clone this repository and use the code in the branches below
+
 Code:
-- Games:
-- Software:
+- Games: https://github.com/BAAI-Agents/UAC/blob/dev-game/README.md
+- Software: https://github.com/BAAI-Agents/UAC/blob/dev-software/README.md
+<!--
+- Games: https://github.com/BAAI-Agents/Cradle/blob/dev-game/README.md
+- Software: https://github.com/BAAI-Agents/Cradle/blob/dev-software/README.md
+-->
+
 
 </div>
 
 <img src="docs/images/games_wheel.png" height="450" /> <img src="docs/images/applications_wheel.png" height="450" />
 
 
+<!-- <img src="docs/images/.gif" width="320" height="180"/> <img src="docs/images/.gif" width="320" height="180"/> </br>
 <img src="docs/images/.gif" width="320" height="180"/> <img src="docs/images/.gif" width="320" height="180"/> </br>
-<img src="docs/images/.gif" width="320" height="180"/> <img src="docs/images/.gif" width="320" height="180"/> </br>
-<img src="docs/images/.gif" width="320" height="180"/>
+<img src="docs/images/.gif" width="320" height="180"/> -->
 
 ## Latest Videos
 
-<a alt="Watch the video" href="https://www.youtube.com/watch?v="><img src="docs/images/.jpg" width="33%" /></a>
+<a alt="Watch the video" href="https://www.youtube.com/watch?v=fkkSJw1iJJ8"><img src="docs/images/RDR2_story_cover.jpg" width="33%" /></a>
 &nbsp;&nbsp;
-<a alt="Watch the video" href="https://www.youtube.com/watch?v="><img src="docs/images/.jpg" width="33%" /></a>
+<a alt="Watch the video" href="https://www.youtube.com/watch?v=Oa4Ese8mMD0"><img src="docs/images/RDR2_openended_cover.jpg" width="33%" /></a>
+&nbsp;&nbsp;
+<a alt="Watch the video" href="https://www.youtube.com/watch?v=regULK_60_8"><img src="docs/images/cityskyline_video_cover.png" width="33%" /></a>
+&nbsp;&nbsp;
+<a alt="Watch the video" href="https://www.youtube.com/watch?v=Kaiz4yJieUk"><img src="docs/images/stardew_video_cover.png" width="33%" /></a>
+&nbsp;&nbsp;
+<a alt="Watch the video" href="https://www.youtube.com/watch?v=WZiL_0V880M"><img src="docs/images/dealer_video_cover.png" width="33%" /></a>
+&nbsp;&nbsp;
+<a alt="Watch the video" href="https://www.youtube.com/watch?v="><img src="docs/images/Software_cover.png" width="33%" /></a>
 
 Click on either of the video thumbnails above to watch them on YouTube.
 
