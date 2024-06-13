@@ -97,12 +97,10 @@ cd Cradle
 ```
 If you encounter any issues during the installation of GroundingDINO, please refer to the official website [GroundingDINO](https://github.com/IDEA-Research/GroundingDINO) or our provided [GroundingDino Installation Guide](docs/envs/groundingdino.md).
 
-### [Optional] Video tools
-We need to identify keyframes with text dialogue content in the video (specific to Red Dead Redemption 2), so we use Tool videosubfinder to achieve this functionality.
-
-Download the videosubfinder from https://sourceforge.net/projects/videosubfinder/ and extract the files into the res/tool/subfinder folder.
+Download the videosubfinder from https://sourceforge.net/projects/videosubfinder/ and extract the files into the res/tool/subfinder folder. We have already created the folder for you and included a test.srt, which is a required dummy file that will not affect results.
 
 The file structure should be like this:
+
 ```
 ├── res
   ├── tool
@@ -114,8 +112,6 @@ The file structure should be like this:
 
 ### Game Setup
 Due to the vast differences between each game, we have provided the specific settings for each game individually below.
-
-To setup the settings for each game. Please check out these pages for details.
 
 1. [Cities: Skylines](docs/envs/skylines.md)
 2. [Dealer's Life 2](docs/envs/dealers.md)

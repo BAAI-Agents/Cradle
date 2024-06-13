@@ -622,7 +622,17 @@ var bulmaCarousel = function (_EventEmitter) {
     key: '_bindEvents',
     value: function _bindEvents() {
       this.on('show', this.onShow);
-    }
+      // Additional check for navigation buttons
+      if (this._items.length <= this.slidesToShow) {
+        this._ui.previous.classList.add('is-hidden');
+        this._ui.next.classList.add('is-hidden');
+      } else {
+        this._clickEvents.forEach((clickEvent) => {
+          this._ui.previous.addEventListener(clickEvent, this.onPreviousClick);
+          this._ui.next.addEventListener(clickEvent, this.onNextClick);
+        });
+      }
+      }
   }, {
     key: '_unbindEvents',
     value: function _unbindEvents() {
@@ -1743,27 +1753,31 @@ var Pagination = function () {
 	}, {
 		key: 'refresh',
 		value: function refresh() {
-			var _this3 = this;
-
-			var newCount = void 0;
-
-			if (this.slider.options.infinite) {
-				newCount = Math.ceil(this.slider.state.length - 1 / this.slider.slidesToScroll);
-			} else {
-				newCount = Math.ceil((this.slider.state.length - this.slider.slidesToShow) / this.slider.slidesToScroll);
-			}
-			if (newCount !== this._count) {
-				this._count = newCount;
-				this._draw();
-			}
-
-			this._pages.forEach(function (page) {
-				page.classList.remove('is-active');
-				if (parseInt(page.dataset.index, 10) === _this3.slider.state.next % _this3.slider.state.length) {
-					page.classList.add('is-active');
-				}
-			});
-		}
+  if (!this.slider.options.loop && !this.slider.options.infinite) {
+    if (this.slider.options.navigation && this.slider.state.length > this.slider.slidesToShow) {
+      this._ui.previous.classList.remove('is-hidden');
+      this._ui.next.classList.remove('is-hidden');
+      if (this.slider.state.next === 0) {
+        this._ui.previous.classList.add('is-hidden');
+        this._ui.next.classList.remove('is-hidden');
+      } else if (this.slider.state.next >= this.slider.state.length - this.slider.slidesToShow && !this.slider.options.centerMode) {
+        this._ui.previous.classList.remove('is-hidden');
+        this._ui.next.classList.add('is-hidden');
+      } else if (this.slider.state.next >= this.slider.state.length - 1 && this.slider.options.centerMode) {
+        this._ui.previous.classList.remove('is-hidden');
+        this._ui.next.classList.add('is-hidden');
+      }
+    } else {
+      this._ui.previous.classList.add('is-hidden');
+      this._ui.next.classList.add('is-hidden');
+    }
+  }
+  // Hide navigation buttons if there are 3 or fewer items
+  if (this.slider._items.length <= this.slider.slidesToShow) {
+    this._ui.previous.classList.add('is-hidden');
+    this._ui.next.classList.add('is-hidden');
+  }
+}
 	}, {
 		key: 'render',
 		value: function render() {
