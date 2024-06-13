@@ -35,7 +35,7 @@ Please clone this repository and use the code in the branches below. You need **
 
 Code:
 - Games: https://github.com/BAAI-Agents/Cradle/blob/dev-games/
-- Software: https://github.com/BAAI-Agents/UAC/blob/dev-software/
+- Software: https://github.com/BAAI-Agents/Cradle/blob/dev-software/
 
 Each branch README contains instructions on setting up and running games and software, respectively. Instructions will be unified soon.
 
