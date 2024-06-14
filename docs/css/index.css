@@ -199,4 +199,37 @@ body {
     text-align: justify;
 }
 
+.three-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  text-align: center;
+  margin: 20px;
+  padding: 0;
+}
+
+.three-item .item {
+  margin: 5px;
+  overflow: hidden;
+  border: 1px solid #bbb;
+  justify-content: center;
+  border-radius: 10px;
+  padding: 0;
+  font-size: 0;
+  flex: 1; /* 每个item平分父容器的空间 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 27.7%; /* 每个item最多占父容器的30%宽度 */
+}
+
+.three-item .item img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  display: block;
+}
+
 
