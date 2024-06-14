@@ -60,7 +60,7 @@ Each branch README contains instructions on setting up and running games and sof
 &nbsp;&nbsp;
 <a alt="Watch the video" href="https://www.youtube.com/watch?v=WZiL_0V880M"><img src="docs/images/dealer_video_cover.png" width="33%" /></a>
 &nbsp;&nbsp;
-<a alt="Watch the video" href="https://www.youtube.com/watch?v=YfS9blWGhW4"><img src="docs/images/Software_cover.png" width="33%" /></a>
+<a alt="Watch the video" href="https://www.youtube.com/watch?v=k0K_GbmTthg"><img src="docs/images/Software_cover.png" width="33%" /></a>
 
 Click on either of the video thumbnails above to watch them on YouTube.
 
