@@ -88,7 +88,7 @@ body {
 .publication-video {
     position: relative;
     width: 100%;
-    height: 0;
+    height: auto;
     padding-bottom: 56.25%;
 
     overflow: hidden;
@@ -173,7 +173,8 @@ body {
 }
 
 .image-container img {
-    width: 100%;
+    max-width: 100%;
+    width: auto;
     height: auto;
 }
 
@@ -181,17 +182,24 @@ body {
 .content {
     margin: 0 auto;
     padding: 0 10px; /* Reduce side padding */
-    max-width: 1000px; /* Increase max-width to use more horizontal space */
+    /*max-width: 1000px; !* Increase max-width to use more horizontal space *!*/
+    max-width: 75%
 }
 
 /* Adjustments to container and column widths */
 .container.is-max-desktop {
-    max-width: 1200px; /* Increase max-width */
+    /*max-width: 1200px; !* Increase max-width *!*/
+    max-width: 75%;
 }
 
 .column.is-four-fifths {
     flex: 0 0 90%; /* Ensure column takes up more horizontal space */
     max-width: 90%; /* Ensure column does not exceed this width */
+}
+
+.column.is-full-width {
+    flex: 0 0 90%;
+    max-width: 90%;
 }
 
 /* Optional: You can remove or adjust this if not needed */
@@ -205,8 +213,10 @@ body {
   align-items: center;
   flex-wrap: nowrap;
   text-align: center;
-  margin: 20px;
+  /*margin: 1px;*/
   padding: 0;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .three-item .item {
@@ -217,11 +227,8 @@ body {
   border-radius: 10px;
   padding: 0;
   font-size: 0;
-  flex: 1; 
-  display: flex;
   align-items: center;
-  justify-content: center;
-  max-width: 25.7%; 
+  width: 100%;
 }
 
 .three-item .item img {
@@ -229,7 +236,7 @@ body {
   max-height: 100%;
   width: auto;
   height: auto;
-  display: block;
+  object-fit: cover;
 }
 
 
