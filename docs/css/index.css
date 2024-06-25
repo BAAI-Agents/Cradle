@@ -88,9 +88,8 @@ body {
 .publication-video {
     position: relative;
     width: 100%;
-    height: 0;
+    height: auto;
     padding-bottom: 56.25%;
-
     overflow: hidden;
     border-radius: 10px !important;
 }
@@ -154,7 +153,8 @@ body {
     align-items: flex-start;
     flex-wrap: nowrap;
     text-align: center;
-    margin: 20px 0;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 .caption-row {
@@ -163,7 +163,8 @@ body {
     align-items: flex-start;
     flex-wrap: nowrap;
     text-align: center;
-    margin: 10px 0;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 .image-container, .caption-container {
@@ -173,7 +174,8 @@ body {
 }
 
 .image-container img {
-    width: 100%;
+    max-width: 100%;
+    width: auto;
     height: auto;
 }
 
@@ -181,22 +183,44 @@ body {
 .content {
     margin: 0 auto;
     padding: 0 10px; /* Reduce side padding */
-    max-width: 1000px; /* Increase max-width to use more horizontal space */
+    /*max-width: 1000px; !* Increase max-width to use more horizontal space *!*/
+    max-width: 80%
 }
 
 /* Adjustments to container and column widths */
 .container.is-max-desktop {
-    max-width: 1200px; /* Increase max-width */
+    /*max-width: 1200px; !* Increase max-width *!*/
+    max-width: 80%;
+}
+
+.columns.is-margin {
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 .column.is-four-fifths {
-    flex: 0 0 90%; /* Ensure column takes up more horizontal space */
-    max-width: 90%; /* Ensure column does not exceed this width */
+  flex: 0 0 90%; /* Ensure column takes up more horizontal space */
+  max-width: 90%; /* Ensure column does not exceed this width */
+  text-align: center;
+}
+
+.column.is-full-width {
+  flex: 0 0 90%;
+  max-width: 90%;
+  text-align: center;
+}
+
+.column img {
+  display: inline-block;
+  flex: 0 0 90%;
+  max-width: 80%;
+  height: auto;
 }
 
 /* Optional: You can remove or adjust this if not needed */
 .has-text-justified {
     text-align: justify;
+    max-width: 80%;
 }
 
 .three-item {
@@ -205,8 +229,10 @@ body {
   align-items: center;
   flex-wrap: nowrap;
   text-align: center;
-  margin: 20px;
+  /*margin: 1px;*/
   padding: 0;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .three-item .item {
@@ -217,11 +243,8 @@ body {
   border-radius: 10px;
   padding: 0;
   font-size: 0;
-  flex: 1; /* 每个item平分父容器的空间 */
-  display: flex;
   align-items: center;
-  justify-content: center;
-  max-width: 27.7%; /* 每个item最多占父容器的30%宽度 */
+  width: 100%;
 }
 
 .three-item .item img {
@@ -229,7 +252,12 @@ body {
   max-height: 100%;
   width: auto;
   height: auto;
-  display: block;
+  object-fit: cover;
+}
+
+.title.is-5 {
+  text-align: justify;
+  margin-left: 10%;
 }
 
 
