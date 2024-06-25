@@ -25,9 +25,6 @@ body {
   font-family: 'Google Sans', sans-serif;
 }
 
-.publication-title {
-}
-
 .publication-banner {
   max-height: parent;
 }
@@ -45,6 +42,9 @@ body {
 
 .publication-title {
     font-family: 'Google Sans', sans-serif;
+    text-align: center;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 .publication-authors {
