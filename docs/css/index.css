@@ -17,8 +17,10 @@ body {
 }
 
 .teaser .hero-body {
+  margin: 0 auto;
   padding-top: 0;
   padding-bottom: 3rem;
+  width: 80%;
 }
 
 .teaser {
@@ -45,10 +47,14 @@ body {
     text-align: center;
     margin-left: 5%;
     margin-right: 5%;
+    margin: 0 auto;
+    width: 80%;
 }
 
 .publication-authors {
     font-family: 'Google Sans', sans-serif;
+    margin: 0 auto;
+    width: 90%;
 }
 
 .publication-venue {
