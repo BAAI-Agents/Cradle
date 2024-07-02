@@ -1,4 +1,4 @@
-# Cradle: Towards General Computer Control
+# Cradle: Empowering Foundation Agents towards General Computer Control
 <div align="center">
 
 [[Website]](https://baai-agents.github.io/Cradle/)
@@ -8,7 +8,7 @@
 [![Python Version](https://img.shields.io/badge/Python-3.10-blue.svg)]()
 [![GitHub license](https://img.shields.io/badge/MIT-blue)]()
 
-![](docs/images/cradle-intro.png)
+![](docs/images/cradle-intro-cr.png)
 
 The Cradle framework is a first attempt at General Computer Control (GCC). Cradle supports agents to ace any computer task by enabling strong reasoning abilities, self-improvment, and skill curation, in a standardized general environment with minimal requirements.
 
@@ -143,8 +143,8 @@ python runner.py --envConfig "./conf/env_config_stardew_shopping.json"
 If you find our work useful, please consider citing us!
 ```
 @article{weihao2024cradle,
-  title     = {{Towards General Computer Control: A Multimodal Agent For Red Dead Redemption II As A Case Study}},
-  author    = {Weihao Tan and Ziluo Ding and Wentao Zhang and Boyu Li and Bohan Zhou and Junpeng Yue and Haochong Xia and Jiechuan Jiang and Longtao Zheng and Xinrun Xu and Yifei Bi and Pengjie Gu and Xinrun Wang and Börje F. Karlsson and Bo An and Zongqing Lu},
+  title     = {{Cradle: Empowering Foundation Agents towards General Computer Control}},
+  author    = {Weihao Tan and Wentao Zhang and Xinrun Xu and Haochong Xia and Ziluo Ding and Boyu Li and Bohan Zhou and Junpeng Yue and Jiechuan Jiang and Yewen Li and Ruyi An and Molei Qin and Chuqiao Zong and Longtao Zheng and YuJie Wu and Xiaoqiang Chai and Yifei Bi and Tianbao Xie and Pengjie Gu and Xiyun Li and Ceyao Zhang and Long Tian and Chaojie Wang and Xinrun Wang and  Börje F. Karlsson and  Bo An and  Shuicheng YAN and  Zongqing Lu},
   journal   = {arXiv:2403.03186},
   month     = {March},
   year      = {2024},
