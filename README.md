@@ -2,8 +2,8 @@
 <div align="center">
 
 [[Website]](https://baai-agents.github.io/Cradle/)
-[[Arxiv]]()
-[[PDF]]()
+[[Arxiv]](https://arxiv.org/abs/2403.03186)
+[[PDF]](https://arxiv.org/pdf/2403.03186)
 
 [![Python Version](https://img.shields.io/badge/Python-3.10-blue.svg)]()
 [![GitHub license](https://img.shields.io/badge/MIT-blue)]()
@@ -87,3 +87,16 @@ The preliminary version of the framework targetting RDR2 initially is being supe
 Click on either of the video thumbnails above to watch them on YouTube.
 
 </div>
+
+# Citation
+If you find our work useful, please consider citing us!
+```
+@article{weihao2024cradle,
+  title     = {{Cradle: Empowering Foundation Agents towards General Computer Control}},
+  author    = {Weihao Tan and Wentao Zhang and Xinrun Xu and Haochong Xia and Ziluo Ding and Boyu Li and Bohan Zhou and Junpeng Yue and Jiechuan Jiang and Yewen Li and Ruyi An and Molei Qin and Chuqiao Zong and Longtao Zheng and YuJie Wu and Xiaoqiang Chai and Yifei Bi and Tianbao Xie and Pengjie Gu and Xiyun Li and Ceyao Zhang and Long Tian and Chaojie Wang and Xinrun Wang and  Börje F. Karlsson and  Bo An and  Shuicheng YAN and  Zongqing Lu},
+  journal   = {arXiv:2403.03186},
+  month     = {March},
+  year      = {2024},
+  primaryClass={cs.AI}
+}
+```
