@@ -139,6 +139,37 @@ python runner.py --envConfig "./conf/env_config_stardew_farm_clearup.json"
 python runner.py --envConfig "./conf/env_config_stardew_shopping.json"
 ```
 
+# 🌲 File Structure
+Since some users may want to apply our framework to new games, this section primarily showcases the core directories and organizational structure of Cradle. We will highlight in "⭐⭐⭐" the modules related to migrating to new games, and provide detailed explanations later.
+```
+Cradle
+├── cache # Cache the GroundingDino model and the bert-base-uncased model
+├── conf # ⭐⭐⭐ The configuration files for the environment and the llm model
+│   ├── env_config_dealers.json
+│   ├── env_config_rdr2_main_storyline.json
+│   ├── env_config_rdr2_open_ended_mission.json
+│   ├── env_config_skylines.json
+│   ├── env_config_stardew_cultivation.json
+│   ├── env_config_stardew_farm_clearup.json
+│   ├── env_config_stardew_shopping.json
+│   ├── openai_config.json
+│   ├── claude_config.json
+│   └── restful_claude_config.json
+├── deps # The dependencies for the Cradle framework, ignore this folder
+├── docs # The documentation for the Cradle framework, ignore this folder
+├── res # ⭐⭐⭐ The resources for the Cradle framework
+│   ├── models # Ignore this folder
+│   ├── tool # Subfinder for RDR2
+│   ├── dealers # The resources for Dealer's Life 2
+│   │   ├── prompts # The prompts for Dealer's Life 2
+│   │   │   └── templates
+│   │   │       ├── action_planning.prompt
+│   │   │       ├── information_gathering.prompt
+│   │   │       ├── self_reflection.prompt
+│   │   │       └── task_inference.prompt
+│   │   └── skills # The skills json for Dealer's Life 2, it will be generated automatically
+```
+
 # Citation
 If you find our work useful, please consider citing us!
 ```
