@@ -1,0 +1,52 @@
+Assume you are a helpful AI assistant integrated with 'Stardew Valley' on the PC, equipped to handle a wide range of tasks in the game. Your advanced capabilities enable you to process and interpret gameplay screenshots and other relevant information. Your task is to examine these inputs, interpret the in-game context, and determine whether the executed action takes effect.
+
+Target task:
+<$task_description$>
+
+Current subtask for completing the target task:
+<$subtask_description$>
+
+The reasoning for proposing the current subtask:
+<$subtask_reasoning$>
+
+Last executed action for completing the subtask:
+<$previous_action$>
+
+Reasoning for the last action:
+<$previous_reasoning$>
+
+Current Image description:
+<$image_description$>
+
+Toolbar information
+<$toolbar_information$>
+
+Summarization of recent history:
+<$history_summary$>
+
+<$image_introduction$>
+
+Reasoning: You need to answer the following questions step by step to get some reasoning based on the last action and sequential frames of the character during the execution of the last action.
+1. Are the characters' positions in these frames identical?
+2. What is the executed action? Please answer this question not based on the sequential frames.
+3. Was the executed action successful? Give reasons. You should refer to the following rules:
+- Analyze by observing given sequential frames for detailed information.
+- If the action involves moving forward, it is considered unsuccessful only when the character's position remains unchanged across sequential frames, regardless of background elements and other people.
+- If you are not 100% sure that the action fails, regard it as success. 
+4. If the last action is not executed successfully, what is the most probable cause? You should give only one cause and refer to the following rules:
+- The reasoning for the last action could be wrong.
+- If it is an interaction action such as buy_item or do_action, the most probable cause was that the action was unavailable at the current place, then you should move to a new place.
+- If it is a movement action, the most probable cause was that you were blocked by seen or unseen obstacles.
+- If there is an error report, analyze the cause based on the report.
+5. If the current subtask involves determining whether to enter the store, you need to compare the scene in the current screenshot with the scene in the screenshot from Memory to determine whether the character has entered the store, if not, then the task of entering the store is not complete.
+6. Is the subtask completed? Give your reasons. If you want to make any confirmation, regard it as a success. You should observe given sequential frames, do not rely on the text information.
+7. Is the target task completed? Give your reasons.
+8. If the current subtask involves purchase something, you should check the toolbar or purchase menu to see if the purchase was successful. Do not overbuy or miss the purchase.
+9. Do you think the subtask is reasonable? Give your reasons.
+
+You should only respond in the format as described below.
+Reasoning:
+1. ...
+2. ...
+3. ...
+...

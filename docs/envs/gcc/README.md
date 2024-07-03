@@ -8,18 +8,18 @@
 [![Python Version](https://img.shields.io/badge/Python-3.10-blue.svg)]()
 [![GitHub license](https://img.shields.io/badge/MIT-blue)]()
 
-![](docs/images/cradle-intro.png)
+![](../images/rdr2/cradle-intro.png)
 
 The Cradle framework is a first attempt at General Computer Control (GCC). Cradle supports agents to ace any computer task by enabling strong reasoning abilities, self-improvment, and skill curation, in a standardized general environment with minimal requirements.
 
-<img src="docs/images/rd2_task_grid_03.gif" width="320" height="180"/> <img src="docs/images/rd2_task_grid_02.gif" width="320" height="180"/> </br>
-<img src="docs/images/rd2_task_grid_01.gif" width="320" height="180"/> <img src="docs/images/rd2_task_grid_04.gif" width="320" height="180"/>
+<img src="../images/rdr2/rd2_task_grid_03.gif" width="320" height="180"/> <img src="../images/rdr2/rd2_task_grid_02.gif" width="320" height="180"/> </br>
+<img src="../images/rdr2/rd2_task_grid_01.gif" width="320" height="180"/> <img src="../images/rdr2/rd2_task_grid_04.gif" width="320" height="180"/>
 
 ## Videos
 
-<a alt="Watch the video" href="https://www.youtube.com/watch?v=Cx-D708BedY"><img src="docs/images/video1.jpg" width="33%" /></a>
+<a alt="Watch the video" href="https://www.youtube.com/watch?v=Cx-D708BedY"><img src="../images/rdr2/video1.jpg" width="33%" /></a>
 &nbsp;&nbsp;
-<a alt="Watch the video" href="https://www.youtube.com/watch?v=Oa4Ese8mMD0"><img src="docs/images/video2.jpg" width="33%" /></a>
+<a alt="Watch the video" href="https://www.youtube.com/watch?v=Oa4Ese8mMD0"><img src="../images/rdr2/video2.jpg" width="33%" /></a>
 
 Click on either of the video thumbnails above to watch them on YouTube.
 
@@ -217,33 +217,33 @@ Cradle currently focuses on [RDR2 game](https://www.rockstargames.com/reddeadred
 Change mouse mode in the control setting to DirectInput.
 | Original interface | Changed interface |
 |------------|------------|
-| ![Original interface](docs/images/raw_input.png) | ![Changed interface](docs/images/direct_input.png) |
+| ![Original interface](../images/rdr2/raw_input.png) | ![Changed interface](../images/rdr2/direct_input.png) |
 
 #### 1.2 Control
 Change both two 'Tap and Hold Speed Control' to on, so we can press w twice to run, saving the need to press shift. Also make sure 'Aiming Mode' to 'Hold To Aim', so we need to keep pressing the mouse right button when aiming.
 | Original interface | Changed interface |
 |------------|------------|
-| ![Original interface](docs/images/move_control_previous.png) | ![Changed interface](docs/images/move_control_now.png) |
+| ![Original interface](../images/rdr2/move_control_previous.png) | ![Changed interface](../images/rdr2/move_control_now.png) |
 
 #### 1.3 Game screen
 The recommended default resolution to use is 1920x1080, but it can vary if the **16:9** aspect ratio is preserved.  Other resolution is not fully tested. DO NOT change the aspect ratio. Also, remember to set the game Screen Type to **Windowed Borderless**.
 
-`SETTING -> GRAPHICS -> Resolution = 1920X1080` and  `Screen Type = Windowed Borderless`
-![game_position](docs/images/game_position.png)
+`SETTING -> GRAPHICS -> Resolution = 1920x1080` and  `Screen Type = Windowed Borderless`
+![game_position](../images/rdr2/game_position.png)
 
-![resolution](docs/images/resolution.png)
+![resolution](../images/rdr2/resolution.png)
 
 #### 1.4 Mini-map
 Remember to enlarge the icon to ensure the program is working well following: `SETTING -> DISPLAY ->  Radar Blip Size = Large` and  `SETTING -> DISPLAY ->  Map Blip Size = Large` and  `SETTING -> DISPLAY ->  Radar = Expanded` (or press Alt + X).
 
-![](docs/images/enlarge_minimap.png)
+![](../images/rdr2/enlarge_minimap.png)
 
-![minimap_setting](docs/images/minimap_setting.png)
+![minimap_setting](../images/rdr2/minimap_setting.png)
 
 #### 1.4 Subtitles
 Enable to show the speaker's name in the subtitles.
 
-![subtitles_setting](docs/images/subtitles.png)
+![subtitles_setting](../images/rdr2/subtitles.png)
 
 ## Getting Started
 
@@ -258,7 +258,7 @@ To run the agent, follow these steps:
 4- Launch the framework agent with the command:
 
 ```
-python prototype_runner.py 
+python prototype_runner.py
 ```
 
 

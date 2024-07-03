@@ -1,0 +1,111 @@
+{
+    "env_name": "Cities: Skylines",
+    "sub_path": "skylines",
+    "env_short_name": "skylines",
+    "is_game": true,
+    "skill_registry_name": "cradle.environment.skylines.skill_registry.SkylinesSkillRegistry",
+    "ui_control_name": "cradle.environment.skylines.ui_control.SkylinesUIControl",
+    "task_description_list": [
+        {
+            "id": 1,
+            "task_description": "Build a square-shaped village to include as large an area as possible on the left side of the map, which is made up of several stright roads. Connect the road to the highways and ensure connections of roads and highways are functioning properly. Then electricity and water supply systems. Finally zone the village with residential, commercial, and industrial areas. Ensure the village is self-sufficient.",
+            "sub_task_description_list": []
+        }
+    ],
+    "skill_configs": {
+        "skill_names_basic": [
+            "open_roads_menu",
+            "try_place_two_lane_road",
+            "open_electricity_menu",
+            "try_place_wind_turbine",
+            "try_place_power_line",
+            "open_water_sewage_menu",
+            "try_place_water_pumping_station",
+            "try_place_water_drain_pipe",
+            "try_place_water_pipe",
+            "open_zoning_menu",
+            "try_place_residential_zone",
+            "try_place_commercial_zone",
+            "try_place_industrial_zone",
+            "try_de_zone",
+            "confirm_placement",
+            "cancel_placement"
+        ],
+        "skill_names_movement": [],
+        "skill_names_map": [],
+        "skill_names_trade": [],
+        "skill_names_deny": [],
+        "skill_names_allow": []
+    },
+    "provider_configs": {
+        "coordinates_provider": {
+            "raw_coordinates": {
+                "line_type": {},
+                "max_line_id": 0,
+                "point_type": {
+                    "highway_entry-001": [
+                        1710,
+                        190
+                    ],
+                    "highway_exit-001": [
+                        1710,
+                        245
+                    ]
+                },
+                "max_point_id": 1
+            }
+        },
+        "augment_provider": {
+            "draw_axis": true,
+            "draw_mask_panel": true,
+            "mask_panel_config": {},
+            "axis_config": {
+                "crop_region": [
+                    0,
+                    0,
+                    1920,
+                    960
+                ],
+                "axis_division": [
+                    3,
+                    5
+                ],
+                "axis_linewidth": 5,
+                "axis_color": "yellow",
+                "font_color": "yellow",
+                "font_size": 50,
+                "scale_length": 20
+            },
+            "draw_grid": true,
+            "grid_config": {
+                "crop_region": [
+                    0,
+                    0,
+                    1920,
+                    960
+                ],
+                "axis_division": [
+                    3,
+                    5
+                ],
+                "axis_linewidth": 3,
+                "axis_color": "red",
+                "font_color": "white",
+                "font_size": 50
+            }
+        },
+        "information_gathering_provider": {
+            "template_path": "./res/skylines/prompts/templates/information_gathering.prompt"
+        },
+        "self_reflection_provider": {
+            "template_path": "./res/skylines/prompts/templates/self_reflection.prompt"
+        },
+        "task_inference_provider": {
+            "template_path": "./res/skylines/prompts/templates/task_inference.prompt",
+            "use_subtask": true
+        },
+        "action_planning_provider": {
+            "template_path": "./res/skylines/prompts/templates/action_planning.prompt"
+        }
+    }
+}

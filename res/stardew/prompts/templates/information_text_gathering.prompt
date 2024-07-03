@@ -1,0 +1,35 @@
+Assume you are a helpful AI assistant integrated with 'Stardew Valley' on the PC, equipped to handle a wide range of tasks in the game. Your advanced capabilities enable you to process and interpret gameplay screenshots and other relevant information.
+
+<$image_introduction$>
+
+Information: List all text prompts on the screenshot from the top to the bottom, even the text prompt is one word.
+
+All information should be categorized into one or more kinds of <$information_type$>. If you think a piece of information is both "A" and "B" categories, you should write information in both "A" and "B" categories. For example, "use E to drink water" could both be "Action Guidance" and "Task Guidance" categories.
+
+Item_status: The helpful information to the current context in the game, such as current using item, etc. This content should be pairs of status names and their values. If there is no on-screen text and no item status, only output "null".
+
+Environment_information: The information about the location, time, weather, etc. This content should be pairs of status names and their values. For example, "weather: raining". If there is no on-screen text and environment information, only output "null".
+
+Dialogue: Conversations between characters in the game. This content should be in the format of "character name: dialogue". For example, "Arthur: I'm fine". If there is no on-screen text or dialogue, only output "null".
+
+Other: Other information that does not belong to the above categories. If there is no on-screen text, only output "null".
+
+Reasoning: The reasons for classification for each piece of information.
+
+The information should be in the following categories, and you should output the following content without adding any other explanation.
+Information:
+1. ...
+2. ...
+...
+Reasoning:
+1. ...
+2. ...
+...
+Item_status:
+Item_status is ...
+Environment_information:
+Environment information is ...
+Dialogue:
+Dialogue is ...
+Other:
+Other information is ...

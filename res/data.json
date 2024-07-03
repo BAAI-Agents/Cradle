@@ -1,0 +1,12 @@
+{
+    "few_shots": [],
+    "task_description": "",
+    "image_introduction": [
+        {
+            "introduction": "This is a screenshot of the current moment in the game.",
+            "path": "./res/stardew/samples/game_screenshot.jpg",
+            "assistant": ""
+        }
+    ],
+    "information_type": ["Item_status", "Environment_information", "Dialogue", "Others"],
+}
