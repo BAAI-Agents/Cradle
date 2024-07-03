@@ -3,8 +3,8 @@
 <div align="center">
 
 [[Website]](https://baai-agents.github.io/Cradle/)
-[[arXiv (wait for update)]]()
-[[PDF]](https://drive.google.com/file/d/1j5AF8lw7zJNq9VnUXLM8OsMvWlUGQG88/view?usp=sharing)
+[[arXiv]](https://arxiv.org/abs/2403.03186)
+[[PDF]](https://arxiv.org/pdf/2403.03186)
 
 [![Python Version](https://img.shields.io/badge/Python-3.10-blue.svg)]()
 [![GitHub license](https://img.shields.io/badge/MIT-blue)]()
