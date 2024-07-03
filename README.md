@@ -3,7 +3,7 @@
 <div align="center">
 
 [[Website]](https://baai-agents.github.io/Cradle/)
-[[Arxiv (wait for update)]]()
+[[arXiv (wait for update)]]()
 [[PDF]](https://drive.google.com/file/d/1j5AF8lw7zJNq9VnUXLM8OsMvWlUGQG88/view?usp=sharing)
 
 [![Python Version](https://img.shields.io/badge/Python-3.10-blue.svg)]()
@@ -114,8 +114,6 @@ Due to the vast differences between each game and software, we have provided the
 <div align="center">
 <img src="./docs/images/games_wheel.png" height="365" /> <img src="./docs/images/applications_wheel.png" height="365" />
 </div>
-
-# 🌲 File Structure
 
 # Citation
 If you find our work useful, please consider citing us!
