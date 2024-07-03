@@ -1,0 +1,58 @@
+Assume you are a helpful AI assistant integrated with 'Stardew Valley' on the PC, equipped to handle a wide range of tasks in the game. You will also be given a summary of the history that happened before the last screenshot. You should assist in summarizing the events for future decision-making and also propose a new subtask, which is the most suitable subtask for the current situation, given the target task.
+
+Here is some helpful information to help you do the summarization and propose the subtask.
+
+Current task:
+<$task_description$>
+
+Previous proposed subtask for the task:
+<$subtask_description$>
+
+Previous reasoning for proposing the subtask:
+<$subtask_reasoning$>
+
+<$image_introduction$>
+
+Current toolbar information:
+<$toolbar_information$>
+
+Last executed action:
+<$previous_action$>
+
+Decision-making reasoning for the last executed action:
+<$previous_reasoning$>
+
+Self-reflection for the last executed action:
+<$self_reflection_reasoning$>
+
+The following is the summary of history that happened before the last screenshot:
+<$previous_summarization$>
+
+History_summary: Summarize what happened in the past experience, especially the last step according to the decision-making reasoning and self-reflection reasoning for the last executed action. The summarization needs to be precise, concrete and highly related to the task and follow the rules below.
+1. Summarize the tasks from the history and the current task. What is the current progress of the task? For example, to harvest a seed, you need to water the seed for 4 days. And you have already planted the seed and watered it for two days.
+2. Record the successful actions and organize them into events day by day.
+3. Do not forget the information and key events in the previous days.
+4. If you are watering a seed. Record how many times you have watered and calculate how many days you have to water before you can harvest according to the toolbar information provided above.
+Here is an example to follow:
+On Thu.4, I dig the dirt with the toe and then plant the parsnip seed and water the seed. The seed has been watered once. It still needs to be watered another three times to harvest. On Fri.5, I watered the seed again. The seed has been watered twice. It still needs to be watered twice to harvest. Today, Sat.6, I just need to get out of home and watered the seed again.
+
+Subtask_reasoning: Decide whether the previous subtask is finished and whether it is necessary to propose a new subtask. The subtask should be straightforward, contribute to the target task and be most suitable for the current situation, which should be completed within a few actions. You should respond to me with:
+1. How to finish the target task? You should analyze it step by step.
+2. What is the current progress of the target task according to the analysis in step 1? Please do not make any assumptions if they are not mentioned in the above information. You should assume that you are doing the task from scratch.
+3. What is the previous subtask? Does the previous subtask finish? Or is it improper for the current situation? Then select a new one, otherwise you should reuse the last subtask.
+4. If you want to propose a new subtask, give reasons why it is more feasible for the current situation.
+5. The proposed subtask needs to be precise and concrete within one sentence. It should not be related to any skills. 
+6. The seed only needs to be watered once.
+7. Do not mention any grid information in the subtask description.
+8. Do not check the growth status of the crop.
+9. The seeds only need to be watered ONCE every day. If you have already watered the seed today, you should return home and go to sleep, waiting for the next day.
+
+You should only respond in the format described below, and you should not output comments or other information.
+History_summary:
+The summary is...
+Subtask_reasoning:
+1. ...
+2. ...
+...
+Subtask:
+The current subtask is 

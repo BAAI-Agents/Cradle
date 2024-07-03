@@ -1,5 +1,5 @@
 {
-	"key_var" : "AZ_VIS_OPENAI_KEY",
+	"key_var": "AZ_VIS_OPENAI_KEY",
 	"base_var": "AZ_VIS_BASE_URL",
 	"models": {
 		"gpt-4v": "gpt-4v",

@@ -1,0 +1,72 @@
+Assume you are a helpful AI assistant integrated with 'Cities: Skylines' on the PC, equipped to handle a wide range of tasks in the game. You will also be given a summary of the history that happened before the last screenshot. You should assist in summarizing the events for future decision-making and also propose a new subtask, which is the most suitable subtask for the current situation, given the target task.
+
+Here is some helpful information to help you do the summarization and propose the subtask.
+
+Current task:
+<$task_description$>
+
+Previous proposed subtask for the task:
+<$subtask_description$>
+
+Previous reasoning for proposing the subtask:
+<$subtask_reasoning$>
+
+<$image_introduction$>
+
+Current budget:
+<$budget$>
+
+Current population:
+<$population$>
+
+Last executed action:
+<$actions$>
+
+Self-reflection for the last executed action:
+<$self_reflection_reasoning$>
+
+Error message for the last action:
+<$error_message$>
+
+The following is the summary of history that happened before the last screenshot:
+<$previous_summarization$>
+
+The task can be decomposed into the following subtasks:
+1. Start from the Highway entry: Build a road from the highway entry in grid (4, 2) vertically northwards towards grid (3,1).
+2. Extend Horizontally to the Left (1,1): From the endpoint in grid (1,1), construct a road horizontally to the left, spanning across grids (3,1) and (2,1), and ending at the center of grid (1,1).
+3. Build a Road Down to the bottom of Grid (2,2): Start from grid (1,1) and construct the road to the top of grid (2, 3).
+4. Extend Eastward to Grid (3,3): From the bottom of grid (2,2), build a road eastward to reach the center of grid (3,3).
+5. Connect the road to the Highway Exit: Extend the end of the road from grid (3,3) to the exit of the highway, completing the road loop.
+6. Install a Water Pumping Station near the River at the top-left corner of grid (2,3): Place the water pumping station near the river in grid (2,3) to ensure an adequate water supply.
+7. Position a Water Drain Pipe near the River at the top-left corner of grid (2,3): Install a water drain pipe slightly downstream from the pumping station but within the same grid to prevent water contamination.
+8. Lay Water Pipes: Connect the water pumping station to the water drain pipe using water pipes. Additionally, ensure all roads built are covered with water pipes to provide water access across the entire area.
+9. Erect Wind Turbines for Power: Construct several wind turbines near the water pumping station and along the roads to provide sustainable electricity to the area.
+10. Designate Residential Zones: Allocate spaces adjacent to the roads for residential zones to foster community living.
+11. Establish Industrial Zones: Set aside areas near the roads for industrial purposes, ideally in parts of the grid further from residential zones to manage noise and pollution.
+12. Create Commercial Zones: Develop commercial zones near the roads to provide services and retail options for the residents and workers in the area.
+13. Make sure all the zones near roads are built with Residential Zones, Industrial Zones or Industrial Zones.
+14. Build more roads and zones and ensure water and electricity supply.
+
+History_summary: Summarize what happened in the past experience, especially the last step according to the decision-making reasoning and self-reflection reasoning for the last executed action. The summarization needs to be precise, concrete and highly related to the task and follow the rules below.
+1. Summarize the tasks from the history and the current task. What is the current progress of the task?
+2. Which subtask has been completed? Which subtasks are not?
+
+Subtask_reasoning: According to the task decomposition, analyze the current progress step by step and then decide whether the previous subtask is finished and whether it is necessary to propose a new subtask. The subtask should be straightforward, contribute to the target task and be most suitable for the current situation, which should be completed within a few actions. You should respond to me with:
+1. What is the previous subtask? Which step it is for in the task decomposition?
+2. According to the reasoning of self-reflection, is the previous subtask completed? Note that the success of the action does not mean the success of the subtask. You should strictly follow the reasoning of whether the subtask is completed in the self-reflection. If yes, you should move to the next step and propose it as the new subtask. If not, you should continue the previous subtask without changing anything.  Please do not make any assumptions if they are not mentioned in the above information. You should assume that you are doing the task from scratch. Please strictly follow the description and requirements in the current task. 
+3. The proposed subtask needs to be precise and concrete within one sentence. It should not be related to any skills. 
+4. To enable water supply, you should first build a water pumping station and then build a water drain pipe near the river, and finally use water pipes to connect them with the roads. And ensure the water pipes cover all the roads.
+5. The water pumping station and water drain pipe also need electricity to work. So you also need to provide electricity for them.
+6. If you want to build roads for the village at the beginning, make sure to mention that the road needs to be as long as possible and use several roads to form a large square for the village.
+
+Subtask: According to the subtask reasoning, determine and output the most suitable subtask for the current situation. You MUST output the subtask in the output.
+
+You should only respond in the format described below, and you should not output comments or other information.
+History_summary:
+The summary is ...
+Subtask_reasoning:
+1. ...
+2. ...
+3. ...
+Subtask:
+The current subtask is ...

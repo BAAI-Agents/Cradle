@@ -25,7 +25,7 @@ class BasePlanner():
         pass
 
     @abc.abstractmethod
-    def gather_information(self, *args, **kwargs) -> Dict[str, Any]:
+    def information_gathering(self, *args, **kwargs) -> Dict[str, Any]:
         """
         gather information for the task
         :param args:
@@ -35,7 +35,7 @@ class BasePlanner():
         pass
 
     @abc.abstractmethod
-    def decision_making(self, *args, **kwargs) -> Dict[str, Any]:
+    def action_planning(self, *args, **kwargs) -> Dict[str, Any]:
         """
         generate the next skill
         :param args:

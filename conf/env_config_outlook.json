@@ -1,0 +1,92 @@
+{
+    "env_name": "Microsoft Outlook",
+    "win_name_pattern": "Outlook$",
+    "sub_path": "outlook",
+    "env_short_name": "outlook",
+    "is_game": false,
+    "shared_runner": "app",
+    "skill_registry_name": "cradle.environment.outlook.skill_registry.OutlookSkillRegistry",
+    "ui_control_name": "cradle.environment.software.ui_control.SoftwareUIControl",
+    "provider_configs": {
+        "sam2som_config": {
+            "plot_bbox_multi_color": true,
+            "disable_close_app_icon": true
+        }
+    },
+    "task_description_list": [
+        {
+            "id": 1,
+            "task_description": "Create a new e-mail to borje@baai.ac.cn with subject \"Hello friend\" and send it.",
+            "sub_task_description_list": []
+        },
+        {
+            "id": 2,
+            "task_description": "Open the junk folder and delete all messages in it, if any.",
+            "sub_task_description_list": []
+        },
+        {
+            "id": 3,
+            "task_description": "Open an e-mail from Börje in the inbox, reply to it with text \"Got it. Thanks.\", and click send.",
+            "sub_task_description_list": []
+        },
+        {
+            "id": 4,
+            "task_description": "Find the e-mail whose subject is “Urgent meeting” and open it.",
+            "sub_task_description_list": []
+        },
+        {
+            "id": 5,
+            "task_description": "Set up email forwarding for every email received to go to borje@baai.ac.cn.",
+            "sub_task_description_list": []
+        },
+        {
+            "id": 6,
+            "task_description": "Attach my AWS bill to an email. The bill is stored at Desktop/aws-bill.pdf. Don't send the e-mail.",
+            "sub_task_description_list": []
+        }
+    ],
+    "planner_params": {
+        "__check_list__": [
+            "action_planning",
+            "information_gathering",
+            "self_reflection",
+            "task_inference"
+        ],
+        "prompt_paths": {
+            "inputs": {
+                "action_planning": "./res/outlook/prompts/inputs/action_planning.json",
+                "information_gathering": "./res/outlook/prompts/inputs/information_gathering.json",
+                "success_detection": "",
+                "self_reflection": "./res/outlook/prompts/inputs/self_reflection.json",
+                "task_inference": "./res/outlook/prompts/inputs/task_inference.json",
+                "information_text_gathering": ""
+            },
+            "templates": {
+                "action_planning": "./res/outlook/prompts/templates/action_planning.prompt",
+                "information_gathering": "./res/outlook/prompts/templates/information_gathering.prompt",
+                "success_detection": "",
+                "self_reflection": "./res/outlook/prompts/templates/self_reflection.prompt",
+                "task_inference": "./res/outlook/prompts/templates/task_inference.prompt",
+                "information_text_gathering": ""
+            }
+        }
+    },
+    "skill_configs": {
+        "skill_names_basic": [
+            "press_keyboard_shortcut",
+            "click_at_position",
+            "move_mouse_to_position",
+            "mouse_drag",
+            "type_text",
+            "press_key",
+            "press_keys_combined",
+            "click_on_label",
+            "hover_on_label",
+            "go_back_to_target_application",
+            "go_to_mail_view",
+            "go_to_calendar_view"
+        ],
+        "skill_names_deny": [],
+        "skill_names_allow": []
+    }
+}

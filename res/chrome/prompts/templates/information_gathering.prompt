@@ -1,0 +1,43 @@
+Assume you are a helpful AI assistant integrated with 'Google Chrome' on the PC, equipped to handle a wide range of tasks in the application. Your advanced capabilities enable you to process and interpret application screenshots and other relevant information.
+
+Image introduction:
+<$image_introduction$>
+
+Overall task:
+<$task_description$>
+
+Subtask description:
+<$subtask_description$>
+
+Image_Description:
+1. Please describe the screenshot image in detail. Pay attention to any details in the image, if any, especially critical icons, or created items.
+2. If the image includes a mouse cursor, please describe what UI element the mouse is currently located near. Pay attention to the coordinates of the pointer tip, not the center of the mouse cursor.
+3. Pay attention to all UI items and contents in the image. Do not make assumptions about the layout.
+
+Description_of_bounding_boxes:
+Please provide a list of EVERY bounding box from label ID of 1 to <$length_of_som_map$> ONE BY ONE. The label IDs are marked in the upper left corner of the bounding boxes.
+For bounding boxes containing text, provide ONLY the text.
+For bounding boxes without text, brief description of the function.
+Format your response as follows: '1: function_a', '2: text_b', ..., '<$length_of_som_map$>: function_b'. Don't write anything you are not sure about.
+
+Target_object_name: Assume you can use an object detection model to detect the most relevant object or UI item for completing the current task if needed. What item should be detected to complete the task based on the current screenshot and the current task? You should obey the following rules:
+1. Identify an item that is relevant to the current or intermediate target of the task. If the item is within a bounding box in the screenshot, please include the corresponding label ID.
+2. If no explicit item is specified, only output "null".
+3. If there is no need to detect an object, only output "null".
+
+Reasoning_of_object: Why was this object chosen, or why is there no need to detect an object?
+
+You should only respond in the format described below and not output comments or other information. DO NOT change the title of each item.
+Image_Description:
+1. ...
+2. ...
+3. ...
+
+Description_of_bounding_boxes:
+Format like: 1: function_a', '2: text_b', ..., '<$len_of_bound_boxes$>: function_b
+
+Target_object_name:
+label ID, Name
+
+Reasoning_of_object:
+...

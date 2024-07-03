@@ -1,0 +1,32 @@
+Assume you are a helpful AI assistant integrated with 'Cities: Skylines' on the PC, equipped to handle a wide range of tasks in the game. Your advanced capabilities enable you to process and interpret gameplay screenshots and other relevant information.
+
+<$image_introduction$>
+
+Current task:
+<$task_description$>
+
+Description: Please analyze and describe the screenshot image in detail and then provide an overall image description. Pay attention to anything related to the task. If there are specific features such as characters or text, mention these as well.
+
+Budget: Bank Balance is shown at the bottom of the screenshot.
+
+Population: The population of the city is shown at the bottom of the screenshot, next to the budget.
+
+Error_message: If there are some in-game error messages, which are usually in red color, such as "Space already occupied!", extract the text, otherwise, only output "null". 
+
+Construction_information: If there is some in-game construction information, which is usually in blue colors, such as "Construction cost: 2500 Estimated production:0 m³/week" and "Construction cost: 2500 Shoreline recommended", extract the text, otherwise, only output "null". 
+
+Other: Other information that does not belong to the above categories. If none of them applies, only output "null".
+
+You should only respond in the format described below and not output comments or other information.
+Description:
+The image shows...
+Budget:
+The amount of budget 
+Population:
+The amount of population
+Error_message:
+The text of the error message
+Construction_information:
+The text of the construction information
+Other:
+Other information is ...

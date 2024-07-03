@@ -1,5 +1,6 @@
+import glob
 import os
-
+import shutil
 
 def assemble_project_path(path):
     """Assemble a path relative to the project root directory"""
@@ -35,3 +36,26 @@ def read_resource_file(path):
 
     with open(assemble_project_path(path), "r", encoding="utf-8") as fd:
         return fd.read()
+
+
+def get_latest_directories_in_path(path, count = 1):
+
+    # Get a list of all directories in the given path
+    directories = glob.glob(os.path.join(path, '*/'))
+
+    # Find the latest directory based on modification time
+    if directories:
+        #return max(directories, key=os.path.getmtime)
+        return sorted(directories, key=os.path.getmtime, reverse=True)[:count]
+
+    else:
+        return None
+
+
+def copy_file(source_file: str, destination_file: str):
+
+    if not os.path.exists(os.path.dirname(destination_file)):
+        raise FileNotFoundError(f"Destination directory does not exist: {os.path.dirname(destination_file)}")
+
+    if not os.path.exists(destination_file):
+        shutil.copy2(source_file, destination_file)

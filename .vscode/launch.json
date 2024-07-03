@@ -9,12 +9,13 @@
             "name": "Python: Module",
             "type": "python",
             "request": "launch",
-            "module": "prototype_runner",
+            "module": "runner",
             "env": {
                 "ENV_VAR": "env_value", // The recommended way to define environment variables is by creating a .env file in the repo root.
             },
             "args": [
-                     "--providerConfig", "./conf/openai_config.json",
+                     "--llmProviderConfig", "./conf/openai_config.json",
+                     "--envConfig", "./conf/env_config_outlook.json",
                      // "--providerConfig", "./conf/azure_vis_config.json",
                     ],
             // "justMyCode": true

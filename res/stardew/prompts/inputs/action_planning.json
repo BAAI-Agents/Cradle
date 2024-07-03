@@ -1,0 +1,78 @@
+{
+    "type": "decision_making",
+    "task_description": "",
+    "skill_library": "",
+    "decision_making_memory_description": "",
+    "gathered_information_description": "",
+    "history_summary": "",
+    "number_of_execute_skills": 3,
+    "previous_action": "",
+    "previous_reasoning": "",
+    "toolbar_information": "The items in the toolbar are arranged from left to right in the following order:\n1. Axe: Tool. Used to chop wood.\n2. Hoe: Tool. Used to dig and till soil.\n3. Watering Can: Tool. Used to water crops. It can be refilled at any water source. Now it's full.\n4. Pickaxe: Tool. Used to break stones.\n5. Scythe: Tool. It can cut grass into hay, if you've built a silo.\n6. Unknown: It is unknown item in the slot.\n7. Blank: Empty slot.\n8. Blank: Empty slot.\n9. Blank: Empty slot.\n10. Blank: Empty slot.\n11. Blank: Empty slot.\n12. Blank: Empty slot.\nSelected item: 1. Axe\n",
+    "selected_position": 1,
+    "few_shots": [
+        {
+            "introduction": "Here are some examples of the positions of the bounding box shown in the image.",
+            "path": "",
+            "assistant": ""
+        },
+        {
+            "introduction": "This is an example: The bounding box is clearly on the left side (not slightly left) of the image.",
+            "path": "./res/samples/stardew valley/few_shot_leftside.jpg",
+            "assistant": "Yes, it is clearly on the left side."
+        },
+        {
+            "introduction": "This is an example: The bounding box is slightly on the left side (not clearly left) of the image.",
+            "path": "./res/samples/stardew valley/few_shot_slightly_leftside.jpg",
+            "assistant": "Yes, it is slightly on the left side."
+        },
+        {
+            "introduction": "This is an example: The bounding box is clearly on the right side (not slightly right) of the image.",
+            "path": "./res/samples/stardew valley/few_shot_rightside.jpg",
+            "assistant": "Yes, it is clearly on the right side."
+        },
+        {
+            "introduction": "This is an example: The bounding box is slightly on the right side (not clearly right) of the image.",
+            "path": "./res/samples/stardew valley/few_shot_slightly_rightside.jpg",
+            "assistant": "Yes, it is slightly on the right side."
+        },
+        {
+            "introduction": "This is an example: The bounding box is on the central of the image.",
+            "path": "./res/samples/stardew valley/few_shot_central.jpg",
+            "assistant": "Yes, it is on the central side."
+        }
+    ],
+    "image_introduction":[
+        {
+            "introduction": "Now, I will give you five screenshots for decision making.",
+            "path": "",
+            "assistant": ""
+        },
+        {
+            "introduction": "This screenshot is five steps before the current step of the game.",
+            "path": "",
+            "assistant": ""
+        },
+        {
+            "introduction": "This screenshot is three steps before the current step of the game.",
+            "path": "",
+            "assistant": ""
+        },
+        {
+            "introduction": "This screenshot is two steps before the current step of the game.",
+            "path": "",
+            "assistant": ""
+        },
+        {
+            "introduction": "This screenshot is the previous step of the game. The blue band represents the left side and the yellow band represents the right side.",
+            "path": "",
+            "assistant": ""
+        },
+        {
+            "introduction": "This screenshot is the current step of the game. The blue band represents the left side and the yellow band represents the right side.",
+            "path": "",
+            "resolution": "high",
+            "assistant": ""
+        }
+    ]
+}

@@ -1,0 +1,56 @@
+Assume you are a helpful AI assistant integrated with 'Stardew Valley' on the PC, equipped to handle a wide range of tasks in the game. You will also be given a summary of the history that happened before the last screenshot. You should assist in summarizing the events for future decision-making and also propose a new subtask, which is the most suitable subtask for the current situation, given the target task.
+
+Here is some helpful information to help you do the summarization and propose the subtask.
+
+Current task:
+<$task_description$>
+
+Previous proposed subtask for the task:
+<$subtask_description$>
+
+Previous reasoning for proposing the subtask:
+<$subtask_reasoning$>
+
+<$image_introduction$>
+
+Current Image description:
+<$image_description$>
+
+Last executed action:
+<$previous_action$>
+
+Decision-making reasoning for the last executed action:
+<$previous_reasoning$>
+
+Self-reflection for the last executed action:
+<$self_reflection_reasoning$>
+
+The following is the summary of history that happened before the last screenshot:
+<$previous_summarization$>
+
+History_summary: Summarize what happened in the past experience, especially the last step according to the decision-making reasoning and self-reflection reasoning for the last executed action. The summarization needs to be precise, concrete and highly related to the task and follow the rules below.
+1. Summarize the tasks from the history and the current task. What is the current progress of the task? For example, to harvest a seed, you need to water the seed for 4 days. And you have already planted the seed and watered it for two days.
+2. Record the successful actions and organize them into events day by day.
+3. Do not forget the information and key events in the previous days.
+
+Subtask_reasoning: Decide whether the previous subtask is finished and whether it is necessary to propose a new subtask. The subtask should be straightforward, contribute to the target task and be most suitable for the current situation, which should be completed within a few actions. You should respond to me with:
+1. How to finish the target task? You should analyze it step by step.
+2. What is the current progress of the target task according to the analysis in step 1? Please do not make any assumptions if they are not mentioned in the above information. You should assume that you are doing the task from scratch.
+3. What is the previous subtask? Does the previous subtask finish? If so, give evidence that the task was completed. Or is it improper for the current situation? Then select a new one, otherwise you should reuse the last subtask.
+4. If you want to propose a new subtask, give reasons why it is more feasible for the current situation.
+5. The proposed subtask needs to be precise and concrete within one sentence. It should not be related to any skills. 
+6. Do not mention any grid information in the subtask description.
+7. If the character does not reach the target place, you should propose a movement task to make him closer to the target.
+8. If you want to purchase items, then you should move up to stand in front of the shopkeeper's counter, move sligntly to align with the green counter and buy items. After purchasing, you can move down to the exit and leave store.
+9. If you want to leave town, you should move along gray cobblestone road to the left of the store and the clinic.
+
+You should only respond in the format described below, and you should not output comments or other information.
+History_summary:
+The summary is...
+Subtask_reasoning:
+1. ...
+2. ...
+...
+Subtask:
+The current subtask is 
+ 

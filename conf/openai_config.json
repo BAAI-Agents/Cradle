@@ -1,6 +1,6 @@
 {
-	"key_var" : "OA_OPENAI_KEY",
-	"emb_model": "text-embedding-ada-002",
-	"comp_model": "gpt-4-vision-preview",
-	"is_azure": false
+    "key_var": "OA_OPENAI_KEY",
+    "emb_model": "text-embedding-ada-002",
+    "comp_model": "gpt-4o",
+    "is_azure": false
 }

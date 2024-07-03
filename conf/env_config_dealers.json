@@ -1,0 +1,47 @@
+{
+    "env_name": "DealersLife2",
+    "sub_path": "dealers",
+    "env_short_name": "dealers",
+    "is_game": true,
+    "skill_registry_name": "cradle.environment.dealers.skill_registry.DealersSkillRegistry",
+    "ui_control_name": "cradle.environment.dealers.ui_control.DealersUIControl",
+    "task_description_list": [
+        {
+            "id": 1,
+            "task_description": "You need to play the dealers life 2 game automatically for 7 days, there would be two kinds of game pages: 1) giving price page; 2) non-giving price page including open shop, character dialog, description page (including item information, daily stats and charactor traits), confirmation page (noticed with deal, sold, and warning). In the giving price page, you need to call the 'give_price(price)' function to give a price for the item, where the parameter 'price' must be an interger number and its values depends on the estimated price and the customers' type including seller, buyer and pawner. The purpose of this game is to make the profit as biggest as possible. In the non-giving price page, you need to click on the correct option shown in the screen to skip the page to make the game going on.",
+            "sub_task_description_list": []
+        }
+    ],
+    "skill_configs": {
+        "skill_names_basic": [
+            "dialogue",
+            "close_description_page",
+            "accept_deal",
+            "reject_deal",
+            "finish_deal",
+            "finish_sold",
+            "skip_warning",
+            "open_shop",
+            "give_price"
+        ],
+        "skill_names_movement": [],
+        "skill_names_map": [],
+        "skill_names_trade": [],
+        "skill_names_deny": [],
+        "skill_names_allow": []
+    },
+    "provider_configs": {
+        "information_gathering_provider": {
+            "template_path": "./res/dealers/prompts/templates/information_gathering.prompt"
+        },
+        "self_reflection_provider": {
+            "template_path": "./res/dealers/prompts/templates/self_reflection.prompt"
+        },
+        "task_inference_provider": {
+            "template_path": "./res/dealers/prompts/templates/task_inference.prompt"
+        },
+        "action_planning_provider": {
+            "template_path": "./res/dealers/prompts/templates/action_planning.prompt"
+        }
+    }
+}

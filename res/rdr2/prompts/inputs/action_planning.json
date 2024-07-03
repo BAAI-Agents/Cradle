@@ -1,0 +1,44 @@
+{
+    "type": "decision_making",
+    "task_description": "",
+    "skill_library": "",
+    "decision_making_memory_description": "",
+    "gathered_information_description": "",
+    "info_summary": "",
+    "number_of_execute_skills": 1,
+    "previous_action": "",
+    "previous_reasoning": "",
+    "image_introduction":[
+        {
+            "introduction": "Now, I will give you five screenshots for decision making.",
+            "path": "",
+            "assistant": ""
+        },
+        {
+            "introduction": "This screenshot is five steps before the current step of the game",
+            "path": "",
+            "assistant": ""
+        },
+        {
+            "introduction": "This screenshot is three steps before the current step of the game",
+            "path": "",
+            "assistant": ""
+        },
+        {
+            "introduction": "This screenshot is two steps before the current step of the game",
+            "path": "",
+            "assistant": ""
+        },
+        {
+            "introduction": "This screenshot is the previous step of the game",
+            "path": "",
+            "assistant": ""
+        },
+        {
+            "introduction": "This screenshot is the current step of the game",
+            "path": "",
+            "resolution": "high",
+            "assistant": ""
+        }
+    ]
+}
