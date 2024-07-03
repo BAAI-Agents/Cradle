@@ -272,6 +272,8 @@ pre {
     background-color: #f5f5f5;
     border: 1px solid #ddd;
     border-radius: 5px;
+    margin-left: 14%;
+    margin-right: 14%;
 }
 
 code {
