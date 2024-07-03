@@ -1,4 +1,33 @@
-Here are the settings for Software.
+# Cradle: Empowering Foundation Agents towards General Computer Control
+<div align="center">
+
+[[Website]](https://baai-agents.github.io/Cradle/)
+[[Arxiv (wait for update)]]()
+[[PDF]](https://drive.google.com/file/d/1j5AF8lw7zJNq9VnUXLM8OsMvWlUGQG88/view?usp=sharing)
+
+[![Python Version](https://img.shields.io/badge/Python-3.10-blue.svg)]()
+[![GitHub license](https://img.shields.io/badge/MIT-blue)]()
+
+![](docs/images/cradle-intro-cr.png)
+
+The Cradle framework is a first attempt at General Computer Control (GCC). Cradle supports agents to ace any computer task by enabling strong reasoning abilities, self-improvment, and skill curation, in a standardized general environment with minimal requirements.
+
+<img src="docs/images/rd2_task_grid_03.gif" width="320" height="180"/> <img src="docs/images/rd2_task_grid_02.gif" width="320" height="180"/> </br>
+<img src="docs/images/rd2_task_grid_01.gif" width="320" height="180"/> <img src="docs/images/rd2_task_grid_04.gif" width="320" height="180"/>
+
+## Videos
+
+<a alt="Watch the video" href="https://www.youtube.com/watch?v=Cx-D708BedY"><img src="docs/images/video1.jpg" width="33%" /></a>
+&nbsp;&nbsp;
+<a alt="Watch the video" href="https://www.youtube.com/watch?v=Oa4Ese8mMD0"><img src="docs/images/video2.jpg" width="33%" /></a>
+
+Click on either of the video thumbnails above to watch them on YouTube.
+
+</div>
+
+# Notice
+
+We are still working on further cleaning up the code and constantly updating it. We are also extending Cradle to more games and software. Feel free to reach out!
 
 ## Software Setup
 
@@ -160,3 +189,18 @@ Small tip: Use [log_proc.py] to visualize logs and see how to improve your promp
 5. Visualizing Logs:
 
     - Use [log_proc.py] to visualize logs. This helps you understand how your prompts and skills are performing and identify areas for improvement.
+
+# 🌲 File Structure
+
+# Citation
+If you find our work useful, please consider citing us!
+```
+@article{weihao2024cradle,
+  title     = {{Cradle: Empowering Foundation Agents towards General Computer Control}},
+  author    = {Weihao Tan and Wentao Zhang and Xinrun Xu and Haochong Xia and Ziluo Ding and Boyu Li and Bohan Zhou and Junpeng Yue and Jiechuan Jiang and Yewen Li and Ruyi An and Molei Qin and Chuqiao Zong and Longtao Zheng and Yujie Wu and Xiaoqiang Chai and Yifei Bi and Tianbao Xie and Pengjie Gu and Xiyun Li and Ceyao Zhang and Long Tian and Chaojie Wang and Xinrun Wang and Börje F. Karlsson and Bo An and Shuicheng Yan and Zongqing Lu},
+  journal   = {arXiv:2403.03186},
+  month     = {March},
+  year      = {2024},
+  primaryClass={cs.AI}
+}
+```
