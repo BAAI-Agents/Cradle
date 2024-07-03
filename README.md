@@ -80,8 +80,8 @@ git clone https://github.com/BAAI-Agents/Cradle.git
 cd Cradle
 
 # Create a new conda environment
-conda create --name uac-dev python=3.10
-conda activate uac-dev
+conda create --name cradle-dev python=3.10
+conda activate cradle-dev
 pip install -r requirements.txt
 ```
 

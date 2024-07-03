@@ -3,8 +3,8 @@
 Please setup your environment as:
 
 ```bash
-conda create --name uac-dev python=3.10
-conda activate uac-dev
+conda create --name cradle-dev python=3.10
+conda activate cradle-dev
 pip3 install -r requirements.txt
 ```
 
@@ -28,7 +28,7 @@ pip install en_core_web_lg-3.7.1.tar.gz
 
 ### Other Dependencies
 
-Keep the UAC requirements.txt file updated in your branch, but only add dependencies that are really required by the system.
+Keep the Cradle requirements.txt file updated in your branch, but only add dependencies that are really required by the system.
 
 runner.py is the entry point to run an agent. Currently not working code, just an introductory sample.
 
