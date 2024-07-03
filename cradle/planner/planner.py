@@ -6,13 +6,12 @@ import time
 import asyncio
 
 from cradle.config import Config
-from cradle.gameio.video.VideoFrameExtractor import JSONStructure
 from cradle.log import Logger
 from cradle.planner.base import BasePlanner
-from cradle.provider.base_llm import LLMProvider
+from cradle.provider.base.base_llm import LLMProvider
 from cradle.utils.check import check_planner_params
 from cradle.utils.file_utils import assemble_project_path, read_resource_file
-from cradle.utils.json_utils import load_json, parse_semi_formatted_text
+from cradle.utils.json_utils import load_json, parse_semi_formatted_text, JsonFrameStructure
 from cradle import constants
 
 config = Config()
@@ -144,27 +143,7 @@ def get_completion_in_sequence(llm_provider, text_input_map, extracted_frame_pat
     return True
 
 
-class ScreenClassification():
-    def __init__(self,
-                 input_example: Dict = None,
-                 template: Dict = None,
-                 llm_provider: LLMProvider = None,
-                 ):
-        self.input_example = input_example
-        self.template = template
-        self.llm_provider = llm_provider
-
-    def _pre(self, *args, input=None, screenshot_file=None, **kwargs):
-        return input, screenshot_file
-
-    def __call__(self, *args, input=None, screenshot_file=None, **kwargs):
-        raise NotImplementedError('ScreenClassification is not implemented independently yet')
-
-    def _post(self, *args, data=None, **kwargs):
-        return data
-
-
-class GatherInformation():
+class InformationGatheirng():
 
     def __init__(self,
                  input_map: Dict = None,
@@ -192,6 +171,7 @@ class GatherInformation():
 
 
     def __call__(self, *args, input: Dict[str, Any] = None, class_=None, **kwargs) -> Dict[str, Any]:
+
         gather_infromation_configurations = input["gather_information_configurations"]
 
         frame_extractor_gathered_information = None
@@ -199,17 +179,18 @@ class GatherInformation():
         object_detector_gathered_information = None
         llm_description_gathered_information = None
 
-
         input = self.input_map if input is None else input
         input = self._pre(input=input)
 
-        image_files = []
+        image_files: List[str] = []
         if "image_introduction" in input.keys():
             for image_info in input["image_introduction"]:
                 image_files.append(image_info["path"])
 
         flag = True
         processed_response = {}
+
+        all_task_guidance = []
 
         # Gather information by frame extractor
         if gather_infromation_configurations["frame_extractor"] is True:
@@ -243,7 +224,7 @@ class GatherInformation():
 
                 # For each keyframe, use llm to get the text information
                 video_prefix = os.path.basename(video_path).split('.')[0].split('_')[-1]  # Different video should have differen prefix for avoiding the same time stamp
-                frame_extractor_gathered_information = JSONStructure()
+                frame_extractor_gathered_information = JsonFrameStructure()
 
                 if config.parallel_request_gather_information:
                     # Create completions in parallel
@@ -255,7 +236,7 @@ class GatherInformation():
                     try:
                         loop.run_until_complete(
                             get_completion_in_parallel(self.llm_provider, self.text_input_map, extracted_frame_paths,
-                                                       text_input,self.get_text_template,video_prefix,frame_extractor_gathered_information))
+                                                       text_input, self.get_text_template, video_prefix, frame_extractor_gathered_information))
 
                     except KeyboardInterrupt:
 
@@ -306,7 +287,9 @@ class GatherInformation():
 
         # Gather information by LLM provider
         if gather_infromation_configurations["llm_description"] is True:
-            logger.write(f"Using llm description to gather information")
+
+            logger.write(f"Using LLM description to gather information")
+
             try:
                 # Call the LLM provider for gather information json
                 message_prompts = self.llm_provider.assemble_prompt(template_str=self.template, params=input)
@@ -425,7 +408,8 @@ class GatherInformation():
         return extracted_frame_paths
 
 
-class DecisionMaking():
+class ActionPlanning():
+
     def __init__(self,
                  input_map: Dict = None,
                  template: Dict = None,
@@ -467,7 +451,7 @@ class DecisionMaking():
             processed_response = parse_semi_formatted_text(response)
 
         except Exception as e:
-            logger.error(f"Error in decision_making: {e}")
+            logger.error(f"Error in action planning: {e}")
             logger.error_ex(e)
             flag = False
 
@@ -486,6 +470,7 @@ class DecisionMaking():
 
 
 class SuccessDetection():
+
     def __init__(self,
                  input_map: Dict = None,
                  template: Dict = None,
@@ -523,7 +508,7 @@ class SuccessDetection():
             processed_response = parse_semi_formatted_text(response)
 
         except Exception as e:
-            logger.error(f"Error in success_detection: {e}")
+            logger.error(f"Error in success detection: {e}")
             flag = False
 
         data = dict(
@@ -596,7 +581,7 @@ class SelfReflection():
         return data
 
 
-class InformationSummary():
+class TaskInference():
 
     def __init__(self,
                  input_map: Dict = None,
@@ -620,7 +605,6 @@ class InformationSummary():
 
         flag = True
         processed_response = {}
-        res_json = None
 
         try:
 
@@ -637,7 +621,7 @@ class InformationSummary():
             processed_response = parse_semi_formatted_text(response)
 
         except Exception as e:
-            logger.error(f"Error in information_summary: {e}")
+            logger.error(f"Error in task inference: {e}")
             flag = False
 
         data = dict(
@@ -660,10 +644,9 @@ class Planner(BasePlanner):
     def __init__(self,
                  llm_provider: Any = None,
                  planner_params: Dict = None,
-                 use_screen_classification: bool = False,
-                 use_information_summary: bool = False,
+                 use_task_inference: bool = False,
                  use_self_reflection: bool = False,
-                 gather_information_max_steps: int = 1,  # 5,
+                 information_gathering_max_steps: int = 1,  # 5,
                  icon_replacer: Any = None,
                  object_detector: Any = None,
                  frame_extractor: Any = None,
@@ -673,56 +656,42 @@ class Planner(BasePlanner):
         templates: template for composing the prompt
 
         planner_params = {
-            "__check_list__":[
-              "screen_classification",
-              "gather_information",
-              "decision_making",
-              "information_summary",
-              "self_reflection"
+            "__check_list__": [
+                "self_reflection",
+                ...
             ],
             "prompt_paths": {
-              "inputs": {
-                "screen_classification": "./res/prompts/inputs/screen_classification.json",
-                "gather_information": "./res/prompts/inputs/gather_information.json",
-                "decision_making": "./res/prompts/inputs/decision_making.json",
-                "success_detection": "./res/prompts/inputs/success_detection.json",
-                "information_summary": "./res/prompts/inputs/information_summary.json",
-                "self_reflection": "./res/prompts/inputs/self_reflection.json",
-              },
-              "templates": {
-                "screen_classification": "./res/prompts/templates/screen_classification.prompt",
-                "gather_information": "./res/prompts/templates/gather_information.prompt",
-                "decision_making": "./res/prompts/templates/decision_making.prompt",
-                "success_detection": "./res/prompts/templates/success_detection.prompt",
-                "information_summary": "./res/prompts/templates/information_summary.prompt",
-                "self_reflection": "./res/prompts/templates/self_reflection.prompt",
-              }
+                "inputs": {
+                    "self_reflection": "./res/{config.env_sub_path}/prompts/inputs/self_reflection.json",
+                    ...
+                },
+                "templates": {
+                    "self_reflection": "./res/{config.env_sub_path}/prompts/templates/self_reflection.prompt",
+                    ...
+                },
             }
-          }
+        }
         """
 
         super(BasePlanner, self).__init__()
 
         self.llm_provider = llm_provider
 
-        self.use_screen_classification = use_screen_classification
-        self.use_information_summary = use_information_summary
+        self.use_tak_inference = use_task_inference
         self.use_self_reflection = use_self_reflection
-        self.gather_information_max_steps = gather_information_max_steps
+        self.information_gathering_max_steps = information_gathering_max_steps
 
         self.icon_replacer = icon_replacer
         self.object_detector = object_detector
         self.frame_extractor = frame_extractor
         self.set_internal_params(planner_params=planner_params,
-                                 use_screen_classification=use_screen_classification,
-                                 use_information_summary=use_information_summary)
+                                 use_task_inference=use_task_inference)
 
 
     # Allow re-configuring planner
     def set_internal_params(self,
                             planner_params: Dict = None,
-                            use_screen_classification: bool = False,
-                            use_information_summary: bool = False):
+                            use_task_inference: bool = False):
 
         self.planner_params = planner_params
         if not check_planner_params(self.planner_params):
@@ -731,24 +700,17 @@ class Planner(BasePlanner):
         self.inputs = self._init_inputs()
         self.templates = self._init_templates()
 
-        if use_screen_classification:
-            self.screen_classification_ = ScreenClassification(input_example=self.inputs["screen_classification"],
-                                                               template=self.templates["screen_classification"],
-                                                               llm_provider=self.llm_provider)
-        else:
-            self.screen_classification_ = None
-
-        self.gather_information_ = GatherInformation(input_map=self.inputs["gather_information"],
-                                                     template=self.templates["gather_information"],
-                                                     text_input_map=self.inputs["gather_text_information"],
-                                                     get_text_template=self.templates["gather_text_information"],
+        self.information_gathering_ = InformationGatheirng(input_map=self.inputs[constants.INFORMATION_GATHERING_MODULE],
+                                                     template=self.templates[constants.INFORMATION_GATHERING_MODULE],
+                                                     text_input_map=self.inputs[constants.INFORMATION_TEXT_GATHERING_MODULE],
+                                                     get_text_template=self.templates[constants.INFORMATION_TEXT_GATHERING_MODULE],
                                                      frame_extractor=self.frame_extractor,
                                                      icon_replacer=self.icon_replacer,
                                                      object_detector=self.object_detector,
                                                      llm_provider=self.llm_provider)
 
-        self.decision_making_ = DecisionMaking(input_map=self.inputs["decision_making"],
-                                               template=self.templates["decision_making"],
+        self.action_planning_ = ActionPlanning(input_map=self.inputs[constants.ACTION_PLANNING_MODULE],
+                                               template=self.templates[constants.ACTION_PLANNING_MODULE],
                                                llm_provider=self.llm_provider)
 
         self.success_detection_ = SuccessDetection(input_map=self.inputs["success_detection"],
@@ -756,18 +718,18 @@ class Planner(BasePlanner):
                                                    llm_provider=self.llm_provider)
 
         if self.use_self_reflection:
-            self.self_reflection_ = SelfReflection(input_map=self.inputs["self_reflection"],
-                                                   template=self.templates["self_reflection"],
+            self.self_reflection_ = SelfReflection(input_map=self.inputs[constants.SELF_REFLECTION_MODULE],
+                                                   template=self.templates[constants.SELF_REFLECTION_MODULE],
                                                    llm_provider=self.llm_provider)
         else:
             self.self_reflection_ = None
 
-        if use_information_summary:
-            self.information_summary_ = InformationSummary(input_map=self.inputs["information_summary"],
-                                                           template=self.templates["information_summary"],
+        if use_task_inference:
+            self.task_inference_ = TaskInference(input_map=self.inputs[constants.TASK_INFERENCE_MODULE],
+                                                           template=self.templates[constants.TASK_INFERENCE_MODULE],
                                                            llm_provider=self.llm_provider)
         else:
-            self.information_summary_ = None
+            self.task_inference_ = None
 
 
     def _init_inputs(self):
@@ -781,7 +743,10 @@ class Planner(BasePlanner):
             if path.endswith(PROMPT_EXT):
                 input_examples[key] = read_resource_file(path)
             else:
-                input_examples[key] = load_json(path)
+                if path is not None and path.endswith(JSON_EXT):
+                    input_examples[key] = load_json(path)
+                else:
+                    input_examples[key] = dict()
 
         return input_examples
 
@@ -797,25 +762,23 @@ class Planner(BasePlanner):
             if path.endswith(PROMPT_EXT):
                 templates[key] = read_resource_file(path)
             else:
-                templates[key] = load_json(path)
+                if path is not None and path.endswith(JSON_EXT):
+                    templates[key] = load_json(path)
+                else:
+                    templates[key] = dict()
 
         return templates
 
 
-    def gather_information(self, *args, input: Dict[str, Any] = None, **kwargs) -> Dict[str, Any]:
+    def information_gathering(self, *args, input: Dict[str, Any] = None, **kwargs) -> Dict[str, Any]:
 
         if input is None:
-            input = self.inputs["gather_information"]
+            input = self.inputs[constants.INFORMATION_GATHERING_MODULE]
 
         image_file = input["image_introduction"][0]["path"]
 
-        if self.use_screen_classification:
-            class_ = self.screen_classification_(screenshot_file=image_file)["class_"]
-        else:
-            class_ = None
-
-        for i in range(self.gather_information_max_steps):
-            data = self.gather_information_(input=input, class_=class_)
+        for i in range(self.information_gathering_max_steps):
+            data = self.information_gathering_(input=input, class_=None)
 
             success = data["success"]
 
@@ -825,12 +788,12 @@ class Planner(BasePlanner):
         return data
 
 
-    def decision_making(self, *args, input: Dict[str, Any] = None, **kwargs) -> Dict[str, Any]:
+    def action_planning(self, *args, input: Dict[str, Any] = None, **kwargs) -> Dict[str, Any]:
 
         if input is None:
-            input = self.inputs["decision_making"]
+            input = self.inputs[constants.ACTION_PLANNING_MODULE]
 
-        data = self.decision_making_(input=input)
+        data = self.action_planning_(input=input)
 
         return data
 
@@ -848,18 +811,18 @@ class Planner(BasePlanner):
     def self_reflection(self, *args, input: Dict[str, Any] = None, **kwargs) -> Dict[str, Any]:
 
         if input is None:
-            input = self.inputs["self_reflection"]
+            input = self.inputs[constants.SELF_REFLECTION_MODULE]
 
         data = self.self_reflection_(input=input)
 
         return data
 
 
-    def information_summary(self, *args, input: Dict[str, Any] = None, **kwargs) -> Dict[str, Any]:
+    def task_inference(self, *args, input: Dict[str, Any] = None, **kwargs) -> Dict[str, Any]:
 
         if input is None:
-            input = self.inputs["information_summary"]
+            input = self.inputs[constants.TASK_INFERENCE_MODULE]
 
-        data = self.information_summary_(input=input)
+        data = self.task_inference_(input=input)
 
         return data

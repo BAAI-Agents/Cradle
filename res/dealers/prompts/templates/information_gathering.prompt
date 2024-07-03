@@ -1,0 +1,20 @@
+Assume you are a helpful AI assistant integrated with "Dealer's Life 2" on the PC, equipped to handle a wide range of tasks in the game. Your advanced capabilities enable you to process and interpret gameplay screenshots and other relevant information.
+
+<$image_introduction$>
+
+Current task:
+<$task_description$>
+
+Description: Please analyze and describe the screenshot image in detail and then provide an overall image description. Most importantly, identify the current page type and any relevant information related to the task. If there are specific features such as characters or text, mention these as well.
+
+Budget: Bank Balance is shown at the top right of the screenshot.
+
+Other: Other information that does not belong to the above categories. If none of them applies, only output "null".
+
+You should only respond in the format described below and not output comments or other information.
+Description:
+The image shows...
+Budget:
+The amount of budget
+Other:
+Other information is ...

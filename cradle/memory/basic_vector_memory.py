@@ -3,12 +3,12 @@ from typing import (
     Dict,
     Union,
     Optional,
+    Any
 )
 import os
 
 from cradle.config import Config
 from cradle.log import Logger
-from cradle.provider.base_embedding import EmbeddingProvider
 from cradle.memory.base import BaseMemory, Image
 from cradle.memory.vector_store import VectorStore
 from cradle.utils.json_utils import load_json, save_json
@@ -25,7 +25,7 @@ class BasicVectorMemory(BaseMemory):
         self,
         memory_path: str,
         vectorstores: VectorStore,
-        embedding_provider: EmbeddingProvider,
+        embedding_provider: Any,
         memory: Optional[Dict] = None,
     ):
         if memory is None:
@@ -119,7 +119,7 @@ class BasicVectorMemory(BaseMemory):
         cls,
         memory_path: str,
         vectorstore: VectorStore,
-        embedding_provider: EmbeddingProvider,
+        embedding_provider: Any,
     ) -> "BasicVectorMemory":
         """Load the memory from the local file."""
 

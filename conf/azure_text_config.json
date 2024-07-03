@@ -1,0 +1,12 @@
+{
+	"key_var": "AZ_TXT_OPENAI_KEY",
+	"base_var": "AZ_TXT_BASE_URL",
+	"models": {
+		"gpt-4": "gpt-4",
+		"text-embedding-ada-002": "text-embedding-ada-002"
+	},
+	"emb_model": "text-embedding-ada-002",
+	"comp_model": "gpt-4",
+	"is_azure": true,
+	"api_version": "2023-07-01-preview"
+}

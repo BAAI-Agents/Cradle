@@ -1,0 +1,172 @@
+{
+    "env_name": "Stardew Valley",
+    "sub_path": "stardew",
+    "env_short_name": "stardew",
+    "is_game": true,
+    "skill_registry_name": "cradle.environment.stardew.skill_registry.StardewSkillRegistry",
+    "ui_control_name": "cradle.environment.stardew.ui_control.StardewUIControl",
+    "task_description_list": [
+        {
+            "id": 1,
+            "task_description": "The task is to stand directly in front of the yellow-haired shopkeeper standing behind a green counter, purchase 10 units of Parsnip Seeds and leave store. The shopkeeper is in left top corner and exit is in left bottom corner. Enter the store, purchase 10 units of Parsnip Seeds and move down to leave store. In the store, the shopkeeper is in left top corner and exit is in left bottom corner. Get out of house, enter the store, purchase 10 units of Parsnip Seeds, move down to leave store, exit town and return home.",
+            "sub_task_description_list": []
+        }
+    ],
+    "skill_configs": {
+        "skill_names_basic": [
+            "do_action",
+            "use_tool",
+            "move_up",
+            "move_down",
+            "move_left",
+            "move_right",
+            "select_tool",
+            "use_tool_multiple_times",
+            "do_action_multiple_times",
+            "buy_item",
+            "go_through_door"
+        ],
+        "skill_names_movement": [],
+        "skill_names_map": [],
+        "skill_names_trade": [],
+        "skill_names_deny": [],
+        "skill_names_allow": []
+    },
+    "planner_params": {
+        "__check_list__": [
+            "action_planning",
+            "information_gathering",
+            "success_detection",
+            "self_reflection",
+            "task_inference",
+            "information_toolbar_gathering"
+        ],
+        "prompt_paths": {
+            "inputs": {
+                "action_planning": "./res/stardew/prompts/inputs/action_planning.json",
+                "information_gathering": "./res/stardew/prompts/inputs/information_gathering.json",
+                "success_detection": "./res/stardew/prompts/inputs/success_detection.json",
+                "self_reflection": "./res/stardew/prompts/inputs/self_reflection.json",
+                "task_inference": "./res/stardew/prompts/inputs/task_inference.json",
+                "information_text_gathering": "./res/stardew/prompts/inputs/information_text_gathering.json",
+                "information_toolbar_gathering": "./res/stardew/prompts/inputs/information_toolbar_gathering.json"
+            },
+            "templates": {
+                "action_planning": "./res/stardew/prompts/templates/action_planning_shopping.prompt",
+                "information_gathering": "./res/stardew/prompts/templates/information_gathering_shopping.prompt",
+                "success_detection": "./res/stardew/prompts/templates/success_detection.prompt",
+                "self_reflection": "./res/stardew/prompts/templates/self_reflection_shopping.prompt",
+                "task_inference": "./res/stardew/prompts/templates/task_inference_shopping.prompt",
+                "information_text_gathering": "./res/stardew/prompts/templates/information_text_gathering.prompt",
+                "information_toolbar_gathering": "./res/stardew/prompts/templates/information_toolbar_gathering_shopping.prompt"
+            }
+        }
+    },
+    "provider_configs": {
+        "augment_provider": {
+            "draw_axis": true,
+            "draw_mask_panel": true,
+            "mask_panel_config": {},
+            "axis_config": {
+                "crop_region": [
+                    0,
+                    0,
+                    1920,
+                    960
+                ],
+                "axis_division": [
+                    3,
+                    5
+                ],
+                "axis_linewidth": 5,
+                "axis_color": "yellow",
+                "font_color": "yellow",
+                "font_size": 50,
+                "scale_length": 20
+            },
+            "draw_grid": true,
+            "grid_config": {
+                "crop_region": [
+                    0,
+                    0,
+                    1920,
+                    1080
+                ],
+                "axis_division": [
+                    3,
+                    5
+                ],
+                "axis_linewidth": 3,
+                "axis_color": "red",
+                "font_color": "white",
+                "font_size": 50
+            },
+            "draw_color_band": true,
+            "color_band_config": {
+                "left_band_width": 200,
+                "left_band_height": 1080,
+                "left_band_color": "blue",
+                "right_band_width": 200,
+                "right_band_height": 1080,
+                "right_band_color": "yellow"
+            }
+        },
+        "action_planning_preprocess_provider": {
+            "toolbar_information": "The items in the toolbar are arranged from left to right in the following order:\n1. Axe: Tool. Used to chop wood.\n2. Hoe: Tool. Used to dig and till soil.\n3. Watering Can: Tool. Used to water crops. It can be refilled at any water source. Now it's full.\n4. Pickaxe: Tool. Used to break stones.\n5. Scythe: Tool. It can cut grass into hay, if you've built a silo.\n6. Unknown: It is unknown item in the slot.\n7. Blank: Empty slot.\n8. Blank: Empty slot.\n9. Blank: Empty slot.\n10. Blank: Empty slot.\n11. Blank: Empty slot.\n12. Blank: Empty slot.\nSelected item: 1. Axe\n"
+        },
+        "information_gathering_postprocess_provider": {
+            "base_toolbar_objects": {
+                "axe": {
+                    "name": "Axe",
+                    "type": "Tool",
+                    "description": "Used to chop woods."
+                },
+                "hoe": {
+                    "name": "Hoe",
+                    "type": "Tool",
+                    "description": "Used to dig and till soil."
+                },
+                "full_watering_can": {
+                    "name": "Watering Can",
+                    "type": "Tool",
+                    "description": "Used to water crops. It can be refilled at any water source. Now it's full."
+                },
+                "empty_watering_can": {
+                    "name": "Watering Can",
+                    "type": "Tool",
+                    "description": "Used to water crops. It can be refilled at any water source. Now it's empty."
+                },
+                "pickaxe": {
+                    "name": "Pickaxe",
+                    "type": "Tool",
+                    "description": "Used to break stones and rocks."
+                },
+                "scythe": {
+                    "name": "Scythe",
+                    "type": "Tool",
+                    "description": "It can cut grass and weeds into hay, if you've built a silo."
+                },
+                "parsnip_seeds": {
+                    "name": "Parsnip Seeds",
+                    "type": "Seed",
+                    "description": "Plant these in the spring. Takes 4 days to mature."
+                },
+                "parsnip": {
+                    "name": "Parsnip",
+                    "type": "Crop",
+                    "description": "Plant of the parsnip seeds. It's mature."
+                },
+                "blank": {
+                    "name": "Blank",
+                    "type": "Blank",
+                    "description": "Empty slot."
+                },
+                "unknown": {
+                    "name": "Unknown",
+                    "type": "Unknown",
+                    "description": "It is unknown item in the slot."
+                }
+            }
+        }
+    }
+}

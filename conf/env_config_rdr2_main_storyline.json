@@ -1,0 +1,90 @@
+{
+    "env_name": "Red Dead Redemption 2",
+    "sub_path": "rdr2",
+    "env_short_name": "rdr2",
+    "is_game": true,
+    "skill_registry_name": "cradle.environment.rdr2.skill_registry.RDR2SkillRegistry",
+    "ui_control_name": "cradle.environment.rdr2.ui_control.RDR2UIControl",
+    "task_description_list": [
+        {
+            "id": 1,
+            "task_description": "",
+            "sub_task_description_list": []
+        }
+    ],
+    "skill_configs": {
+        "skill_names_basic": [
+            "shoot_wolves",
+            "shoot",
+            "follow",
+            "go_to_horse",
+            "turn_and_move_forward",
+            "turn",
+            "move_forward",
+            "navigate_path",
+            "select_weapon",
+            "select_sidearm",
+            "fight",
+            "mount_horse"
+        ],
+        "skill_names_deny": [
+            "shoot",
+            "follow",
+            "turn",
+            "move_forward",
+            "go_to_horse",
+            "navigate_path",
+            "select_weapon",
+            "select_sidearm",
+            "fight",
+            "mount_horse"
+        ],
+        "skill_names_allow": [
+        ],
+        "skill_names_movement": [
+            "turn",
+            "move_forward",
+            "turn_and_move_forward"
+        ],
+        "skill_names_map": [
+            "select_previous_index_object",
+            "select_next_index_object"
+        ],
+        "skill_names_trade": [
+            "select_upside_product",
+            "select_downside_product",
+            "select_rightside_product",
+            "select_leftside_product"
+        ]
+    },
+    "planner_params": {
+        "__check_list__": [
+            "action_planning",
+            "information_gathering",
+            "success_detection",
+            "self_reflection",
+            "task_inference",
+            "information_text_gathering"
+        ],
+        "prompt_paths": {
+            "inputs": {
+                "action_planning": "./res/rdr2/prompts/inputs/action_planning.json",
+                "information_gathering": "./res/rdr2/prompts/inputs/information_gathering.json",
+                "success_detection": "./res/rdr2/prompts/inputs/success_detection.json",
+                "self_reflection": "./res/rdr2/prompts/inputs/self_reflection.json",
+                "task_inference": "./res/rdr2/prompts/inputs/task_inference.json",
+                "information_text_gathering": "./res/rdr2/prompts/inputs/information_text_gathering.json"
+            },
+            "templates": {
+                "action_planning": "./res/rdr2/prompts/templates/action_planning.prompt",
+                "information_gathering": "./res/rdr2/prompts/templates/information_gathering.prompt",
+                "success_detection": "./res/rdr2/prompts/templates/success_detection.prompt",
+                "self_reflection": "./res/rdr2/prompts/templates/self_reflection.prompt",
+                "task_inference": "./res/rdr2/prompts/templates/task_inference.prompt",
+                "information_text_gathering": "./res/rdr2/prompts/templates/information_text_gathering.prompt"
+            }
+        }
+    },
+    "provider_configs": {
+    }
+}

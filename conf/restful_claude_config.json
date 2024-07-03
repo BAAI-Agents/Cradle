@@ -1,0 +1,5 @@
+{
+    "comp_model": "claude-3-opus-20240229",
+    "ak_var": "RF_CLAUDE_AK",
+    "sk_var": "RF_CLAUDE_SK"
+}

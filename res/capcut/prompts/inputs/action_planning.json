@@ -1,0 +1,66 @@
+{
+    "type": "decision_making",
+    "task_description": "",
+    "skill_library": "",
+    "decision_making_memory_description": "",
+    "gathered_information_description": "",
+    "info_summary": "",
+    "number_of_execute_skills": 1,
+    "previous_action": "",
+    "previous_reasoning": "",
+    "few_shots": [
+        {
+            "introduction": "Here are some status examples of CapCut window screenshots.",
+            "path": "",
+            "assistant": ""
+        },
+        {
+            "introduction": "This is a correct example: A new CapCut project is created.",
+            "path": "./res/capcut/samples/new_project.jpg",
+            "assistant": "Yes, a new CapCut project is created."
+        },
+        {
+            "introduction": "This is a correct example: Click at the media.",
+            "path": "./res/capcut/samples/click_at_the_media.jpg",
+            "assistant": "Yes, it clicks at the media. Note that the mouse is clicking on the media, and there is a white border around the media."
+        },
+        {
+            "introduction": "This is a wrong example: Click at the media.",
+            "path": "./res/capcut/samples/not_click_at_the_media.jpg",
+            "assistant": "No, it doesn't click at the media. Note that the mouse is not clicking on the media, and there is no white border around the media."
+        }
+    ],
+    "image_introduction":[
+        {
+            "introduction": "Here are some previous screenshots to help in decision making.",
+            "path": "",
+            "assistant": ""
+        },
+        {
+            "introduction": "This screenshot is four steps before the current step in the application.",
+            "path": "",
+            "assistant": ""
+        },
+        {
+            "introduction": "This screenshot is three steps before the current step in the application.",
+            "path": "",
+            "assistant": ""
+        },
+        {
+            "introduction": "This screenshot is two steps before the current step in the application.",
+            "path": "",
+            "assistant": ""
+        },
+        {
+            "introduction": "This screenshot is the previous step in the application.",
+            "path": "",
+            "assistant": ""
+        },
+        {
+            "introduction": "This screenshot is the current step in the application.",
+            "path": "",
+            "resolution": "high",
+            "assistant": ""
+        }
+    ]
+}

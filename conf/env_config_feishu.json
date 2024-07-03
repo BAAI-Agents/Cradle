@@ -1,0 +1,83 @@
+{
+    "env_name": "Feishu",
+    "sub_path": "feishu",
+    "env_short_name": "feishu",
+    "is_game": false,
+    "shared_runner": "app",
+    "skill_registry_name": "cradle.environment.feishu.skill_registry.FeishuSkillRegistry",
+    "ui_control_name": "cradle.environment.software.ui_control.SoftwareUIControl",
+    "provider_configs": {
+        "sam2som_config": {
+            "disable_close_app_icon": true
+        }
+    },
+    "task_description_list": [
+        {
+            "id": 1,
+            "task_description": "Create a new appointment in my calendar anytime later today with title \"Focus time\".",
+            "sub_task_description_list": []
+        },
+        {
+            "id": 2,
+            "task_description": "Please send a \"Hi\" chat message to Cradle.",
+            "sub_task_description_list": []
+        },
+        {
+            "id": 3,
+            "task_description": "Send the AWS bill file from Desktop/aws-bill.pdf in a chat with \"Börje\".",
+            "sub_task_description_list": []
+        },
+        {
+            "id": 4,
+            "task_description": "Open the user profile menu and set my status to \"In meeting\".",
+            "sub_task_description_list": []
+        },
+        {
+            "id": 5,
+            "task_description": "Create a new meeting and meet now.",
+            "sub_task_description_list": []
+        }
+    ],
+    "planner_params": {
+        "__check_list__": [
+            "action_planning",
+            "information_gathering",
+            "self_reflection",
+            "task_inference"
+        ],
+        "prompt_paths": {
+            "inputs": {
+                "action_planning": "./res/feishu/prompts/inputs/action_planning.json",
+                "information_gathering": "./res/feishu/prompts/inputs/information_gathering.json",
+                "success_detection": "",
+                "self_reflection": "./res/feishu/prompts/inputs/self_reflection.json",
+                "task_inference": "./res/feishu/prompts/inputs/task_inference.json",
+                "information_text_gathering": ""
+            },
+            "templates": {
+                "action_planning": "./res/feishu/prompts/templates/action_planning.prompt",
+                "information_gathering": "./res/feishu/prompts/templates/information_gathering.prompt",
+                "success_detection": "",
+                "self_reflection": "./res/feishu/prompts/templates/self_reflection.prompt",
+                "task_inference": "./res/feishu/prompts/templates/task_inference.prompt",
+                "information_text_gathering": ""
+            }
+        }
+    },
+    "skill_configs": {
+        "skill_names_basic": [
+            "open_the_user_profile_menu",
+            "click_attachment_button",
+            "click_at_position",
+            "move_mouse_to_position",
+            "mouse_drag",
+            "type_text",
+            "press_key",
+            "press_keys_combined",
+            "click_on_label",
+            "hover_on_label"
+        ],
+        "skill_names_deny": [],
+        "skill_names_allow": []
+    }
+}

@@ -3,19 +3,18 @@ from cradle.log import Logger
 from cradle.gameio import GameManager
 from cradle.planner.planner import Planner
 from cradle.memory import BaseMemory
-from cradle.gameio.atomic_skills.map import __all__ as map_skills
-from cradle.gameio.atomic_skills.buy import __all__ as buy_skills
-from cradle.gameio.atomic_skills.trade_utils import __all__ as trade_skills
-from cradle.gameio.atomic_skills.move import __all__ as move_skills
-from cradle.gameio.composite_skills.navigation import __all__ as nav_skills
-from cradle.gameio.composite_skills.go_to_icon import __all__ as go_skills
+from cradle.environment.rdr2.atomic_skills.map import __all__ as map_skills
+from cradle.environment.rdr2.atomic_skills.buy import __all__ as buy_skills
+from cradle.environment.rdr2.atomic_skills.trade_utils import __all__ as trade_skills
+from cradle.environment.rdr2.atomic_skills.move import __all__ as move_skills
+from cradle.environment.rdr2.composite_skills.navigation import __all__ as nav_skills
+from cradle.environment.rdr2.composite_skills.go_to_icon import __all__ as go_skills
 
 
 config = Config()
 logger = Logger()
 
 # This is an incomplete example with not complete quality code, just to bootstrap the repo.
-# For now, use the prototype_runner.py to run the agent loop.
 
 def decision_making_args(planner, memory):
 
@@ -194,7 +193,7 @@ class Agent:
                     args_func = sub_task_args["gathering_info"]
 
                     logger.write(f'> Gathering information call...')
-                    data = self.planner.gather_information(input=args_func(current_state_image))
+                    data = self.planner.information_gathering(input=args_func(current_state_image))
                     info_response = data["res_dict"]["description"]
 
                 logger.write(f'R: Description: {info_response}')
@@ -205,7 +204,7 @@ class Agent:
 
                 logger.write(f'> Decision making call...')
 
-                data = self.planner.decision_making(input=decision_making_args(self.planner, self.memory))
+                data = self.planner.action_planning(input=decision_making_args(self.planner, self.memory))
                 skills_to_execute = data['res_dict']['actions']
 
                 plan_reasoning = data['res_dict']['reasoning']
@@ -239,7 +238,7 @@ class Agent:
                 if use_information_summary:
                     if len(self.memory.get_recent_history("decision_making_reasoning", self.memory.max_recent_steps)) == self.memory.max_recent_steps:
                         event_count = min(config.max_recent_steps,config.event_count)
-                        input = self.planner.information_summary_.input_map
+                        input = self.planner.task_inference_.input_map
                         logger.write(f'> Information summary call...')
                         images = self.memory.get_recent_history('image', event_count)
                         reasonings = self.memory.get_recent_history('decision_making_reasoning', event_count)
@@ -250,7 +249,7 @@ class Agent:
                         input["task_description"] = sub_task_description
                         input["event_count"] = str(event_count)
 
-                        data = self.planner.information_summary(input = input)
+                        data = self.planner.task_inference(input = input)
                         info_summary = data['res_dict']['info_summary']
                         entities_and_behaviors = data['res_dict']['entities_and_behaviors']
                         logger.write(f'R: Summary: {info_summary}')

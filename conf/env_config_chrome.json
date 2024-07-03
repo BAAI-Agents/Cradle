@@ -1,0 +1,101 @@
+{
+    "env_name": "Google Chrome",
+    "sub_path": "chrome",
+    "env_short_name": "chrome",
+    "is_game": false,
+    "shared_runner": "app",
+    "skill_registry_name": "cradle.environment.chrome.skill_registry.ChromeSkillRegistry",
+    "ui_control_name": "cradle.environment.software.ui_control.SoftwareUIControl",
+    "provider_configs": {
+        "sam2som_config": {
+            "sam2som_mode": "default",
+            "sam_pred_iou_thresh": 0.4,
+            "sam_resize_ratio": 0.4,
+            "sam_contrast_level": 1.5,
+            "sam_max_area": 0.15
+        }
+    },
+    "task_description_list": [
+        {
+            "id": 1,
+            "task_description": "Search for an article with title containing \"Towards General Computer Control\" and save its PDF file.",
+            "sub_task_description_list": [
+                "Search for \"Towards General Computer Control\"",
+                "Go to the PDF page of an article starting with \"Towards General Computer Control\"",
+                "Save the PDF file"
+            ]
+        },
+        {
+            "id": 2,
+            "task_description": "Post \"It's a good day.\" on my Twitter.",
+            "sub_task_description_list": [
+                "Go to Twitter page",
+                "Click Post button",
+                "Type \"It's a good day.\" and twitter the post"
+            ]
+        },
+        {
+            "id": 3,
+            "task_description": "Open the last closed page.",
+            "sub_task_description_list": [
+                "Open the first page of recently closed history."
+            ]
+        },
+        {
+            "id": 4,
+            "task_description": "Find and navigate to tellarin's homepage on GitHub.",
+            "sub_task_description_list": [
+                "Search for \"tellarin Github\"",
+                "Go to tellarin's homepage on GitHub."
+            ]
+        },
+        {
+            "id": 5,
+            "task_description": "Customize Chrome to dark mode.",
+            "sub_task_description_list": [
+                "Open settings",
+                "Click on appearance",
+                "Change mode to dark"
+            ]
+        }
+    ],
+    "planner_params": {
+        "__check_list__": [
+            "action_planning",
+            "information_gathering",
+            "self_reflection",
+            "task_inference"
+        ],
+        "prompt_paths": {
+            "inputs": {
+                "action_planning": "./res/chrome/prompts/inputs/action_planning.json",
+                "information_gathering": "./res/chrome/prompts/inputs/information_gathering.json",
+                "success_detection": "",
+                "self_reflection": "./res/chrome/prompts/inputs/self_reflection.json",
+                "task_inference": "./res/chrome/prompts/inputs/task_inference.json",
+                "information_text_gathering": ""
+            },
+            "templates": {
+                "action_planning": "./res/chrome/prompts/templates/action_planning.prompt",
+                "information_gathering": "./res/chrome/prompts/templates/information_gathering.prompt",
+                "success_detection": "",
+                "self_reflection": "./res/chrome/prompts/templates/self_reflection.prompt",
+                "task_inference": "./res/chrome/prompts/templates/task_inference.prompt",
+                "information_text_gathering": ""
+            }
+        }
+    },
+    "skill_configs": {
+        "skill_names_basic": [
+            "click_at_position",
+            "type_text",
+            "press_key",
+            "return_to_previous_page",
+            "press_keys_combined",
+            "click_on_label",
+            "go_back_to_target_application"
+        ],
+        "skill_names_deny": [],
+        "skill_names_allow": []
+    }
+}

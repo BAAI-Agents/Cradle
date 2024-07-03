@@ -1,0 +1,51 @@
+{
+    "type": "decision_making",
+    "task_description": "",
+    "skill_library": "",
+    "decision_making_memory_description": "",
+    "gathered_information_description": "",
+    "info_summary": "",
+    "number_of_execute_skills": 2,
+    "previous_action": "",
+    "previous_reasoning": "",
+    "few_shots": [
+        {
+            "introduction": "",
+            "path": "",
+            "assistant": ""
+        }
+    ],
+    "image_introduction":[
+        {
+            "introduction": "Here are some previous screenshots to help in decision making.",
+            "path": "",
+            "assistant": ""
+        },
+        {
+            "introduction": "This screenshot is four steps before the current step in the application.",
+            "path": "",
+            "assistant": ""
+        },
+        {
+            "introduction": "This screenshot is three steps before the current step in the application.",
+            "path": "",
+            "assistant": ""
+        },
+        {
+            "introduction": "This screenshot is two steps before the current step in the application.",
+            "path": "",
+            "assistant": ""
+        },
+        {
+            "introduction": "This screenshot is the previous step in the application.",
+            "path": "",
+            "assistant": ""
+        },
+        {
+            "introduction": "This screenshot is the current step in the application.",
+            "path": "",
+            "resolution": "high",
+            "assistant": ""
+        }
+    ]
+}

@@ -1,0 +1,89 @@
+{
+    "env_name": "XiuXiu",
+    "sub_path": "xiuxiu",
+    "env_short_name": "xiuxiu",
+    "is_game": false,
+    "shared_runner": "app",
+    "skill_registry_name": "cradle.environment.xiuxiu.skill_registry.XiuxiuSkillRegistry",
+    "ui_control_name": "cradle.environment.software.ui_control.SoftwareUIControl",
+    "provider_configs": {
+        "sam2som_config": {
+            "sam_pred_iou_thresh": 0.4,
+            "sam_resize_ratio": 0.4,
+            "sam_contrast_level": 3.0,
+            "sam_max_area": 0.15
+        }
+    },
+    "task_description_list": [
+        {
+            "id": 1,
+            "task_description": "Apply a filter from Meitu to a picture and save the picture.",
+            "sub_task_description_list": []
+        },
+        {
+            "id": 2,
+            "task_description": "Cutout a person from A_picture.jpg and save the picture.",
+            "sub_task_description_list": []
+        },
+        {
+            "id": 3,
+            "task_description": "Add a flower sticker to your photo and save the picture.",
+            "sub_task_description_list": []
+        },
+        {
+            "id": 4,
+            "task_description": "Make a collage using 3 pictures and save the project.",
+            "sub_task_description_list": []
+        },
+        {
+            "id": 5,
+            "task_description": "Add a circle-shaped frame to A_picture.jpg, and save the picture.",
+            "sub_task_description_list": []
+        }
+    ],
+    "planner_params": {
+        "__check_list__": [
+            "action_planning",
+            "information_gathering",
+            "self_reflection",
+            "task_inference"
+        ],
+        "prompt_paths": {
+            "inputs": {
+                "action_planning": "./res/xiuxiu/prompts/inputs/action_planning.json",
+                "information_gathering": "./res/xiuxiu/prompts/inputs/information_gathering.json",
+                "success_detection": "",
+                "self_reflection": "./res/xiuxiu/prompts/inputs/self_reflection.json",
+                "task_inference": "./res/xiuxiu/prompts/inputs/task_inference.json",
+                "information_text_gathering": ""
+            },
+            "templates": {
+                "action_planning": "./res/xiuxiu/prompts/templates/action_planning.prompt",
+                "information_gathering": "./res/xiuxiu/prompts/templates/information_gathering.prompt",
+                "success_detection": "",
+                "self_reflection": "./res/xiuxiu/prompts/templates/self_reflection.prompt",
+                "task_inference": "./res/xiuxiu/prompts/templates/task_inference.prompt",
+                "information_text_gathering": ""
+            }
+        }
+    },
+    "skill_configs": {
+        "skill_names_basic": [
+            "click_at_position",
+            "type_text",
+            "press_key",
+            "return_to_previous_page",
+            "press_keys_combined",
+            "click_on_label",
+            "go_back_to_target_application",
+            "save_project",
+            "double_click_at_position",
+            "double_click_on_label",
+            "undo",
+            "mouse_scroll_down"
+        ],
+        "skill_names_deny": [],
+        "skill_names_allow": []
+    }
+}
+

@@ -1,0 +1,27 @@
+{
+    "task_description": "You should identify the number of the item in the bag.",
+    "image_introduction": [
+        {
+            "introduction": "This is a screenshot of a single grid in the bag, the bottom right corner represents the number of the item in the bag.",
+            "path": "",
+            "assistant": ""
+        }
+    ],
+    "few_shots": [
+        {
+            "introduction": "This is an example: The number is clearly at the bottom right corner of the image, which is 27.",
+            "path": "./res/stardew/samples/item_27.jpg",
+            "assistant": "27"
+        },
+        {
+            "introduction": "This is an example: The number is clearly at the bottom right corner of the image, which is 37.",
+            "path": "./res/stardew/samples/item_37.jpg",
+            "assistant": "37"
+        },
+        {
+            "introduction": "This is an example: There is no number presented at the bottom right corner of the image, so the number should be 1.",
+            "path": "./res/stardew/samples/item_1.jpg",
+            "assistant": "1"
+        }
+    ]
+}
