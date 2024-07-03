@@ -266,4 +266,16 @@ body {
   margin-left: 10%;
 }
 
+pre {
+    white-space: pre;
+    overflow-x: auto;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+code {
+    font-family: monospace;
+}
+
 
