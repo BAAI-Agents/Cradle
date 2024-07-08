@@ -4,26 +4,7 @@ Here are the settings for Software side.
 
 ### 1. Install Software Dependencies
 
-**a. Install necessary dependencies**
-
-```bash
-pip install matplotlib
-pip install supervision
-```
-
-**b. Install ahk module**
-
-```bash
-pip install ahk
-```
-
-Dowbload and install [AutoHotkey](https://www.autohotkey.com/).
-
-```bash
-pip install "ahk[binary]"
-```
-
-**c. Install Segment Anything Model (SAM)**
+**Install Segment Anything Model (SAM)**
 
 On Windows install from https://developer.nvidia.com/cuda-11-8-0-download-archive (Linux packages also available).
 
@@ -41,10 +22,6 @@ pip3 install torchvision==0.16.1+cu118 -f https://download.pytorch.org/whl/torch
 ```
 
 Download the [StableSAM](https://huggingface.co/spaces/abhishek/StableSAM/blob/main/sam_vit_h_4b8939.pth) model file and copy it to the `/cache` folder.
-
-```bash
-pip install git+https://github.com/facebookresearch/segment-anything.git
-```
 
 ### 2. Change Computer Settings Before Running the Code
 
