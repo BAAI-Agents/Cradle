@@ -69,7 +69,7 @@ python runner.py --envConfig "./conf/env_config_feishu.json"
 
 Or if you want use debug mode, you need to change the `--envConfig` target in `.vscode\launch.json` to the software's JSON file in the `conf\` directory that you want to test.
 
-## 25 Tasks in our Paper
+## 25 Tasks Provided
 
 Task Descriptions for Chrome, Outlook, CapCut, Meitu and Feishu. **Difficulty** refers to how hard it is for our agent to accomplish the corresponding tasks.
 
