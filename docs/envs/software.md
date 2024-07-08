@@ -49,6 +49,8 @@ In theory, any version can be used. However, if you want to reproduce our experi
 
 ### 4. Run
 
+Change the `task_id` or `subtask_id` in `cradle/runner/app_runner.py` to switch between tasks.
+
 To simplify operations, the default LLM model we use is OpenAI's `GPT-4o`.
 After opening the corresponding software in your main screen, use the follow script to let Cradle run.
 
@@ -103,8 +105,6 @@ Task Descriptions for Chrome, Outlook, CapCut, Meitu and Feishu. **Difficulty** 
 | #3 Send File| Send the AWS bill file at *{pdf_path}* in a chat with *{contact_name}*. | Hard |
 | #4 Set User Status| Open the user profile menu and set my status to "In meeting". | Medium |
 | #5 Start Video Conference | Create a new meeting and meet now. | Easy |
-
-Change the `task_id` or `subtask_id` in `cradle/runner/app_runner.py` to switch between tasks.
 
 ## Initial Stage for Every Software
 
