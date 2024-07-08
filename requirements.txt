@@ -1,3 +1,5 @@
+ahk==1.7.6
+ahk-binary==2023.9.0
 backoff==2.2.1
 openai==1.2.3
 python-dotenv==1.0.0
@@ -16,6 +18,8 @@ aiohttp
 easyocr==1.7.1
 spacy==3.7.2
 chardet==5.2.0
+matplotlib==3.9.1
+supervision==0.21.0
 pyobjc-framework-Quartz==10.0; sys_platform == "darwin"
 pyobjc-framework-Cocoa==10.0; sys_platform == "darwin"
 git+https://github.com/facebookresearch/segment-anything.git

@@ -20,12 +20,14 @@ from cradle.constants import COLOURS
 from cradle.config import Config
 from cradle.gameio import IOEnvironment
 from cradle.log import Logger
-from cradle.utils.object_utils import groundingdino_detect
 from cradle import constants
 
 config = Config()
 io_env = IOEnvironment()
 logger = Logger()
+
+if config.is_game == True:
+    from cradle.utils.object_utils import groundingdino_detect
 
 
 def show_image(img):

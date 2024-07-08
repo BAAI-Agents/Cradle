@@ -10,7 +10,7 @@ from cradle.utils.image_utils import minimap_movement_detection
 from cradle.environment.rdr2.atomic_skills.move import turn, move_forward
 from cradle.environment.rdr2.skill_registry import register_skill
 from cradle.utils.image_utils import exec_clip_minimap
-from cradle.utils.object_utils import groundingdino_detect, circle_detector_detect
+from cradle.utils.object_utils import circle_detector_detect
 from cradle import constants
 
 config = Config()

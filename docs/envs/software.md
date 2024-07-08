@@ -1,8 +1,23 @@
-Here are the settings for Software side.
-
 ## Software Setup
 
 ### 1. Install Software Dependencies
+
+**Install Segment Anything Model (SAM)**
+
+On Windows install from https://developer.nvidia.com/cuda-11-8-0-download-archive (Linux packages also available).
+
+Ensure pytorch is installed using the right CUDA dependencies.
+
+```bash
+conda install pytorch torchvision cudatoolkit=11.8 -c nvidia -c pytorch
+```
+
+If this doesn't work, or you prefer the pip way, you can try something like:
+
+```bash
+pip3 install --upgrade torch==2.1.1+cu118 -f https://download.pytorch.org/whl/torch_stable.html
+pip3 install torchvision==0.16.1+cu118 -f https://download.pytorch.org/whl/torch_stable.html
+```
 
 Download the [StableSAM](https://huggingface.co/spaces/abhishek/StableSAM/blob/main/sam_vit_h_4b8939.pth) model file and copy it to the `/cache` folder.
 
@@ -16,9 +31,15 @@ Then, set the folder that the agent will open to display in Large icons or Extra
 
 ![Large icons](../envs/images/software/large_icon.png)
 
-### 3. Open the software you want to test
+### 3. Open the software and task you want to run
+Cradle is mainly tested on Chrome, Outlook, Capcut, Meitu and Feishu. Theoretically, it can also be run on other software applications.
 
-Below are the exact software versions utilized in our paper:
+#### 3.1 Follow [25 Tasks Provided](#25-tasks-provided) to choose the software and task you want to run
+Change the task `task_id` in `cradle/runner/app_runner.py` according to the description in `cradle/conf/env_config_[env_name].json` to switch among tasks.
+
+#### 3.2 Follow [Initial Stage for Each Software](#initial-stage-for-each-software) to open the software 
+
+Below are the exact software versions utilized:
 
 | Software | Version |
 | -------- | ------- |
@@ -33,7 +54,7 @@ In theory, any version can be used. However, if you want to reproduce our experi
 ### 4. Run
 
 To simplify operations, the default LLM model we use is OpenAI's `GPT-4o`.
-After opening the corresponding software in your main screen, use the follow script to let Cradle run.
+After opening the corresponding software on your main screen, use the following script to let Cradle run.
 
 ```bash
 # Run Chrome
@@ -48,9 +69,7 @@ python runner.py --envConfig "./conf/env_config_xiuxiu.json"
 python runner.py --envConfig "./conf/env_config_feishu.json"
 ```
 
-Or if you want use debug mode, you need to change the `--envConfig` target in `.vscode\launch.json` to the software's JSON file in the `conf\` directory that you want to test.
-
-## 25 Tasks in our Paper
+## 25 Tasks Provided
 
 Task Descriptions for Chrome, Outlook, CapCut, Meitu and Feishu. **Difficulty** refers to how hard it is for our agent to accomplish the corresponding tasks.
 
@@ -87,7 +106,7 @@ Task Descriptions for Chrome, Outlook, CapCut, Meitu and Feishu. **Difficulty** 
 | #4 Set User Status| Open the user profile menu and set my status to "In meeting". | Medium |
 | #5 Start Video Conference | Create a new meeting and meet now. | Easy |
 
-## Initial Stage for Every Software
+## Initial Stage for Each Software
 
 ### 1. Chrome
 
@@ -154,8 +173,3 @@ For each task in Feishu, the initial page is shown in the figure:
 
    - Copy the `cradle\environment\chrome` folder located in `cradle\environment\` and rename it to match your software environment name. Replace all instances of "chrome" within the folder with your software's environment name.
    - Copy the `res\chrome` folder located in `res\` and rename it to your software environment name. Replace all instances of "chrome" within the folder with your software's environment name. Modify the prompts and template-matching icon images as needed for important UI elements that SAM2SOM cannot recognize.
-
-4. Debug and Terminal Modes:
-
-    - Debug Mode: Change the `--envConfig` target in `.vscode\launch.json` to point to the software's JSON file in the `conf\` directory that you want to test.
-    - Terminal Mode: Pass the `--envConfig` argument to the software's JSON file in the `conf\` directory that you want to test.
