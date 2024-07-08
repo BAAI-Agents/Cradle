@@ -20,7 +20,6 @@ from cradle.environment.utils import serialize_skills, deserialize_skills
 from cradle.utils.check import is_valid_value
 from cradle.gameio.io_env import IOEnvironment
 from cradle.constants import *
-from cradle.utils.object_utils import groundingdino_detect, circle_detector_detect
 
 
 config = Config()

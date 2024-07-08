@@ -4,7 +4,47 @@ Here are the settings for Software side.
 
 ### 1. Install Software Dependencies
 
+**a. Install necessary dependencies**
+
+```bash
+pip install matplotlib
+pip install supervision
+```
+
+**b. Install ahk module**
+
+```bash
+pip install ahk
+```
+
+Dowbload and install [AutoHotkey](https://www.autohotkey.com/).
+
+```bash
+pip install "ahk[binary]"
+```
+
+**c. Install Segment Anything Model (SAM)**
+
+On Windows install from https://developer.nvidia.com/cuda-11-8-0-download-archive (Linux packages also available).
+
+Ensure pytorch is installed using the right CUDA dependencies.
+
+```bash
+conda install pytorch torchvision cudatoolkit=11.8 -c nvidia -c pytorch
+```
+
+If this doesn't work, or you prefer the pip way, you can try something like:
+
+```bash
+pip3 install --upgrade torch==2.1.1+cu118 -f https://download.pytorch.org/whl/torch_stable.html
+pip3 install torchvision==0.16.1+cu118 -f https://download.pytorch.org/whl/torch_stable.html
+```
+
 Download the [StableSAM](https://huggingface.co/spaces/abhishek/StableSAM/blob/main/sam_vit_h_4b8939.pth) model file and copy it to the `/cache` folder.
+
+```bash
+pip install git+https://github.com/facebookresearch/segment-anything.git
+```
 
 ### 2. Change Computer Settings Before Running the Code
 
@@ -86,6 +126,8 @@ Task Descriptions for Chrome, Outlook, CapCut, Meitu and Feishu. **Difficulty** 
 | #3 Send File| Send the AWS bill file at *{pdf_path}* in a chat with *{contact_name}*. | Hard |
 | #4 Set User Status| Open the user profile menu and set my status to "In meeting". | Medium |
 | #5 Start Video Conference | Create a new meeting and meet now. | Easy |
+
+Change the `task_id` or `subtask_id` in `cradle/runner/app_runner.py` to switch between tasks.
 
 ## Initial Stage for Every Software
 

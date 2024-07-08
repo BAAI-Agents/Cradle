@@ -6,11 +6,6 @@ import cv2
 import torch
 from torchvision.ops import box_convert
 
-try:
-    from groundingdino.util.inference import annotate
-except:
-    pass
-
 from cradle.config import Config
 from cradle.log import Logger
 from cradle.gameio.io_env import IOEnvironment
@@ -18,12 +13,19 @@ from cradle.environment.rdr2.atomic_skills.combat import aim, shoot
 from cradle.environment.rdr2.atomic_skills.move import turn
 from cradle.environment.rdr2.skill_registry import register_skill
 from cradle.utils.image_utils import exec_clip_minimap
-from cradle.utils.object_utils import groundingdino_detect, circle_detector_detect
 from cradle import constants
 
 config = Config()
 logger = Logger()
 io_env = IOEnvironment()
+
+if config.is_game == True:
+    try:
+        from groundingdino.util.inference import annotate
+    except:
+        pass
+
+    from cradle.utils.object_utils import groundingdino_detect, circle_detector_detect
 
 DEFAULT_MAX_SHOOTING_ITERATIONS = 100
 SHOOT_PEOPLE_TARGET_NAME = "person"
