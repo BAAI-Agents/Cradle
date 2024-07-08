@@ -35,7 +35,7 @@ Then, set the folder that the agent will open to display in Large icons or Extra
 Cradle is mainly tested on Chrome, Outlook, Capcut, Meitu and Feishu. Theoretically, it can also be run on other software applications.
 
 #### 3.1 Follow [25 Tasks Provided](#25-tasks-provided) to choose the software and task you want to run
-Change the task `task_id` in `cradle/runner/app_runner.py` according to the description in `Cradle/conf
+Change the task `task_id` in `cradle/runner/app_runner.py` according to the description in `cradle/conf
 /env_config_[env_name].json` to switch among tasks.
 
 #### 3.2 Follow [Initial Stage for Each Software](#initial-stage-for-each-software) to open the software 
