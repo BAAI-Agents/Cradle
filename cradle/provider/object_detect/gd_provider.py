@@ -3,11 +3,15 @@ from copy import deepcopy
 from cradle.provider import BaseProvider
 from cradle import constants
 from cradle.log import Logger
+from cradle.config import Config
 from cradle.memory import LocalMemory
-from cradle.utils.object_utils import groundingdino_detect
 
+config = Config()
 logger = Logger()
 memory = LocalMemory()
+
+if config.is_game == True:
+    from cradle.utils.object_utils import groundingdino_detect
 
 
 class GdProvider(BaseProvider):
