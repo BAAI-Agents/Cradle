@@ -3,7 +3,7 @@ Here are the settings for Red Dead Redemption 2 (RDR2) game. And this environmen
 
 ## Setup for RDR2
 
-### Install Grounding Dino
+### Install GroundingDino
 ```bash
 # Install torch and torchvision
 pip install --upgrade torch==2.1.1+cu118 -f https://download.pytorch.org/whl/torch_stable.html
@@ -25,7 +25,7 @@ pip install -r requirements.txt
 pip install .
 cd Cradle
 ```
-If you encounter any issues during the installation of GroundingDINO, please refer to the official website [GroundingDINO](https://github.com/IDEA-Research/GroundingDINO) or our provided [GroundingDino Installation Guide](docs/envs/groundingdino.md).
+If you encounter any issues during the installation of GroundingDINO, please refer to the official website [GroundingDINO](https://github.com/IDEA-Research/GroundingDINO) or our provided [GroundingDino Installation Guide](groundingdino.md).
 
 ### Download videosubfinder
 Download the videosubfinder from https://sourceforge.net/projects/videosubfinder/ and extract the files into the res/tool/subfinder folder. We have already created the folder for you and included a test.srt, which is a required dummy file that will not affect results.
