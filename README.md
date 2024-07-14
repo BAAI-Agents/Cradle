@@ -37,7 +37,7 @@ via the same unified interface humans use, i.e., screenshots as input and keyboa
 &nbsp;&nbsp;
 <a alt="Watch the video" href="https://www.youtube.com/watch?v=WZiL_0V880M"><img src="./docs/envs/images/dealers/dealer_video_cover.png" width="33%" /></a>
 &nbsp;&nbsp;
-<a alt="Watch the video" href="https://www.youtube.com/watch?v=k0K_GbmTthg"><img src="./docs/envs/images/software/Software_cover.png" width="33%" /></a>
+<a alt="Watch the video" href="https://www.youtube.com/watch?v=uWgLnZmpVTM"><img src="./docs/envs/images/software/Software_cover.png" width="33%" /></a>
 &nbsp;&nbsp;
 </div>
 
@@ -115,15 +115,90 @@ Due to the vast differences between each game and software, we have provided the
 <img src="./docs/images/games_wheel.png" height="365" /> <img src="./docs/images/applications_wheel.png" height="365" />
 </div>
 
+# 🌲 File Structure
+Since some users may want to apply our framework to new games, this section primarily showcases the core directories and organizational structure of Cradle. We will highlight in "⭐⭐⭐" the modules related to migrating to new games, and provide detailed explanations later.
+```
+Cradle
+├── cache # Cache the GroundingDino model and the bert-base-uncased model
+├── conf # ⭐⭐⭐ The configuration files for the environment and the llm model
+│   ├── env_config_dealers.json
+│   ├── env_config_rdr2_main_storyline.json
+│   ├── env_config_rdr2_open_ended_mission.json
+│   ├── env_config_skylines.json
+│   ├── env_config_stardew_cultivation.json
+│   ├── env_config_stardew_farm_clearup.json
+│   ├── env_config_stardew_shopping.json
+│   ├── openai_config.json
+│   ├── claude_config.json
+│   ├── restful_claude_config.json
+│   └── ...
+├── deps # The dependencies for the Cradle framework, ignore this folder
+├── docs # The documentation for the Cradle framework, ignore this folder
+├── res # The resources for the Cradle framework
+│   ├── models # Ignore this folder
+│   ├── tool # Subfinder for RDR2
+│   ├── [game or software] # ⭐⭐⭐ The resources for game, exmpale: rdr2, dealers, skylines, stardew, outlook, chrome, capcut, meitu, feishu
+│   │   ├── prompts # The prompts for the game
+│   │   │   └── templates
+│   │   │       ├── action_planning.prompt
+│   │   │       ├── information_gathering.prompt
+│   │   │       ├── self_reflection.prompt
+│   │   │       └── task_inference.prompt
+│   │   ├── skills # The skills json for the game, it will be generated automatically
+│   │   ├── icons # The icons difficult for GPT-4 to recognize in the game can be replaced with text for better recognition using an icon replacer
+│   │   └── saves # Save files in the game
+│   └── ...
+├── requirements.txt # The requirements for the Cradle framework
+├── runner.py # The main entry for the Cradle framework
+├── cradle # Cradle's core modules
+│   ├── config # The configuration for the Cradle framework
+│   ├── environment # The environment for the Cradle framework
+│   │   ├── [game or software] # ⭐⭐⭐ The environment for the game, exmpale: rdr2, dealers, skylines, stardew, outlook, chrome, capcut, meitu, feishu
+│   │   │   ├── __init__.py # The initialization file for the environment
+│   │   │   ├── atomic_skills # Atomic skills in the game. Users should customise them to suit the needs of the game or software, e.g. character movement
+│   │   │   ├── composite_skills # Combination skills for atomic skills in games or software
+│   │   │   ├── skill_registry.py # The skill registry for the game. Will register all atomic skills and composite skills into the registry.
+│   │   │   └── ui_control.py # The UI control for the game. Define functions to pause the game and switch to the game window
+│   │   └── ...
+│   ├── gameio # Interfaces that directly wrap the skill registry and ui control in the environment
+│   ├── log # The log for the Cradle framework
+│   ├── memory # The memory for the Cradle framework
+│   ├── module # Currently there is only the skill execution module. Later will migrate action planning, self-reflection and other modules from planner and provider
+│   ├── planner # The planner for the Cradle framework. Unified interface for action planning, self-reflection and other modules. This module will be deleted later and will be moved to the module module.
+│   ├── runner # ⭐⭐⭐ The logical flow of execution for each game and software. All game and software processes will then be unified into a single runner
+│   ├── utils # Defines some helper functions such as save json and load json
+│   └── provider # The provider for the Cradle framework. We have semantically decomposed most of the execution flow in the runner into providers
+│       ├── augment # Methods for image augmentation
+│       ├── llm # Call for the LLM model, e.g. OpenAI's GPT-4o, Claude, etc.
+│       ├── module # ⭐⭐⭐ The module for the Cradle framework. e.g., action planning, self-reflection and other modules. It will be migrated to the cradle/module later.
+│       ├── object_detect # Methods for object detection
+│       ├── process # ⭐⭐⭐ Methods for pre-processing and post-processing for action planning, self-reflection and other modules
+│       ├── video # Methods for video processing
+│       ├── others # Methods for other operations, e.g., save and load coordinates for skylines
+│       ├── circle_detector.py # The circle detector for the rdr2
+│       ├── icon_replacer.py # Methods for replacing icons with text
+│       ├── sam_provider.py # Segment anything for software
+│       └── ...
+└── ...
+```
+
 # Citation
 If you find our work useful, please consider citing us!
 ```
-@article{weihao2024cradle,
-  title     = {{Cradle: Empowering Foundation Agents towards General Computer Control}},
-  author    = {Weihao Tan and Wentao Zhang and Xinrun Xu and Haochong Xia and Ziluo Ding and Boyu Li and Bohan Zhou and Junpeng Yue and Jiechuan Jiang and Yewen Li and Ruyi An and Molei Qin and Chuqiao Zong and Longtao Zheng and Yujie Wu and Xiaoqiang Chai and Yifei Bi and Tianbao Xie and Pengjie Gu and Xiyun Li and Ceyao Zhang and Long Tian and Chaojie Wang and Xinrun Wang and Börje F. Karlsson and Bo An and Shuicheng Yan and Zongqing Lu},
-  journal   = {arXiv:2403.03186},
-  month     = {March},
-  year      = {2024},
-  primaryClass={cs.AI}
+@article{tan2024cradle,
+  title={Cradle: Empowering Foundation Agents towards General Computer Control},
+  author={Tan, Weihao and Zhang, Wentao and Xu, Xinrun and Xia, Haochong and Ding, Ziluo and Li, Boyu and Zhou, Bohan and Yue, Junpeng and Jiang, Jiechuan and Li, Yewen and An, Ruyi and Qin, Molei and Zong, Chuqiao and Zheng, Longtao and Wu, Yujie and Chai, Xiaoqiang and Bi, Yifei and Xie, Tianbao and Gu, Pengjie and Li, Xiyun and Zhang, Ceyao and Tian, Long and Wang, Chaojie and Wang, Xinrun and Karlsson, Börje F. and An, Bo and Yan, Shuicheng and Lu, Zongqing},
+  journal={arXiv preprint arXiv:2403.03186},
+  year={2024}
 }
 ```
+[//]: # (```)
+[//]: # (@article{weihao2024cradle,)
+[//]: # (  title     = {{Cradle: Empowering Foundation Agents towards General Computer Control}},)
+[//]: # (  author    = {Weihao Tan and Wentao Zhang and Xinrun Xu and Haochong Xia and Ziluo Ding and Boyu Li and Bohan Zhou and Junpeng Yue and Jiechuan Jiang and Yewen Li and Ruyi An and Molei Qin and Chuqiao Zong and Longtao Zheng and Yujie Wu and Xiaoqiang Chai and Yifei Bi and Tianbao Xie and Pengjie Gu and Xiyun Li and Ceyao Zhang and Long Tian and Chaojie Wang and Xinrun Wang and Börje F. Karlsson and Bo An and Shuicheng Yan and Zongqing Lu},)
+[//]: # (  journal   = {arXiv:2403.03186},)
+[//]: # (  month     = {March},)
+[//]: # (  year      = {2024},)
+[//]: # (  primaryClass={cs.AI})
+[//]: # (})
+[//]: # (```)
