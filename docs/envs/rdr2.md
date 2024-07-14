@@ -3,7 +3,7 @@ Here are the settings for Red Dead Redemption 2 (RDR2) game. And this environmen
 
 ## Setup for RDR2
 
-### Install Grounding Dino
+### Install GroundingDino
 ```bash
 # Install torch and torchvision
 pip install --upgrade torch==2.1.1+cu118 -f https://download.pytorch.org/whl/torch_stable.html
