@@ -37,7 +37,7 @@ via the same unified interface humans use, i.e., screenshots as input and keyboa
 &nbsp;&nbsp;
 <a alt="Watch the video" href="https://www.youtube.com/watch?v=WZiL_0V880M"><img src="./docs/envs/images/dealers/dealer_video_cover.png" width="33%" /></a>
 &nbsp;&nbsp;
-<a alt="Watch the video" href="https://www.youtube.com/watch?v=k0K_GbmTthg"><img src="./docs/envs/images/software/Software_cover.png" width="33%" /></a>
+<a alt="Watch the video" href="https://www.youtube.com/watch?v=uWgLnZmpVTM"><img src="./docs/envs/images/software/Software_cover.png" width="33%" /></a>
 &nbsp;&nbsp;
 </div>
 
