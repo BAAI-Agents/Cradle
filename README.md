@@ -187,7 +187,7 @@ If you find our work useful, please consider citing us!
 ```
 @article{tan2024cradle,
   title={Cradle: Empowering Foundation Agents towards General Computer Control},
-  author={Tan, Weihao and Zhang, Wentao and Xu, Xinrun and Xia, Haochong and Ding, Ziluo and Li, Boyu and Zhou, Bohan and Yue, Junpeng and Jiang, Jiechuan and Li, Yewen and An, Ruyi and Qin, Molei and Zong, Chuqiao and Zheng, Longtao and Wu, Yujie and Chai, Xiaoqiang and Bi, Yifei and Xie, Tianbao and Gu, Pengjie and Li, Xiyun and Zhang, Ceyao and Tian, Long and Wang, Chaojie and Wang, Xinrun and Karlsson, Börje F. and An, Bo and Yan, Shuicheng and Lu, Zongqing},
+  author={Weihao Tan and Wentao Zhang and Xinrun Xu and Haochong Xia and Ziluo Ding and Boyu Li and Bohan Zhou and Junpeng Yue and Jiechuan Jiang and Yewen Li and Ruyi An and Molei Qin and Chuqiao Zong and Longtao Zheng and Yujie Wu and Xiaoqiang Chai and Yifei Bi and Tianbao Xie and Pengjie Gu and Xiyun Li and Ceyao Zhang and Long Tian and Chaojie Wang and Xinrun Wang and Börje F. Karlsson and Bo An and Shuicheng Yan and Zongqing Lu},
   journal={arXiv preprint arXiv:2403.03186},
   year={2024}
 }
