@@ -4,12 +4,12 @@ This is a simplified guide for migrating to a new game. Specific details need to
 
 ### 1. Implement the game's runner
 
-You can see a series of runners in the **cradle/runner/** directory, such as cradle/runner/skylines_runner.py. This file defines the main processes for all games, including information gathering and the execution logic for self-reflection. We recommend directly copying cradle/runner/skylines_runner.py, renaming it for the new game (**newgame_runner.py**), and then modifying it as needed.
+You can see a series of runners in the **cradle/runner/** directory, such as cradle/runner/skylines_runner.py. This file defines the main processes for all games, including the execution logic for self-reflection and information gathering. We recommend directly copying cradle/runner/skylines_runner.py, renaming it for the new game (**newgame_runner.py**), and then modifying it as needed.
 
-**It is worth mentioning that we will eventually unify all runners into a single runner. In the final version of CRADLE, it will no longer be necessary to implement this file separately**.
+**It is worth mentioning that we will eventually unify all runners into a single runner. In the final version of Cradle, it will no longer be necessary to implement this file separately**.
 
 ### 2. Implement the game's environment
-Using Skylines as an example, the game's environment mainly consists of three parts:
+Using Cites: Skylines as an example, the game's environment mainly consists of three parts:
 - **cradle/environment/skylines/atomic_skills** (definition of atomic skills)
 - **cradle/environment/skylines/skill_registry.py** (registration of atomic skills in the registry)
 - **cradle/environment/skylines/ui_control.py** (game interface control, such as switching games and pausing the game, which need to be defined here)
@@ -27,7 +27,7 @@ Atomic skills need to be customized based on the game's specific atomic skills, 
 
 ### 3. Implement the game's prompt
 
-For Skylines, prompts for various modules like information gathering and self-reflection are defined in the res/skylines/prompts/templates directory. We recommend directly copying these prompts to the new game directory and modifying the prompts for each module according to the new game.
+For Cities: Skylines, prompts for various modules like information gathering and self-reflection are defined in the res/skylines/prompts/templates directory. We recommend directly copying these prompts to the new game directory and modifying the prompts for each module according to the new game.
 
 **It is worth mentioning that since each game is different, the prompts may be entirely different. However, we provide a unified prompt framework, and users can modify the prompts according to this format**.
 
