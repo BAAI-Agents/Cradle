@@ -182,6 +182,9 @@ Cradle
 └── ...
 ```
 
+# 📚 Migrate to New Game
+Since each game's settings and the operating systems they are compatible with are different, Cradle cannot simply replace one game name to migrate to a new game. We suggest considering each game specifically. For example, RDR2, an independent AAA game, requires real-time combat, so we need to pause the game to wait for GPT-4o's response and then unpause the game to execute the actions. Stardew has the same issue. Other games like Dealer's Life 2 and Cities: Skylines do not have real-time requirements, so they do not need to pause. If the new game is similar to the latter, we recommend copying Cities: Skylines' implementation and following its implementation path to create the corresponding modules. Although each game may differ significantly, our Cradle framework can still achieve a unified adaptation for a game. Assuming the new game's name is **newgame**, the specific migration pipeline can be found [Migrate to New Game Guide](docs/envs/new_game.md). 
+
 # Citation
 If you find our work useful, please consider citing us!
 ```
