@@ -34,7 +34,7 @@ The skill registry does not need specific adaptation. We recommend directly copy
 
 For ui control, check whether the game needs to be paused while waiting for GPT-4o's response. If yes, implement it in the ui control. The pause_game and unpause_game functions need to be adapted to the corresponding game. If these functions are not needed, you can directly copy cradle/environment/skylines/ui_control.py and change the name to newgame.
 
-For atomic skills, check whether the game provides enough guidance for generating necessary skills (e.g., RDR2 does not teach us the usage of ASD and how to move the view). If no, implement the missing ones. Some games do not provide any guidance, then you need to implement the skills in advance, which is just like the case in web navigation. Pay attention to the specific/wired mechanisms of the games.
+For atomic skills, check whether the game provides enough guidance for generating necessary skills (e.g., RDR2 does not teach us the usage of WASD and how to move the view). If no, implement the missing ones. Some games do not provide any guidance, then you need to implement the skills in advance, which is just like the case in web navigation. Pay attention to the specific/wired mechanisms of the games.
 Atomic skills need to be customized based on the game's specific atomic skills, which require a complete reimplementation.
 
 ### 4. Implement the game's prompt
