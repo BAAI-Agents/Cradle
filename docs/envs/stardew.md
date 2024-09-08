@@ -10,8 +10,10 @@ If you are using MacOS, you need to have an additional monitor and set your exte
 ![resolution](../envs/images/stardew/resolution.png)
 
 #### Tool hit
-Enable "Always Show Tool Hit Location"
+1. Enable "Always Show Tool Hit Location"
 ![tool_hit](../envs/images/stardew/tool_hit.png)
+2. Enable "Lock Toolbar" to lock the toolbar at the bottom of the screen.
+![lock_toolbar](../envs/images/stardew/lock_toolbar.png)
 
 ### Libraries for Keyboard & Mouse Control
 
