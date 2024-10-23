@@ -1,6 +1,6 @@
 {
     "key_var": "OA_OPENAI_KEY",
     "emb_model": "text-embedding-ada-002",
-    "comp_model": "gpt-4o",
+    "comp_model": "gpt-4o-2024-05-13",
     "is_azure": false
 }
