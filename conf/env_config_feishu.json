@@ -65,6 +65,7 @@
         }
     },
     "skill_configs": {
+        "skill_mode": "Basic",
         "skill_names_basic": [
             "open_the_user_profile_menu",
             "click_attachment_button",

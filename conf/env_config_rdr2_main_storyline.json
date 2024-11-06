@@ -13,6 +13,7 @@
         }
     ],
     "skill_configs": {
+        "skill_mode": "Basic",
         "skill_names_basic": [
             "shoot_wolves",
             "shoot",

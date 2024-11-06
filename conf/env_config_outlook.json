@@ -72,6 +72,7 @@
         }
     },
     "skill_configs": {
+        "skill_mode": "Basic",
         "skill_names_basic": [
             "press_keyboard_shortcut",
             "click_at_position",
