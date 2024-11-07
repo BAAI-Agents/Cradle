@@ -78,7 +78,7 @@ class Logger(metaclass=Singleton):
     def _configure_root_logger(self):
 
         # format = f'%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-        format = '%(asctime)s - %(name)s - CPU: %(cpu_usage)s%%, Memory: %(memory_usage)s%% - %(levelname)s - %(message)s'
+        format = '%(asctime)s - CPU: %(cpu_usage)s%%, Memory: %(memory_usage)s%% - %(name)s - %(levelname)s - %(message)s'
 
         formatter = CPUMemFormatter(format)
         c_formatter = CPUMemColorFormatter(format)

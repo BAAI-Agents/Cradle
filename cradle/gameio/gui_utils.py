@@ -346,9 +346,6 @@ def mouse_move_to(x, y, duration = -1, relative = False, screen_resolution = Non
 
     if _isWin():
 
-        if duration > -1:
-            raise ValueError("Duration is not yet supported on Windows.")
-
         timestamp = 0
         extra = ctypes.c_ulong(0)
         ii_ = Input_I()
