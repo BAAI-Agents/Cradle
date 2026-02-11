@@ -111,10 +111,7 @@ class BasicVectorMemory(BaseMemory):
         return [self.memory[k] for k in keys[len(keys) - recent_k : len(keys)]]
 
 
-    def load(self):
-        self.load()
-
-
+    @classmethod
     def load(
         cls,
         memory_path: str,
@@ -123,7 +120,7 @@ class BasicVectorMemory(BaseMemory):
     ) -> "BasicVectorMemory":
         """Load the memory from the local file."""
 
-        memory = load_json(os.path.join(cls.memory_path, cls.storage_filename))
+        memory = load_json(os.path.join(memory_path, cls.storage_filename))
 
         return cls(
             memory_path=memory_path,
