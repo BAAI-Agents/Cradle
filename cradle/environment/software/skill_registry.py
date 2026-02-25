@@ -126,7 +126,7 @@ class SoftwareSkillRegistry(SkillRegistry, metaclass=Singleton):
                                 else:
                                     processed_skill_steps[i] = f"{processed_skill_steps[i]}{msg}"
 
-                        except:
+                        except Exception:
                             logger.error("Invalid skill format.")
                             processed_skill_steps[i] = processed_skill_steps[i] + f"# {constants.INVALID_BBOX} for invalid skill format."
 

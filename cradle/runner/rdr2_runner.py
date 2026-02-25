@@ -291,7 +291,7 @@ def entry(args):
         task_description = kget(config.env_config, constants.TASK_DESCRIPTION_LIST, default='')[task_id-1][constants.TASK_DESCRIPTION]
         if subtask_id > 0:
             task_description = kget(config.env_config, constants.TASK_DESCRIPTION_LIST, default='')[task_id-1][constants.SUB_TASK_DESCRIPTION_LIST][subtask_id-1]
-    except:
+    except Exception:
         logger.warn(f"Task description is not found for task_id: {task_id} and/or subtask_id: {subtask_id}")
         logger.warn(f"Using default input value: {task_description}")
 

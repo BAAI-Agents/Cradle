@@ -324,7 +324,7 @@ class SkillRegistry():
         info = None
         try:
             skill_name, _ = self.extract_function_info(skill)
-        except:
+        except Exception:
             skill_name = skill
 
         skill_code = None
@@ -440,7 +440,7 @@ class SkillRegistry():
         try:
             exec(skill_code)
             skill = eval(skill_name)
-        except:
+        except Exception:
             info = "The skill code is invalid."
             logger.error(info)
             return False, info
@@ -469,7 +469,7 @@ class SkillRegistry():
 
         try:
             skill_name, _ = self.extract_function_info(skill_name)
-        except:
+        except Exception:
             skill_name = skill_name
 
         if skill_name in self.skills:

@@ -4,7 +4,7 @@ from copy import deepcopy
 
 try:
     from groundingdino.util.inference import load_image
-except:
+except Exception:
     pass
 
 from cradle.log import Logger

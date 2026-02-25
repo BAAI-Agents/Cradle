@@ -6,7 +6,7 @@ import numpy as np
 
 try:
     from groundingdino.util.inference import load_model, load_image
-except:
+except Exception:
     pass
 
 from cradle.utils.singleton import Singleton
