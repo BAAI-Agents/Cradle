@@ -22,7 +22,7 @@ io_env = IOEnvironment()
 if config.is_game == True:
     try:
         from groundingdino.util.inference import annotate
-    except:
+    except Exception:
         pass
 
     from cradle.utils.object_utils import groundingdino_detect, circle_detector_detect
