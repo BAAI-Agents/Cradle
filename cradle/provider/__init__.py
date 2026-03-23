@@ -6,6 +6,7 @@ from .base.base_llm import LLMProvider
 from .llm.openai import OpenAIProvider
 from .llm.claude import ClaudeProvider
 from .llm.restful_claude import RestfulClaudeProvider
+from .llm.minimax import MiniMaxProvider
 
 from .circle_detector import CircleDetectProvider
 from .sam_provider import SamProvider
@@ -68,6 +69,7 @@ __all__ = [
     "OpenAIProvider",
     "ClaudeProvider",
     "RestfulClaudeProvider",
+    "MiniMaxProvider",
 
     # Object detection provider
     "GdProvider",
@@ -132,3 +134,4 @@ __all__ = [
     "StardewActionPlanningProvider",
     "StardewTaskInferenceProvider",
 ]
+

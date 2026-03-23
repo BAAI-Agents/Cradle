@@ -1,4 +1,5 @@
 from cradle.provider.llm.openai import OpenAIProvider
+from cradle.provider.llm.minimax import MiniMaxProvider
 from cradle.provider.llm.restful_claude import RestfulClaudeProvider
 from cradle.utils import Singleton
 
@@ -16,7 +17,14 @@ class LLMFactory(metaclass=Singleton):
 
         key = llm_provider_config_path
 
-        if "openai" in key:
+        if "minimax" in key:
+            llm_provider = MiniMaxProvider()
+            llm_provider.init_provider(llm_provider_config_path)
+            # MiniMax does not provide an OpenAI-compatible embedding endpoint
+            # with the same models; use OpenAI for embeddings.
+            embed_provider = OpenAIProvider()
+            embed_provider.init_provider(embed_provider_config_path)
+        elif "openai" in key:
             llm_provider = OpenAIProvider()
             llm_provider.init_provider(llm_provider_config_path)
             embed_provider = llm_provider
