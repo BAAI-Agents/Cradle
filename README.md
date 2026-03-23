@@ -46,7 +46,7 @@ Click on either of the video thumbnails above to watch them on YouTube.
 # 💾 Installation
 
 ## Prepare the Environment File
-We currently provide access to OpenAI's and Claude's API. Please create a `.env` file in the root of the repository to store the keys (one of them is enough).
+We currently provide access to OpenAI's, Claude's, and MiniMax's API. Please create a `.env` file in the root of the repository to store the keys (one of them is enough).
 
 Sample `.env` file containing private information:
 ```
@@ -57,6 +57,7 @@ AZ_OPENAI_KEY = "123abc123abc123abc123abc123abc12"
 AZ_BASE_URL = "https://abc123.openai.azure.com/"
 RF_CLAUDE_AK = "abc123abc123abc123abc123abc123ab"
 RF_CLAUDE_SK = "123abc123abc123abc123abc123abc12"
+MINIMAX_API_KEY = "abc123abc123abc123abc123abc123ab"
 IDE_NAME = "Code"
 ```
 OA_OPENAI_KEY is the OpenAI API key. You can get it from the [OpenAI](https://platform.openai.com/api-keys).
@@ -66,6 +67,8 @@ AZ_OPENAI_KEY is the Azure OpenAI API key. You can get it from the [Azure Portal
 OA_CLAUDE_KEY is the Anthropic Claude API key. You can get it from the [Anthropic](https://console.anthropic.com/settings/keys).
 
 RF_CLAUDE_AK and RF_CLAUDE_SK are AWS Restful API key and secret key for Claude API.
+
+MINIMAX_API_KEY is the MiniMax API key. You can get it from the [MiniMax Platform](https://platform.minimaxi.com/). MiniMax provides powerful models including MiniMax-M2.7 (1M context) and MiniMax-M2.5 (204K context).
 
 IDE_NAME refers to the IDE environment in which the repository's code runs, such as `PyCharm` or `Code` (VSCode). It is primarily used to enable automatic switching between the IDE and the target environment.
 
@@ -205,3 +208,4 @@ If you find our work useful, please consider citing us!
 [//]: # (  primaryClass={cs.AI})
 [//]: # (})
 [//]: # (```)
+

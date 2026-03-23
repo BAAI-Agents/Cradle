@@ -1,0 +1,6 @@
+{
+    "key_var": "MINIMAX_API_KEY",
+    "emb_model": "text-embedding-ada-002",
+    "comp_model": "MiniMax-M2.7",
+    "base_url": "https://api.minimax.io/v1"
+}
