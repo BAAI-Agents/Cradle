@@ -205,3 +205,40 @@ If you find our work useful, please consider citing us!
 [//]: # (  primaryClass={cs.AI})
 [//]: # (})
 [//]: # (```)
+
+## FAQ
+
+### What is Cradle?
+Cradle is a framework that empowers foundation models to perform **General Computer Control (GCC)** - using the same unified interface humans use: screenshots as input and keyboard/mouse operations as output.
+
+### How does Cradle differ from other agent frameworks?
+| Feature | Cradle | LangChain | CrewAI |
+|---------|---------|-----------|--------|
+| Approach | **Screenshot → K&M** | Tool-based | Role-based |
+| Interface | Human-like | API-based | Agent-based |
+| Target | **Any software** | Specific tools | Defined roles |
+| Game Support | ✅ RDR2/Stardew/etc | ⚠️ Limited | ❌ None |
+
+### What games/software does Cradle support?
+| Category | Examples |
+|----------|----------|
+| Games | RDR2, Stardew Valley, Cities: Skylines, Dealer's Life 2 |
+| Software | Chrome, Outlook, Capcut, Meitu, Feishu |
+| General | Any computer task via screenshots |
+
+### What are the key components?
+- **Screenshot Input** - Understands UI like humans
+- **Keyboard/Mouse Output** - Controls any interface
+- **Foundation Models** - LLM-powered reasoning
+- **Unified Interface** - Same as human interaction
+
+### What Python version is required?
+Python 3.10+
+
+### What license does Cradle use?
+MIT License - Free for personal and commercial use.
+
+### Where can I find more information?
+- 📚 **Paper**: [arXiv](https://arxiv.org/abs/2403.03186)
+- 🌐 **Website**: [baai-agents.github.io/Cradle](https://baai-agents.github.io/Cradle/)
+- 🐛 **Issues**: [GitHub Issues](https://github.com/BAAI-Agents/Cradle/issues)
