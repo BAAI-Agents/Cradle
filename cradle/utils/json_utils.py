@@ -57,7 +57,7 @@ def save_json(file_path, json_dict, indent=-1):
 def check_json(json_string):
     try:
         json.loads(json_string)
-    except:
+    except Exception:
         return False
     return True
 
